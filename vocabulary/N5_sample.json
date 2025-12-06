@@ -1,0 +1,132 @@
+[
+  {
+    "word": "学生",
+    "reading": "がくせい",
+    "meanings": {
+      "en": "student",
+      "zh": "学生",
+      "vi": "sinh viên",
+      "ar": "طالب",
+      "es": "estudiante",
+      "de": "Student",
+      "fr": "étudiant"
+    }
+  },
+  {
+    "word": "先生",
+    "reading": "せんせい",
+    "meanings": {
+      "en": "teacher",
+      "zh": "老师",
+      "vi": "giáo viên",
+      "ar": "معلم",
+      "es": "profesor",
+      "de": "Lehrer",
+      "fr": "professeur"
+    }
+  },
+  {
+    "word": "友達",
+    "reading": "ともだち",
+    "meanings": {
+      "en": "friend",
+      "zh": "朋友",
+      "vi": "bạn bè",
+      "ar": "صديق",
+      "es": "amigo",
+      "de": "Freund",
+      "fr": "ami"
+    }
+  },
+  {
+    "word": "家族",
+    "reading": "かぞく",
+    "meanings": {
+      "en": "family",
+      "zh": "家庭",
+      "vi": "gia đình",
+      "ar": "عائلة",
+      "es": "familia",
+      "de": "Familie",
+      "fr": "famille"
+    }
+  },
+  {
+    "word": "学校",
+    "reading": "がっこう",
+    "meanings": {
+      "en": "school",
+      "zh": "学校",
+      "vi": "trường học",
+      "ar": "مدرسة",
+      "es": "escuela",
+      "de": "Schule",
+      "fr": "école"
+    }
+  },
+  {
+    "word": "会社",
+    "reading": "かいしゃ",
+    "meanings": {
+      "en": "company",
+      "zh": "公司",
+      "vi": "công ty",
+      "ar": "شركة",
+      "es": "empresa",
+      "de": "Firma",
+      "fr": "entreprise"
+    }
+  },
+  {
+    "word": "病院",
+    "reading": "びょういん",
+    "meanings": {
+      "en": "hospital",
+      "zh": "医院",
+      "vi": "bệnh viện",
+      "ar": "مستشفى",
+      "es": "hospital",
+      "de": "Krankenhaus",
+      "fr": "hôpital"
+    }
+  },
+  {
+    "word": "図書館",
+    "reading": "としょかん",
+    "meanings": {
+      "en": "library",
+      "zh": "图书馆",
+      "vi": "thư viện",
+      "ar": "مكتبة",
+      "es": "biblioteca",
+      "de": "Bibliothek",
+      "fr": "bibliothèque"
+    }
+  },
+  {
+    "word": "駅",
+    "reading": "えき",
+    "meanings": {
+      "en": "station",
+      "zh": "车站",
+      "vi": "nhà ga",
+      "ar": "محطة",
+      "es": "estación",
+      "de": "Bahnhof",
+      "fr": "gare"
+    }
+  },
+  {
+    "word": "銀行",
+    "reading": "ぎんこう",
+    "meanings": {
+      "en": "bank",
+      "zh": "银行",
+      "vi": "ngân hàng",
+      "ar": "بنك",
+      "es": "banco",
+      "de": "Bank",
+      "fr": "banque"
+    }
+  }
+]

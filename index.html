@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日本語単語練習ゲーム - JLPT N5~N1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #667eea);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(255,255,255,0.05) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+            animation: containerEntry 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes containerEntry {
+            0% {
+                opacity: 0;
+                transform: scale(0.9) translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        h1 {
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 15px;
+            color: white;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            display: block;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .stat-value.animate {
+            animation: popScale 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes popScale {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.5); }
+            100% { transform: scale(1); }
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .language-selector {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+
+        .language-btn {
+            padding: 12px 8px;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            font-size: 0.9em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+            color: #667eea;
+        }
+
+        .language-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .language-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+
+        .level-selector {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .level-btn {
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .level-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .level-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .mode-selector {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .mode-btn {
+            padding: 20px;
+            border: 2px solid #667eea;
+            border-radius: 15px;
+            background: white;
+            color: #667eea;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .mode-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .question-count-selector {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .count-btn {
+            padding: 15px;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+            color: #667eea;
+        }
+
+        .count-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .count-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .game-area {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .game-area.active {
+            display: block;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            padding: 60px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .card:hover {
+            transform: scale(1.02) rotateY(5deg);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .card.flip {
+            animation: cardFlip 0.6s ease-in-out;
+        }
+
+        @keyframes cardFlip {
+            0% { transform: rotateY(0deg); }
+            50% { transform: rotateY(90deg); }
+            100% { transform: rotateY(0deg); }
+        }
+
+        .japanese-word {
+            font-size: 4em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .reading {
+            font-size: 1.5em;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .meaning {
+            font-size: 1.8em;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .option-btn {
+            padding: 20px;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.2em;
+            cursor: pointer;
+            background: #f0f0f0;
+            color: #333;
+            transition: all 0.3s;
+            font-weight: 500;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideInUp 0.4s ease forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option-btn:nth-child(1) { animation-delay: 0.1s; }
+        .option-btn:nth-child(2) { animation-delay: 0.2s; }
+        .option-btn:nth-child(3) { animation-delay: 0.3s; }
+        .option-btn:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .option-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(102, 126, 234, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .option-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .option-btn:hover {
+            background: #e0e0e0;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .option-btn.correct {
+            background: #4caf50 !important;
+            color: white;
+            animation: correctPulse 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 0 30px rgba(76, 175, 80, 0.6);
+        }
+
+        .option-btn.wrong {
+            background: #f44336 !important;
+            color: white;
+            animation: shake 0.5s;
+        }
+
+        @keyframes correctPulse {
+            0% { transform: scale(1); }
+            30% { transform: scale(1.15); box-shadow: 0 0 50px rgba(76, 175, 80, 0.8); }
+            50% { transform: scale(1.1) rotate(3deg); }
+            70% { transform: scale(1.15) rotate(-3deg); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+            20%, 40%, 60%, 80% { transform: translateX(10px); }
+        }
+
+        /* Particle effects */
+        .particle {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #ffd700;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        @keyframes particle-burst {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* Combo indicator */
+        .combo-indicator {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 5em;
+            font-weight: bold;
+            color: #ffd700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8),
+                         0 0 40px rgba(255, 215, 0, 0.6);
+            pointer-events: none;
+            z-index: 9999;
+            animation: comboAppear 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes comboAppear {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -80%) scale(1);
+            }
+        }
+
+        .input-area {
+            margin-bottom: 20px;
+        }
+
+        .answer-input {
+            width: 100%;
+            padding: 20px;
+            font-size: 1.5em;
+            border: 3px solid #667eea;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .feedback {
+            text-align: center;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+            display: none;
+        }
+
+        .feedback.correct {
+            background: #4caf50;
+            color: white;
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        .feedback.wrong {
+            background: #f44336;
+            color: white;
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 40px;
+            background: #f0f0f0;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .progress-bar::before {
+            content: attr(data-text);
+            position: absolute;
+            z-index: 2;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.1em;
+            white-space: nowrap;
+            transition: color 0.3s;
+        }
+
+        .progress-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.5s;
+            border-radius: 15px;
+            z-index: 1;
+        }
+
+        .progress-bar[data-progress]:not([data-progress="0%"])::before {
+            color: white;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .start-screen {
+            text-align: center;
+        }
+
+        .start-screen h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .start-screen p {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        .result-screen {
+            display: none;
+            text-align: center;
+        }
+
+        .result-screen.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        .result-score {
+            font-size: 5em;
+            color: #667eea;
+            font-weight: bold;
+            margin: 30px 0;
+        }
+
+        .result-message {
+            font-size: 1.8em;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎌 日本語単語練習ゲーム</h1>
+
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-value" id="score">0</span>
+                <span class="stat-label">スコア</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="correct">0</span>
+                <span class="stat-label">正解</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="wrong">0</span>
+                <span class="stat-label">不正解</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="streak">0</span>
+                <span class="stat-label">連続</span>
+            </div>
+        </div>
+
+        <div class="start-screen" id="startScreen">
+            <h2>言語を選択してください / Choose Language</h2>
+            <div class="language-selector" id="languageSelector">
+                <button class="language-btn active" data-lang="en">🇬🇧 EN</button>
+                <button class="language-btn" data-lang="zh">🇨🇳 中文</button>
+                <button class="language-btn" data-lang="vi">🇻🇳 VI</button>
+                <button class="language-btn" data-lang="ar">🇸🇦 AR</button>
+                <button class="language-btn" data-lang="es">🇪🇸 ES</button>
+                <button class="language-btn" data-lang="de">🇩🇪 DE</button>
+                <button class="language-btn" data-lang="fr">🇫🇷 FR</button>
+            </div>
+
+            <h2>レベルを選択してください</h2>
+            <div class="level-selector" id="levelSelector">
+                <button class="level-btn" data-level="N5">N5</button>
+                <button class="level-btn" data-level="N4">N4</button>
+                <button class="level-btn" data-level="N3">N3</button>
+                <button class="level-btn" data-level="N2">N2</button>
+                <button class="level-btn" data-level="N1">N1</button>
+            </div>
+
+            <h2>問題数を選択してください</h2>
+            <div class="question-count-selector" id="questionCountSelector">
+                <button class="count-btn active" data-count="10">10問</button>
+                <button class="count-btn" data-count="20">20問</button>
+                <button class="count-btn" data-count="50">50問</button>
+                <button class="count-btn" data-count="100">100問</button>
+                <button class="count-btn" data-count="all">全部</button>
+            </div>
+
+            <h2>ゲームモードを選択してください</h2>
+            <p>好きな練習方法を選んでください！</p>
+            <div class="mode-selector">
+                <button class="mode-btn" data-mode="flashcard">
+                    📝 フラッシュカード<br>
+                    <small>単語を見て意味を覚える</small>
+                </button>
+                <button class="mode-btn" data-mode="choice">
+                    ✅ 多肢選択<br>
+                    <small>正しい意味を選ぶ</small>
+                </button>
+                <button class="mode-btn" data-mode="typing">
+                    ⌨️ タイピング<br>
+                    <small>読み方を入力する</small>
+                </button>
+            </div>
+        </div>
+
+        <div class="game-area" id="gameArea">
+            <div class="progress-bar" data-text="0/10" data-progress="0%">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <div class="feedback" id="feedback"></div>
+
+            <div class="card" id="card">
+                <div class="japanese-word" id="japaneseWord">準備中...</div>
+                <div class="reading" id="reading"></div>
+                <div class="meaning" id="meaning"></div>
+            </div>
+
+            <div class="options" id="options"></div>
+
+            <div class="input-area hidden" id="inputArea">
+                <input type="text" class="answer-input" id="answerInput" placeholder="読み方を入力してください">
+            </div>
+
+            <div class="controls">
+                <button class="btn btn-primary" id="nextBtn">次へ</button>
+                <button class="btn btn-secondary" id="backBtn">戻る</button>
+            </div>
+        </div>
+
+        <div class="result-screen" id="resultScreen">
+            <h2>🎉 お疲れ様でした！</h2>
+            <div class="result-score" id="resultScore">0%</div>
+            <div class="result-message" id="resultMessage">Great job!</div>
+            <div class="controls">
+                <button class="btn btn-primary" id="retryBtn">もう一度</button>
+                <button class="btn btn-secondary" id="homeBtn">ホームへ</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Vocabulary storage (loaded from JSON files)
+        const vocabulary = {};
+
+        // Function to load vocabulary from JSON files
+        async function loadVocabulary(level) {
+            if (vocabulary[level]) {
+                return vocabulary[level]; // Already loaded
+            }
+
+            try {
+                const response = await fetch(`vocabulary/${level}.json`);
+                if (!response.ok) {
+                    throw new Error(`Failed to load vocabulary for ${level}`);
+                }
+                vocabulary[level] = await response.json();
+                return vocabulary[level];
+            } catch (error) {
+                console.error('Error loading vocabulary:', error);
+                alert(`単語リストの読み込みに失敗しました: ${level}\nファイルが存在するか確認してください。`);
+                return [];
+            }
+        }
+
+        // Get meaning in current language
+        function getMeaning(word) {
+            // If word has meanings object (multilingual)
+            if (word.meanings && typeof word.meanings === 'object') {
+                return word.meanings[currentLanguage] || word.meanings.en || word.meaning;
+            }
+            // Fallback to single meaning (old format)
+            return word.meaning;
+        }
+
+        // Game state
+        let currentLanguage = 'en';
+        let currentLevel = null;
+        let currentMode = null;
+        let currentQuestionCount = 10;
+        let currentWords = [];
+        let currentIndex = 0;
+        let score = 0;
+        let correct = 0;
+        let wrong = 0;
+        let streak = 0;
+        let isFlipped = false;
+
+        // DOM elements
+        const startScreen = document.getElementById('startScreen');
+        const gameArea = document.getElementById('gameArea');
+        const resultScreen = document.getElementById('resultScreen');
+        const languageSelector = document.getElementById('languageSelector');
+        const levelSelector = document.getElementById('levelSelector');
+        const questionCountSelector = document.getElementById('questionCountSelector');
+        const card = document.getElementById('card');
+        const japaneseWord = document.getElementById('japaneseWord');
+        const reading = document.getElementById('reading');
+        const meaning = document.getElementById('meaning');
+        const options = document.getElementById('options');
+        const inputArea = document.getElementById('inputArea');
+        const answerInput = document.getElementById('answerInput');
+        const feedback = document.getElementById('feedback');
+        const progressBar = document.querySelector('.progress-bar');
+        const progressFill = document.getElementById('progressFill');
+        const nextBtn = document.getElementById('nextBtn');
+        const backBtn = document.getElementById('backBtn');
+        const retryBtn = document.getElementById('retryBtn');
+        const homeBtn = document.getElementById('homeBtn');
+
+        // Language selection
+        languageSelector.addEventListener('click', (e) => {
+            if (e.target.classList.contains('language-btn')) {
+                document.querySelectorAll('.language-btn').forEach(btn => btn.classList.remove('active'));
+                e.target.classList.add('active');
+                currentLanguage = e.target.dataset.lang;
+            }
+        });
+
+        // Level selection
+        levelSelector.addEventListener('click', (e) => {
+            if (e.target.classList.contains('level-btn')) {
+                document.querySelectorAll('.level-btn').forEach(btn => btn.classList.remove('active'));
+                e.target.classList.add('active');
+                currentLevel = e.target.dataset.level;
+            }
+        });
+
+        // Question count selection
+        questionCountSelector.addEventListener('click', (e) => {
+            if (e.target.classList.contains('count-btn')) {
+                document.querySelectorAll('.count-btn').forEach(btn => btn.classList.remove('active'));
+                e.target.classList.add('active');
+                const count = e.target.dataset.count;
+                currentQuestionCount = count === 'all' ? 'all' : parseInt(count);
+            }
+        });
+
+        // Mode selection
+        document.querySelectorAll('.mode-btn').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                if (!currentLevel) {
+                    alert('先にレベルを選択してください！');
+                    return;
+                }
+                currentMode = btn.dataset.mode;
+                await startGame();
+            });
+        });
+
+        // Start game
+        async function startGame() {
+            // Show loading message
+            japaneseWord.textContent = '単語を読み込んでいます...';
+
+            // Reset stats
+            score = 0;
+            correct = 0;
+            wrong = 0;
+            streak = 0;
+            currentIndex = 0;
+            updateStats();
+
+            // Load vocabulary from JSON file
+            const levelWords = await loadVocabulary(currentLevel);
+
+            if (!levelWords || levelWords.length === 0) {
+                return; // Error already shown in loadVocabulary
+            }
+
+            // Determine how many questions to use
+            const questionCount = currentQuestionCount === 'all'
+                ? levelWords.length
+                : Math.min(currentQuestionCount, levelWords.length);
+
+            currentWords = getRandomWords(levelWords, questionCount);
+
+            // Show game area
+            startScreen.classList.add('hidden');
+            gameArea.classList.add('active');
+            resultScreen.classList.remove('active');
+
+            // Load first question
+            loadQuestion();
+        }
+
+        // Get random words
+        function getRandomWords(words, count) {
+            const shuffled = [...words].sort(() => Math.random() - 0.5);
+            return shuffled.slice(0, Math.min(count, shuffled.length));
+        }
+
+        // Load question
+        function loadQuestion() {
+            if (currentIndex >= currentWords.length) {
+                showResults();
+                return;
+            }
+
+            isFlipped = false;
+            feedback.classList.remove('correct', 'wrong');
+            const word = currentWords[currentIndex];
+
+            // Update progress
+            const progressPercent = ((currentIndex / currentWords.length) * 100) + '%';
+            progressFill.style.width = progressPercent;
+            progressBar.setAttribute('data-text', `${currentIndex + 1}/${currentWords.length}`);
+            progressBar.setAttribute('data-progress', progressPercent);
+
+            // Clear previous content
+            options.innerHTML = '';
+            inputArea.classList.add('hidden');
+            answerInput.value = '';
+
+            // Display based on mode
+            if (currentMode === 'flashcard') {
+                loadFlashcard(word);
+            } else if (currentMode === 'choice') {
+                loadChoice(word);
+            } else if (currentMode === 'typing') {
+                loadTyping(word);
+            }
+        }
+
+        // Flashcard mode
+        function loadFlashcard(word) {
+            japaneseWord.textContent = word.word;
+            reading.textContent = '';
+            meaning.textContent = 'クリックして答えを見る';
+
+            card.onclick = () => {
+                if (!isFlipped) {
+                    // Add flip animation
+                    card.classList.add('flip');
+                    setTimeout(() => {
+                        reading.textContent = word.reading;
+                        meaning.textContent = getMeaning(word);
+                        card.classList.remove('flip');
+                    }, 300);
+                    isFlipped = true;
+                }
+            };
+
+            nextBtn.onclick = () => {
+                if (isFlipped) {
+                    currentIndex++;
+                    loadQuestion();
+                } else {
+                    alert('まず答えを確認してください！');
+                }
+            };
+        }
+
+        // Multiple choice mode
+        function loadChoice(word) {
+            japaneseWord.textContent = word.word;
+            reading.textContent = word.reading;
+            meaning.textContent = '';
+            card.onclick = null;
+
+            // Generate options
+            const allWords = vocabulary[currentLevel];
+            const wrongAnswers = allWords
+                .filter(w => w.word !== word.word)
+                .sort(() => Math.random() - 0.5)
+                .slice(0, 3);
+
+            const allOptions = [word, ...wrongAnswers].sort(() => Math.random() - 0.5);
+
+            allOptions.forEach(option => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.textContent = getMeaning(option);
+                btn.onclick = () => checkAnswer(btn, option.word === word.word, getMeaning(word));
+                options.appendChild(btn);
+            });
+
+            nextBtn.onclick = () => {
+                if (feedback.classList.contains('correct') || feedback.classList.contains('wrong')) {
+                    currentIndex++;
+                    loadQuestion();
+                } else {
+                    alert('答えを選択してください！');
+                }
+            };
+        }
+
+        // Typing mode
+        function loadTyping(word) {
+            japaneseWord.textContent = word.word;
+            reading.textContent = '';
+            meaning.textContent = getMeaning(word);
+            card.onclick = null;
+
+            inputArea.classList.remove('hidden');
+            answerInput.focus();
+
+            const checkTyping = () => {
+                const answer = answerInput.value.trim();
+                if (answer === '') {
+                    alert('読み方を入力してください！');
+                    return;
+                }
+
+                const isCorrect = answer === word.reading || answer === word.word;
+                if (isCorrect) {
+                    feedback.textContent = `✓ 正解！ ${word.reading}`;
+                    feedback.classList.add('correct');
+                    updateScore(true);
+
+                    // Add particle effect
+                    const rect = card.getBoundingClientRect();
+                    const x = rect.left + rect.width / 2;
+                    const y = rect.top + rect.height / 2;
+                    createParticles(x, y, 20);
+                } else {
+                    feedback.textContent = `✗ 不正解。正解は ${word.reading}`;
+                    feedback.classList.add('wrong');
+                    updateScore(false);
+                }
+
+                setTimeout(() => {
+                    currentIndex++;
+                    loadQuestion();
+                }, 1500);
+            };
+
+            answerInput.onkeypress = (e) => {
+                if (e.key === 'Enter') {
+                    checkTyping();
+                }
+            };
+
+            nextBtn.onclick = checkTyping;
+        }
+
+        // Check answer
+        function checkAnswer(btn, isCorrect, correctAnswer) {
+            // Disable all buttons
+            document.querySelectorAll('.option-btn').forEach(b => {
+                b.disabled = true;
+                b.style.cursor = 'not-allowed';
+            });
+
+            if (isCorrect) {
+                btn.classList.add('correct');
+                feedback.textContent = '✓ 正解！';
+                feedback.classList.add('correct');
+                updateScore(true);
+
+                // Add particle effect
+                const rect = btn.getBoundingClientRect();
+                const x = rect.left + rect.width / 2;
+                const y = rect.top + rect.height / 2;
+                createParticles(x, y, 20);
+            } else {
+                btn.classList.add('wrong');
+                feedback.textContent = `✗ 不正解。正解は ${correctAnswer}`;
+                feedback.classList.add('wrong');
+                updateScore(false);
+            }
+        }
+
+        // Create particle effect
+        function createParticles(x, y, count = 15) {
+            for (let i = 0; i < count; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+
+                const angle = (Math.PI * 2 * i) / count;
+                const velocity = 50 + Math.random() * 50;
+                const tx = Math.cos(angle) * velocity;
+                const ty = Math.sin(angle) * velocity;
+
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+                particle.style.setProperty('--tx', tx + 'px');
+                particle.style.setProperty('--ty', ty + 'px');
+                particle.style.animation = 'particle-burst 1s ease-out forwards';
+
+                const hue = Math.random() * 60 + 30;
+                particle.style.background = `hsl(${hue}, 100%, 60%)`;
+
+                document.body.appendChild(particle);
+
+                setTimeout(() => particle.remove(), 1000);
+            }
+        }
+
+        // Show combo indicator
+        function showCombo(streak) {
+            if (streak >= 3) {
+                const combo = document.createElement('div');
+                combo.className = 'combo-indicator';
+                combo.textContent = `${streak} COMBO! 🔥`;
+                document.body.appendChild(combo);
+                setTimeout(() => combo.remove(), 1000);
+            }
+        }
+
+        // Animate stat value
+        function animateStatValue(elementId) {
+            const element = document.getElementById(elementId);
+            element.classList.add('animate');
+            setTimeout(() => element.classList.remove('animate'), 500);
+        }
+
+        // Update score
+        function updateScore(isCorrect) {
+            if (isCorrect) {
+                correct++;
+                streak++;
+                score += 10 * streak;
+
+                // Show combo indicator for streaks
+                showCombo(streak);
+
+                // Animate score and streak
+                animateStatValue('score');
+                animateStatValue('streak');
+                animateStatValue('correct');
+            } else {
+                wrong++;
+                streak = 0;
+                animateStatValue('wrong');
+            }
+            updateStats();
+        }
+
+        // Update stats display
+        function updateStats() {
+            document.getElementById('score').textContent = score;
+            document.getElementById('correct').textContent = correct;
+            document.getElementById('wrong').textContent = wrong;
+            document.getElementById('streak').textContent = streak;
+        }
+
+        // Show results
+        function showResults() {
+            gameArea.classList.remove('active');
+            resultScreen.classList.add('active');
+
+            const percentage = Math.round((correct / currentWords.length) * 100);
+            document.getElementById('resultScore').textContent = percentage + '%';
+
+            let message = '';
+            if (percentage === 100) {
+                message = '完璧です！🎉 素晴らしい！';
+            } else if (percentage >= 80) {
+                message = '素晴らしい！👏 よくできました！';
+            } else if (percentage >= 60) {
+                message = '良いですね！💪 もう少し！';
+            } else {
+                message = '頑張りましょう！📚 練習あるのみ！';
+            }
+            document.getElementById('resultMessage').textContent = message;
+        }
+
+        // Retry button
+        retryBtn.onclick = async () => {
+            await startGame();
+        };
+
+        // Home button
+        homeBtn.onclick = () => {
+            resultScreen.classList.remove('active');
+            gameArea.classList.remove('active');
+            startScreen.classList.remove('hidden');
+            document.querySelectorAll('.level-btn').forEach(btn => btn.classList.remove('active'));
+            currentLevel = null;
+            currentMode = null;
+        };
+
+        // Back button
+        backBtn.onclick = () => {
+            if (confirm('ゲームを終了しますか？')) {
+                gameArea.classList.remove('active');
+                startScreen.classList.remove('hidden');
+                document.querySelectorAll('.level-btn').forEach(btn => btn.classList.remove('active'));
+                currentLevel = null;
+                currentMode = null;
+            }
+        };
+    </script>
+</body>
+</html>
