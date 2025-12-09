@@ -1,0 +1,1107 @@
+[
+  {
+    "word": "取引先",
+    "reading": "とりひきさき",
+    "meaning": "business partner/client",
+    "meanings": {
+      "en": "business partner/client",
+      "zh": "客户/交易对象",
+      "ne": "व्यापार साझेदार",
+      "vi": "đối tác kinh doanh",
+      "my": "စီးပွားရေးမိတ်ဖက်",
+      "ko": "거래처",
+      "ar": "شريك تجاري",
+      "es": "socio comercial",
+      "de": "Geschäftspartner",
+      "fr": "partenaire commercial"
+    }
+  },
+  {
+    "word": "打ち合わせ",
+    "reading": "うちあわせ",
+    "meaning": "meeting/discussion",
+    "meanings": {
+      "en": "meeting/discussion",
+      "zh": "会议/商讨",
+      "ne": "बैठक",
+      "vi": "cuộc họp",
+      "my": "အစည်းအဝေး",
+      "ko": "회의/미팅",
+      "ar": "اجتماع",
+      "es": "reunión",
+      "de": "Besprechung",
+      "fr": "réunion"
+    }
+  },
+  {
+    "word": "納期",
+    "reading": "のうき",
+    "meaning": "delivery date/deadline",
+    "meanings": {
+      "en": "delivery date/deadline",
+      "zh": "交货期限",
+      "ne": "डेलिभरी मिति",
+      "vi": "ngày giao hàng",
+      "my": "ပို့ဆောင်ရက်",
+      "ko": "납기",
+      "ar": "موعد التسليم",
+      "es": "fecha de entrega",
+      "de": "Liefertermin",
+      "fr": "date de livraison"
+    }
+  },
+  {
+    "word": "見積もり",
+    "reading": "みつもり",
+    "meaning": "estimate/quotation",
+    "meanings": {
+      "en": "estimate/quotation",
+      "zh": "报价/估价",
+      "ne": "अनुमान",
+      "vi": "báo giá",
+      "my": "ခန့်မှန်းချက်",
+      "ko": "견적",
+      "ar": "تقدير",
+      "es": "presupuesto",
+      "de": "Kostenvoranschlag",
+      "fr": "devis"
+    }
+  },
+  {
+    "word": "契約",
+    "reading": "けいやく",
+    "meaning": "contract",
+    "meanings": {
+      "en": "contract",
+      "zh": "合同",
+      "ne": "करार",
+      "vi": "hợp đồng",
+      "my": "စာချုပ်",
+      "ko": "계약",
+      "ar": "عقد",
+      "es": "contrato",
+      "de": "Vertrag",
+      "fr": "contrat"
+    }
+  },
+  {
+    "word": "請求書",
+    "reading": "せいきゅうしょ",
+    "meaning": "invoice",
+    "meanings": {
+      "en": "invoice",
+      "zh": "发票/账单",
+      "ne": "बिल",
+      "vi": "hóa đơn",
+      "my": "ပြေစာ",
+      "ko": "청구서",
+      "ar": "فاتورة",
+      "es": "factura",
+      "de": "Rechnung",
+      "fr": "facture"
+    }
+  },
+  {
+    "word": "領収書",
+    "reading": "りょうしゅうしょ",
+    "meaning": "receipt",
+    "meanings": {
+      "en": "receipt",
+      "zh": "收据",
+      "ne": "रसिद",
+      "vi": "biên lai",
+      "my": "ပြေစာ",
+      "ko": "영수증",
+      "ar": "إيصال",
+      "es": "recibo",
+      "de": "Quittung",
+      "fr": "reçu"
+    }
+  },
+  {
+    "word": "売上",
+    "reading": "うりあげ",
+    "meaning": "sales/revenue",
+    "meanings": {
+      "en": "sales/revenue",
+      "zh": "销售额",
+      "ne": "बिक्री",
+      "vi": "doanh thu",
+      "my": "အရောင်းရငွေ",
+      "ko": "매출",
+      "ar": "المبيعات",
+      "es": "ventas",
+      "de": "Umsatz",
+      "fr": "chiffre d'affaires"
+    }
+  },
+  {
+    "word": "利益",
+    "reading": "りえき",
+    "meaning": "profit",
+    "meanings": {
+      "en": "profit",
+      "zh": "利润",
+      "ne": "नाफा",
+      "vi": "lợi nhuận",
+      "my": "အမြတ်",
+      "ko": "이익",
+      "ar": "ربح",
+      "es": "ganancia",
+      "de": "Gewinn",
+      "fr": "profit"
+    }
+  },
+  {
+    "word": "経費",
+    "reading": "けいひ",
+    "meaning": "expenses",
+    "meanings": {
+      "en": "expenses",
+      "zh": "经费/费用",
+      "ne": "खर्च",
+      "vi": "chi phí",
+      "my": "ကုန်ကျစရိတ်",
+      "ko": "경비",
+      "ar": "مصاريف",
+      "es": "gastos",
+      "de": "Kosten",
+      "fr": "frais"
+    }
+  },
+  {
+    "word": "予算",
+    "reading": "よさん",
+    "meaning": "budget",
+    "meanings": {
+      "en": "budget",
+      "zh": "预算",
+      "ne": "बजेट",
+      "vi": "ngân sách",
+      "my": "ဘတ်ဂျက်",
+      "ko": "예산",
+      "ar": "ميزانية",
+      "es": "presupuesto",
+      "de": "Budget",
+      "fr": "budget"
+    }
+  },
+  {
+    "word": "報告書",
+    "reading": "ほうこくしょ",
+    "meaning": "report",
+    "meanings": {
+      "en": "report",
+      "zh": "报告书",
+      "ne": "प्रतिवेदन",
+      "vi": "báo cáo",
+      "my": "အစီရင်ခံစာ",
+      "ko": "보고서",
+      "ar": "تقرير",
+      "es": "informe",
+      "de": "Bericht",
+      "fr": "rapport"
+    }
+  },
+  {
+    "word": "提案",
+    "reading": "ていあん",
+    "meaning": "proposal",
+    "meanings": {
+      "en": "proposal",
+      "zh": "提案/建议",
+      "ne": "प्रस्ताव",
+      "vi": "đề xuất",
+      "my": "အဆိုပြုချက်",
+      "ko": "제안",
+      "ar": "اقتراح",
+      "es": "propuesta",
+      "de": "Vorschlag",
+      "fr": "proposition"
+    }
+  },
+  {
+    "word": "承認",
+    "reading": "しょうにん",
+    "meaning": "approval",
+    "meanings": {
+      "en": "approval",
+      "zh": "批准/认可",
+      "ne": "स्वीकृति",
+      "vi": "phê duyệt",
+      "my": "ခွင့်ပြုချက်",
+      "ko": "승인",
+      "ar": "موافقة",
+      "es": "aprobación",
+      "de": "Genehmigung",
+      "fr": "approbation"
+    }
+  },
+  {
+    "word": "決裁",
+    "reading": "けっさい",
+    "meaning": "decision/authorization",
+    "meanings": {
+      "en": "decision/authorization",
+      "zh": "决裁/审批",
+      "ne": "निर्णय",
+      "vi": "quyết định",
+      "my": "ဆုံးဖြတ်ချက်",
+      "ko": "결재",
+      "ar": "تفويض",
+      "es": "autorización",
+      "de": "Entscheidung",
+      "fr": "décision"
+    }
+  },
+  {
+    "word": "出張",
+    "reading": "しゅっちょう",
+    "meaning": "business trip",
+    "meanings": {
+      "en": "business trip",
+      "zh": "出差",
+      "ne": "व्यापार यात्रा",
+      "vi": "công tác",
+      "my": "အလုပ်ခရီး",
+      "ko": "출장",
+      "ar": "رحلة عمل",
+      "es": "viaje de negocios",
+      "de": "Geschäftsreise",
+      "fr": "voyage d'affaires"
+    }
+  },
+  {
+    "word": "残業",
+    "reading": "ざんぎょう",
+    "meaning": "overtime work",
+    "meanings": {
+      "en": "overtime work",
+      "zh": "加班",
+      "ne": "ओभरटाइम",
+      "vi": "làm thêm giờ",
+      "my": "အချိန်ပိုလုပ်ခြင်း",
+      "ko": "잔업/야근",
+      "ar": "عمل إضافي",
+      "es": "horas extras",
+      "de": "Überstunden",
+      "fr": "heures supplémentaires"
+    }
+  },
+  {
+    "word": "有給休暇",
+    "reading": "ゆうきゅうきゅうか",
+    "meaning": "paid leave",
+    "meanings": {
+      "en": "paid leave",
+      "zh": "带薪休假",
+      "ne": "तलबी बिदा",
+      "vi": "nghỉ phép có lương",
+      "my": "လစာပါအားလပ်ရက်",
+      "ko": "유급휴가",
+      "ar": "إجازة مدفوعة",
+      "es": "licencia pagada",
+      "de": "bezahlter Urlaub",
+      "fr": "congé payé"
+    }
+  },
+  {
+    "word": "人事",
+    "reading": "じんじ",
+    "meaning": "human resources/personnel",
+    "meanings": {
+      "en": "human resources/personnel",
+      "zh": "人事",
+      "ne": "मानव संसाधन",
+      "vi": "nhân sự",
+      "my": "လူ့အရင်းအမြစ်",
+      "ko": "인사",
+      "ar": "موارد بشرية",
+      "es": "recursos humanos",
+      "de": "Personalwesen",
+      "fr": "ressources humaines"
+    }
+  },
+  {
+    "word": "研修",
+    "reading": "けんしゅう",
+    "meaning": "training",
+    "meanings": {
+      "en": "training",
+      "zh": "培训/研修",
+      "ne": "तालिम",
+      "vi": "đào tạo",
+      "my": "လေ့ကျင့်သင်ကြား",
+      "ko": "연수",
+      "ar": "تدريب",
+      "es": "capacitación",
+      "de": "Schulung",
+      "fr": "formation"
+    }
+  },
+  {
+    "word": "会議",
+    "reading": "かいぎ",
+    "meaning": "meeting/conference",
+    "meanings": {
+      "en": "meeting/conference",
+      "zh": "会议",
+      "ne": "बैठक",
+      "vi": "hội nghị",
+      "my": "အစည်းအဝေး",
+      "ko": "회의",
+      "ar": "مؤتمر",
+      "es": "conferencia",
+      "de": "Konferenz",
+      "fr": "conférence"
+    }
+  },
+  {
+    "word": "議事録",
+    "reading": "ぎじろく",
+    "meaning": "meeting minutes",
+    "meanings": {
+      "en": "meeting minutes",
+      "zh": "会议记录",
+      "ne": "बैठक मिनेट",
+      "vi": "biên bản họp",
+      "my": "အစည်းအဝေးမှတ်တမ်း",
+      "ko": "회의록",
+      "ar": "محضر الاجتماع",
+      "es": "acta de reunión",
+      "de": "Protokoll",
+      "fr": "procès-verbal"
+    }
+  },
+  {
+    "word": "資料",
+    "reading": "しりょう",
+    "meaning": "materials/documents",
+    "meanings": {
+      "en": "materials/documents",
+      "zh": "资料",
+      "ne": "सामग्री",
+      "vi": "tài liệu",
+      "my": "စာရွက်စာတမ်း",
+      "ko": "자료",
+      "ar": "مواد",
+      "es": "materiales",
+      "de": "Materialien",
+      "fr": "documents"
+    }
+  },
+  {
+    "word": "プレゼン",
+    "reading": "ぷれぜん",
+    "meaning": "presentation",
+    "meanings": {
+      "en": "presentation",
+      "zh": "演示/报告",
+      "ne": "प्रस्तुतीकरण",
+      "vi": "thuyết trình",
+      "my": "တင်ပြချက်",
+      "ko": "프레젠테이션",
+      "ar": "عرض تقديمي",
+      "es": "presentación",
+      "de": "Präsentation",
+      "fr": "présentation"
+    }
+  },
+  {
+    "word": "交渉",
+    "reading": "こうしょう",
+    "meaning": "negotiation",
+    "meanings": {
+      "en": "negotiation",
+      "zh": "谈判/交涉",
+      "ne": "वार्ता",
+      "vi": "đàm phán",
+      "my": "ညှိနှိုင်းမှု",
+      "ko": "협상",
+      "ar": "مفاوضات",
+      "es": "negociación",
+      "de": "Verhandlung",
+      "fr": "négociation"
+    }
+  },
+  {
+    "word": "商談",
+    "reading": "しょうだん",
+    "meaning": "business negotiation",
+    "meanings": {
+      "en": "business negotiation",
+      "zh": "商谈/洽谈",
+      "ne": "व्यापारिक वार्ता",
+      "vi": "đàm phán kinh doanh",
+      "my": "စီးပွားရေးဆွေးနွေးပွဲ",
+      "ko": "상담",
+      "ar": "مفاوضات تجارية",
+      "es": "negociación comercial",
+      "de": "Geschäftsverhandlung",
+      "fr": "négociation commerciale"
+    }
+  },
+  {
+    "word": "発注",
+    "reading": "はっちゅう",
+    "meaning": "placing an order",
+    "meanings": {
+      "en": "placing an order",
+      "zh": "下订单",
+      "ne": "अर्डर दिनु",
+      "vi": "đặt hàng",
+      "my": "အမှာစာပေးပို့ခြင်း",
+      "ko": "발주",
+      "ar": "تقديم طلب",
+      "es": "hacer un pedido",
+      "de": "Bestellung aufgeben",
+      "fr": "passer commande"
+    }
+  },
+  {
+    "word": "受注",
+    "reading": "じゅちゅう",
+    "meaning": "receiving an order",
+    "meanings": {
+      "en": "receiving an order",
+      "zh": "接单/受理订单",
+      "ne": "अर्डर प्राप्त गर्नु",
+      "vi": "nhận đơn hàng",
+      "my": "အမှာစာလက်ခံခြင်း",
+      "ko": "수주",
+      "ar": "استلام طلب",
+      "es": "recibir un pedido",
+      "de": "Auftrag erhalten",
+      "fr": "recevoir une commande"
+    }
+  },
+  {
+    "word": "納品",
+    "reading": "のうひん",
+    "meaning": "delivery of goods",
+    "meanings": {
+      "en": "delivery of goods",
+      "zh": "交货",
+      "ne": "सामान डेलिभरी",
+      "vi": "giao hàng",
+      "my": "ကုန်ပစ္စည်းပို့ဆောင်ခြင်း",
+      "ko": "납품",
+      "ar": "تسليم البضائع",
+      "es": "entrega de mercancías",
+      "de": "Warenlieferung",
+      "fr": "livraison de marchandises"
+    }
+  },
+  {
+    "word": "検収",
+    "reading": "けんしゅう",
+    "meaning": "acceptance inspection",
+    "meanings": {
+      "en": "acceptance inspection",
+      "zh": "验收",
+      "ne": "स्वीकृति निरीक्षण",
+      "vi": "kiểm tra nghiệm thu",
+      "my": "လက်ခံစစ်ဆေးခြင်း",
+      "ko": "검수",
+      "ar": "فحص القبول",
+      "es": "inspección de aceptación",
+      "de": "Abnahmeprüfung",
+      "fr": "inspection de réception"
+    }
+  },
+  {
+    "word": "在庫",
+    "reading": "ざいこ",
+    "meaning": "inventory/stock",
+    "meanings": {
+      "en": "inventory/stock",
+      "zh": "库存",
+      "ne": "भण्डार",
+      "vi": "hàng tồn kho",
+      "my": "ကုန်ပစ္စည်းလက်ကျန်",
+      "ko": "재고",
+      "ar": "المخزون",
+      "es": "inventario",
+      "de": "Lagerbestand",
+      "fr": "stock"
+    }
+  },
+  {
+    "word": "仕入れ",
+    "reading": "しいれ",
+    "meaning": "purchasing/procurement",
+    "meanings": {
+      "en": "purchasing/procurement",
+      "zh": "进货/采购",
+      "ne": "खरिद",
+      "vi": "mua hàng",
+      "my": "ဝယ်ယူခြင်း",
+      "ko": "매입",
+      "ar": "الشراء",
+      "es": "compra",
+      "de": "Einkauf",
+      "fr": "achat"
+    }
+  },
+  {
+    "word": "卸売",
+    "reading": "おろしうり",
+    "meaning": "wholesale",
+    "meanings": {
+      "en": "wholesale",
+      "zh": "批发",
+      "ne": "थोक",
+      "vi": "bán buôn",
+      "my": "လက်ကားရောင်း",
+      "ko": "도매",
+      "ar": "بيع بالجملة",
+      "es": "venta al por mayor",
+      "de": "Großhandel",
+      "fr": "vente en gros"
+    }
+  },
+  {
+    "word": "小売",
+    "reading": "こうり",
+    "meaning": "retail",
+    "meanings": {
+      "en": "retail",
+      "zh": "零售",
+      "ne": "खुद्रा",
+      "vi": "bán lẻ",
+      "my": "လက်လီရောင်း",
+      "ko": "소매",
+      "ar": "بيع بالتجزئة",
+      "es": "venta al por menor",
+      "de": "Einzelhandel",
+      "fr": "vente au détail"
+    }
+  },
+  {
+    "word": "市場",
+    "reading": "しじょう",
+    "meaning": "market",
+    "meanings": {
+      "en": "market",
+      "zh": "市场",
+      "ne": "बजार",
+      "vi": "thị trường",
+      "my": "ဈေးကွက်",
+      "ko": "시장",
+      "ar": "سوق",
+      "es": "mercado",
+      "de": "Markt",
+      "fr": "marché"
+    }
+  },
+  {
+    "word": "競合",
+    "reading": "きょうごう",
+    "meaning": "competition/competitor",
+    "meanings": {
+      "en": "competition/competitor",
+      "zh": "竞争/竞争对手",
+      "ne": "प्रतिस्पर्धा",
+      "vi": "cạnh tranh",
+      "my": "ပြိုင်ဆိုင်မှု",
+      "ko": "경쟁",
+      "ar": "منافسة",
+      "es": "competencia",
+      "de": "Wettbewerb",
+      "fr": "concurrence"
+    }
+  },
+  {
+    "word": "シェア",
+    "reading": "しぇあ",
+    "meaning": "market share",
+    "meanings": {
+      "en": "market share",
+      "zh": "市场份额",
+      "ne": "बजार हिस्सा",
+      "vi": "thị phần",
+      "my": "ဈေးကွက်ရှယ်ယာ",
+      "ko": "점유율",
+      "ar": "حصة السوق",
+      "es": "cuota de mercado",
+      "de": "Marktanteil",
+      "fr": "part de marché"
+    }
+  },
+  {
+    "word": "戦略",
+    "reading": "せんりゃく",
+    "meaning": "strategy",
+    "meanings": {
+      "en": "strategy",
+      "zh": "战略",
+      "ne": "रणनीति",
+      "vi": "chiến lược",
+      "my": "မဟာဗျူဟာ",
+      "ko": "전략",
+      "ar": "استراتيجية",
+      "es": "estrategia",
+      "de": "Strategie",
+      "fr": "stratégie"
+    }
+  },
+  {
+    "word": "営業",
+    "reading": "えいぎょう",
+    "meaning": "sales/business",
+    "meanings": {
+      "en": "sales/business",
+      "zh": "营业/销售",
+      "ne": "बिक्री",
+      "vi": "kinh doanh",
+      "my": "အရောင်း",
+      "ko": "영업",
+      "ar": "المبيعات",
+      "es": "ventas",
+      "de": "Vertrieb",
+      "fr": "ventes"
+    }
+  },
+  {
+    "word": "顧客",
+    "reading": "こきゃく",
+    "meaning": "customer/client",
+    "meanings": {
+      "en": "customer/client",
+      "zh": "顾客/客户",
+      "ne": "ग्राहक",
+      "vi": "khách hàng",
+      "my": "ဖောက်သည်",
+      "ko": "고객",
+      "ar": "عميل",
+      "es": "cliente",
+      "de": "Kunde",
+      "fr": "client"
+    }
+  },
+  {
+    "word": "部長",
+    "reading": "ぶちょう",
+    "meaning": "department manager",
+    "meanings": {
+      "en": "department manager",
+      "zh": "部长/经理",
+      "ne": "विभाग प्रमुख",
+      "vi": "trưởng phòng",
+      "my": "ဌာနမှူး",
+      "ko": "부장",
+      "ar": "مدير قسم",
+      "es": "jefe de departamento",
+      "de": "Abteilungsleiter",
+      "fr": "chef de département"
+    }
+  },
+  {
+    "word": "課長",
+    "reading": "かちょう",
+    "meaning": "section chief",
+    "meanings": {
+      "en": "section chief",
+      "zh": "课长/科长",
+      "ne": "सेक्शन प्रमुख",
+      "vi": "trưởng ban",
+      "my": "ကဏ္ဍမှူး",
+      "ko": "과장",
+      "ar": "رئيس القسم",
+      "es": "jefe de sección",
+      "de": "Sektionsleiter",
+      "fr": "chef de section"
+    }
+  },
+  {
+    "word": "係長",
+    "reading": "かかりちょう",
+    "meaning": "subsection chief",
+    "meanings": {
+      "en": "subsection chief",
+      "zh": "系长/主管",
+      "ne": "उपखण्ड प्रमुख",
+      "vi": "trưởng nhóm",
+      "my": "အုပ်စုခေါင်းဆောင်",
+      "ko": "계장",
+      "ar": "رئيس فرعي",
+      "es": "jefe de subsección",
+      "de": "Gruppenleiter",
+      "fr": "chef de sous-section"
+    }
+  },
+  {
+    "word": "主任",
+    "reading": "しゅにん",
+    "meaning": "supervisor/chief",
+    "meanings": {
+      "en": "supervisor/chief",
+      "zh": "主任",
+      "ne": "सुपरभाइजर",
+      "vi": "chủ nhiệm",
+      "my": "ကြီးကြပ်ရေးမှူး",
+      "ko": "주임",
+      "ar": "مشرف",
+      "es": "supervisor",
+      "de": "Vorgesetzter",
+      "fr": "superviseur"
+    }
+  },
+  {
+    "word": "役員",
+    "reading": "やくいん",
+    "meaning": "executive/board member",
+    "meanings": {
+      "en": "executive/board member",
+      "zh": "董事/高管",
+      "ne": "कार्यकारी",
+      "vi": "giám đốc điều hành",
+      "my": "အမှုဆောင်အရာရှိ",
+      "ko": "임원",
+      "ar": "تنفيذي",
+      "es": "ejecutivo",
+      "de": "Vorstandsmitglied",
+      "fr": "cadre dirigeant"
+    }
+  },
+  {
+    "word": "社長",
+    "reading": "しゃちょう",
+    "meaning": "company president/CEO",
+    "meanings": {
+      "en": "company president/CEO",
+      "zh": "社长/总裁",
+      "ne": "कम्पनी अध्यक्ष",
+      "vi": "giám đốc công ty",
+      "my": "ကုမ္ပဏီဥက္ကဌ",
+      "ko": "사장",
+      "ar": "رئيس الشركة",
+      "es": "presidente de la empresa",
+      "de": "Firmenpräsident",
+      "fr": "président de l'entreprise"
+    }
+  },
+  {
+    "word": "株式会社",
+    "reading": "かぶしきがいしゃ",
+    "meaning": "corporation/stock company",
+    "meanings": {
+      "en": "corporation/stock company",
+      "zh": "股份公司",
+      "ne": "कर्पोरेशन",
+      "vi": "công ty cổ phần",
+      "my": "ကော်ပိုရေးရှင်း",
+      "ko": "주식회사",
+      "ar": "شركة مساهمة",
+      "es": "sociedad anónima",
+      "de": "Aktiengesellschaft",
+      "fr": "société anonyme"
+    }
+  },
+  {
+    "word": "子会社",
+    "reading": "こがいしゃ",
+    "meaning": "subsidiary company",
+    "meanings": {
+      "en": "subsidiary company",
+      "zh": "子公司",
+      "ne": "सहायक कम्पनी",
+      "vi": "công ty con",
+      "my": "လက်အောက်ခံကုမ္ပဏီ",
+      "ko": "자회사",
+      "ar": "شركة تابعة",
+      "es": "filial",
+      "de": "Tochtergesellschaft",
+      "fr": "filiale"
+    }
+  },
+  {
+    "word": "本社",
+    "reading": "ほんしゃ",
+    "meaning": "headquarters",
+    "meanings": {
+      "en": "headquarters",
+      "zh": "总公司/总部",
+      "ne": "मुख्यालय",
+      "vi": "trụ sở chính",
+      "my": "ဌာနချုပ်",
+      "ko": "본사",
+      "ar": "المقر الرئيسي",
+      "es": "sede central",
+      "de": "Hauptsitz",
+      "fr": "siège social"
+    }
+  },
+  {
+    "word": "支店",
+    "reading": "してん",
+    "meaning": "branch office",
+    "meanings": {
+      "en": "branch office",
+      "zh": "分店/分公司",
+      "ne": "शाखा कार्यालय",
+      "vi": "chi nhánh",
+      "my": "ဌာနခွဲ",
+      "ko": "지점",
+      "ar": "فرع",
+      "es": "sucursal",
+      "de": "Filiale",
+      "fr": "succursale"
+    }
+  },
+  {
+    "word": "総務",
+    "reading": "そうむ",
+    "meaning": "general affairs",
+    "meanings": {
+      "en": "general affairs",
+      "zh": "总务",
+      "ne": "सामान्य मामिला",
+      "vi": "tổng vụ",
+      "my": "အထွေထွေရေးရာ",
+      "ko": "총무",
+      "ar": "الشؤون العامة",
+      "es": "asuntos generales",
+      "de": "Allgemeine Angelegenheiten",
+      "fr": "affaires générales"
+    }
+  },
+  {
+    "word": "経理",
+    "reading": "けいり",
+    "meaning": "accounting",
+    "meanings": {
+      "en": "accounting",
+      "zh": "会计",
+      "ne": "लेखा",
+      "vi": "kế toán",
+      "my": "စာရင်းကိုင်",
+      "ko": "경리",
+      "ar": "محاسبة",
+      "es": "contabilidad",
+      "de": "Buchhaltung",
+      "fr": "comptabilité"
+    }
+  },
+  {
+    "word": "法務",
+    "reading": "ほうむ",
+    "meaning": "legal affairs",
+    "meanings": {
+      "en": "legal affairs",
+      "zh": "法务",
+      "ne": "कानूनी मामिला",
+      "vi": "pháp vụ",
+      "my": "ဥပဒေရေးရာ",
+      "ko": "법무",
+      "ar": "الشؤون القانونية",
+      "es": "asuntos legales",
+      "de": "Rechtsangelegenheiten",
+      "fr": "affaires juridiques"
+    }
+  },
+  {
+    "word": "広報",
+    "reading": "こうほう",
+    "meaning": "public relations",
+    "meanings": {
+      "en": "public relations",
+      "zh": "公关/宣传",
+      "ne": "जनसम्पर्क",
+      "vi": "quan hệ công chúng",
+      "my": "ပြည်သူ့ဆက်ဆံရေး",
+      "ko": "홍보",
+      "ar": "علاقات عامة",
+      "es": "relaciones públicas",
+      "de": "Öffentlichkeitsarbeit",
+      "fr": "relations publiques"
+    }
+  },
+  {
+    "word": "企画",
+    "reading": "きかく",
+    "meaning": "planning/project",
+    "meanings": {
+      "en": "planning/project",
+      "zh": "企划/策划",
+      "ne": "योजना",
+      "vi": "kế hoạch",
+      "my": "စီမံကိန်း",
+      "ko": "기획",
+      "ar": "تخطيط",
+      "es": "planificación",
+      "de": "Planung",
+      "fr": "planification"
+    }
+  },
+  {
+    "word": "開発",
+    "reading": "かいはつ",
+    "meaning": "development",
+    "meanings": {
+      "en": "development",
+      "zh": "开发",
+      "ne": "विकास",
+      "vi": "phát triển",
+      "my": "ဖွံ့ဖြိုးရေး",
+      "ko": "개발",
+      "ar": "تطوير",
+      "es": "desarrollo",
+      "de": "Entwicklung",
+      "fr": "développement"
+    }
+  },
+  {
+    "word": "品質",
+    "reading": "ひんしつ",
+    "meaning": "quality",
+    "meanings": {
+      "en": "quality",
+      "zh": "品质",
+      "ne": "गुणस्तर",
+      "vi": "chất lượng",
+      "my": "အရည်အသွေး",
+      "ko": "품질",
+      "ar": "جودة",
+      "es": "calidad",
+      "de": "Qualität",
+      "fr": "qualité"
+    }
+  },
+  {
+    "word": "目標",
+    "reading": "もくひょう",
+    "meaning": "goal/target",
+    "meanings": {
+      "en": "goal/target",
+      "zh": "目标",
+      "ne": "लक्ष्य",
+      "vi": "mục tiêu",
+      "my": "ပန်းတိုင်",
+      "ko": "목표",
+      "ar": "هدف",
+      "es": "objetivo",
+      "de": "Ziel",
+      "fr": "objectif"
+    }
+  },
+  {
+    "word": "実績",
+    "reading": "じっせき",
+    "meaning": "results/track record",
+    "meanings": {
+      "en": "results/track record",
+      "zh": "业绩/实绩",
+      "ne": "परिणाम",
+      "vi": "thành tích",
+      "my": "ရလဒ်များ",
+      "ko": "실적",
+      "ar": "نتائج",
+      "es": "resultados",
+      "de": "Ergebnisse",
+      "fr": "résultats"
+    }
+  },
+  {
+    "word": "採用",
+    "reading": "さいよう",
+    "meaning": "recruitment/hiring",
+    "meanings": {
+      "en": "recruitment/hiring",
+      "zh": "录用/招聘",
+      "ne": "भर्ती",
+      "vi": "tuyển dụng",
+      "my": "ခန့်အပ်ခြင်း",
+      "ko": "채용",
+      "ar": "توظيف",
+      "es": "contratación",
+      "de": "Einstellung",
+      "fr": "recrutement"
+    }
+  },
+  {
+    "word": "退職",
+    "reading": "たいしょく",
+    "meaning": "retirement/resignation",
+    "meanings": {
+      "en": "retirement/resignation",
+      "zh": "离职/退休",
+      "ne": "सेवानिवृत्ति",
+      "vi": "nghỉ việc",
+      "my": "အနားယူခြင်း",
+      "ko": "퇴직",
+      "ar": "استقالة",
+      "es": "renuncia",
+      "de": "Kündigung",
+      "fr": "démission"
+    }
+  },
+  {
+    "word": "昇進",
+    "reading": "しょうしん",
+    "meaning": "promotion",
+    "meanings": {
+      "en": "promotion",
+      "zh": "晋升",
+      "ne": "पदोन्नति",
+      "vi": "thăng tiến",
+      "my": "ရာထူးတိုး",
+      "ko": "승진",
+      "ar": "ترقية",
+      "es": "promoción",
+      "de": "Beförderung",
+      "fr": "promotion"
+    }
+  },
+  {
+    "word": "異動",
+    "reading": "いどう",
+    "meaning": "transfer/reassignment",
+    "meanings": {
+      "en": "transfer/reassignment",
+      "zh": "调动/人事变动",
+      "ne": "स्थानान्तरण",
+      "vi": "thuyên chuyển",
+      "my": "နေရာပြောင်းခြင်း",
+      "ko": "이동",
+      "ar": "نقل",
+      "es": "transferencia",
+      "de": "Versetzung",
+      "fr": "mutation"
+    }
+  },
+  {
+    "word": "福利厚生",
+    "reading": "ふくりこうせい",
+    "meaning": "employee benefits",
+    "meanings": {
+      "en": "employee benefits",
+      "zh": "福利待遇",
+      "ne": "कर्मचारी सुविधाहरू",
+      "vi": "phúc lợi",
+      "my": "ဝန်ထမ်းအကျိုးခံစားခွင့်",
+      "ko": "복리후생",
+      "ar": "مزايا الموظفين",
+      "es": "beneficios laborales",
+      "de": "Sozialleistungen",
+      "fr": "avantages sociaux"
+    }
+  },
+  {
+    "word": "勤怠",
+    "reading": "きんたい",
+    "meaning": "attendance",
+    "meanings": {
+      "en": "attendance",
+      "zh": "出勤",
+      "ne": "उपस्थिति",
+      "vi": "chuyên cần",
+      "my": "တက်ရောက်မှု",
+      "ko": "근태",
+      "ar": "الحضور",
+      "es": "asistencia",
+      "de": "Anwesenheit",
+      "fr": "assiduité"
+    }
+  }
+]

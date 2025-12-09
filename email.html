@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ビジネスメールテンプレート - 商务邮件模板</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(-45deg, #ff9a9e, #fecfef, #ffecd2, #ff9a9e);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #e88a8e;
+            margin-bottom: 10px;
+            font-size: 2.2em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #e88a8e;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #d67a7e;
+            transform: translateY(-2px);
+        }
+
+        .category-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .category-tab {
+            padding: 12px 24px;
+            border: 2px solid #e88a8e;
+            border-radius: 25px;
+            background: white;
+            color: #e88a8e;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .category-tab:hover, .category-tab.active {
+            background: #e88a8e;
+            color: white;
+        }
+
+        .template-list {
+            display: none;
+        }
+
+        .template-list.active {
+            display: block;
+        }
+
+        .template-card {
+            background: #fff5f5;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 5px solid #e88a8e;
+        }
+
+        .template-title {
+            font-size: 1.3em;
+            color: #e88a8e;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .template-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'MS Gothic', monospace;
+            line-height: 1.8;
+            white-space: pre-wrap;
+            border: 1px solid #ffd0d0;
+        }
+
+        .template-note {
+            margin-top: 15px;
+            padding: 15px;
+            background: #fffbeb;
+            border-radius: 10px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .template-note strong {
+            color: #e88a8e;
+        }
+
+        .copy-btn {
+            padding: 8px 16px;
+            background: #e88a8e;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+
+        .copy-btn:hover {
+            background: #d67a7e;
+        }
+
+        .copy-btn.copied {
+            background: #4caf50;
+        }
+
+        .lang-selector {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            margin: 0 5px;
+            border: 2px solid #e88a8e;
+            border-radius: 20px;
+            background: white;
+            color: #e88a8e;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: #e88a8e;
+            color: white;
+        }
+
+        .translation {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: #f0f8ff;
+            border-radius: 10px;
+            border-left: 3px solid #667eea;
+        }
+
+        .translation.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">← ホームへ戻る</a>
+
+        <h1>📧 ビジネスメールテンプレート</h1>
+        <p class="subtitle">Business Email Templates / 商务邮件模板</p>
+
+        <div class="lang-selector">
+            <button class="lang-btn active" data-lang="ja">日本語</button>
+            <button class="lang-btn" data-lang="zh">中文翻译</button>
+            <button class="lang-btn" data-lang="en">English</button>
+        </div>
+
+        <div class="category-tabs">
+            <button class="category-tab active" data-category="greeting">挨拶・お礼</button>
+            <button class="category-tab" data-category="request">依頼・お願い</button>
+            <button class="category-tab" data-category="apology">お詫び</button>
+            <button class="category-tab" data-category="confirmation">確認・報告</button>
+            <button class="category-tab" data-category="appointment">アポイント</button>
+        </div>
+
+        <!-- 挨拶・お礼 -->
+        <div class="template-list active" id="greeting">
+            <div class="template-card">
+                <div class="template-title">📨 初めてのご挨拶メール</div>
+                <div class="template-content">件名：ご挨拶（○○会社 山田）
+
+○○株式会社
+△△部 □□様
+
+初めてメールをお送りいたします。
+○○会社の山田と申します。
+
+この度は、弊社の製品にご興味をお持ちいただき、
+誠にありがとうございます。
+
+今後とも、どうぞよろしくお願いいたします。
+
+--------------------
+○○会社 営業部
+山田 太郎
+TEL: 03-XXXX-XXXX
+Email: yamada@example.com
+--------------------</div>
+                <div class="translation" data-lang="zh">
+<strong>中文翻译：</strong>
+主题：问候（○○公司 山田）
+
+○○株式会社
+△△部 □□先生/女士
+
+这是我第一次给您发邮件。
+我是○○公司的山田。
+
+非常感谢您对我公司产品的关注。
+
+今后也请多多关照。
+                </div>
+                <div class="translation" data-lang="en">
+<strong>English Translation:</strong>
+Subject: Greetings (Yamada from ○○ Company)
+
+Dear Mr./Ms. □□,
+△△ Department, ○○ Co., Ltd.
+
+This is my first time contacting you.
+My name is Yamada from ○○ Company.
+
+Thank you very much for your interest in our products.
+
+I look forward to working with you.
+                </div>
+                <button class="copy-btn" onclick="copyTemplate(this)">コピー</button>
+            </div>
+
+            <div class="template-card">
+                <div class="template-title">🙏 お礼メール</div>
+                <div class="template-content">件名：本日のお打ち合わせのお礼
+
+○○株式会社
+△△部 □□様
+
+お世話になっております。
+○○会社の山田です。
+
+本日はお忙しい中、お時間をいただき
+誠にありがとうございました。
+
+ご提案いただいた内容について、
+社内で検討の上、改めてご連絡いたします。
+
+引き続き、よろしくお願いいたします。</div>
+                <div class="translation" data-lang="zh">
+<strong>中文翻译：</strong>
+主题：感谢今天的会议
+
+○○株式会社
+△△部 □□先生/女士
+
+承蒙关照。
+我是○○公司的山田。
+
+非常感谢您今天在百忙之中抽出时间。
+
+关于您提出的建议，我会在公司内部讨论后再联系您。
+
+今后也请多多关照。
+                </div>
+                <button class="copy-btn" onclick="copyTemplate(this)">コピー</button>
+            </div>
+        </div>
+
+        <!-- 依頼・お願い -->
+        <div class="template-list" id="request">
+            <div class="template-card">
+                <div class="template-title">📋 資料送付のお願い</div>
+                <div class="template-content">件名：資料送付のお願い
+
+○○株式会社
+△△部 □□様
+
+いつもお世話になっております。
+○○会社の山田です。
+
+早速ですが、貴社の製品カタログを
+お送りいただけますでしょうか。
+
+お忙しいところ恐れ入りますが、
+ご対応のほど、よろしくお願いいたします。</div>
+                <div class="translation" data-lang="zh">
+<strong>中文翻译：</strong>
+主题：请求发送资料
+
+○○株式会社
+△△部 □□先生/女士
+
+一直以来承蒙关照。
+我是○○公司的山田。
+
+冒昧打扰，能否请您发送贵公司的产品目录？
+
+百忙之中打扰，麻烦您了。
+                </div>
+                <button class="copy-btn" onclick="copyTemplate(this)">コピー</button>
+            </div>
+
+            <div class="template-card">
+                <div class="template-title">⏰ 納期確認のお願い</div>
+                <div class="template-content">件名：納期のご確認
+
+○○株式会社
+△△部 □□様
+
+いつもお世話になっております。
+○○会社の山田です。
+
+先日ご注文いたしました○○について、
+納期をご確認いただけますでしょうか。
+
+お手数をおかけしますが、
+ご回答のほど、よろしくお願いいたします。</div>
+                <button class="copy-btn" onclick="copyTemplate(this)">コピー</button>
+            </div>
+        </div>
+
+        <!-- お詫び -->
+        <div class="template-list" id="apology">
+            <div class="template-card">
+                <div class="template-title">🙇 遅延のお詫び</div>
+                <div class="template-content">件名：納品遅延のお詫び
+
+○○株式会社
+△△部 □□様
+
+いつもお世話になっております。
+○○会社の山田です。
+
+この度は、納品が遅れましたこと、
+深くお詫び申し上げます。
+
+今後このようなことがないよう、
+細心の注意を払ってまいります。
+
+何卒ご容赦くださいますよう、
+お願い申し上げます。</div>
+                <div class="translation" data-lang="zh">
+<strong>中文翻译：</strong>
+主题：延迟交货的道歉
+
+○○株式会社
+△△部 □□先生/女士
+
+一直以来承蒙关照。
+我是○○公司的山田。
+
+对于此次交货延迟，我深表歉意。
+
+今后我们会格外注意，避免此类情况再次发生。
+
+恳请您谅解。
+                </div>
+                <button class="copy-btn" onclick="copyTemplate(this)">コピー</button>
+            </div>
+        </div>
+
+        <!-- 確認・報告 -->
+        <div class="template-list" id="confirmation">
+            <div class="template-card">
+                <div class="template-title">✅ 受領確認</div>
+                <div class="template-content">件名：資料受領のご連絡
+
+○○株式会社
+△△部 □□様
+
+いつもお世話になっております。
+○○会社の山田です。
+
+本日、資料を確かに受領いたしました。
+迅速なご対応、誠にありがとうございます。
+
+内容を確認の上、改めてご連絡いたします。
+
+引き続き、よろしくお願いいたします。</div>
+                <button class="copy-btn" onclick="copyTemplate(this)">コピー</button>
+            </div>
+        </div>
+
+        <!-- アポイント -->
+        <div class="template-list" id="appointment">
+            <div class="template-card">
+                <div class="template-title">📅 アポイントの依頼</div>
+                <div class="template-content">件名：お打ち合わせのお願い
+
+○○株式会社
+△△部 □□様
+
+いつもお世話になっております。
+○○会社の山田です。
+
+つきましては、一度お打ち合わせの機会を
+いただければ幸いです。
+
+下記日程でご都合はいかがでしょうか。
+
+【候補日】
+・○月○日（月）10:00〜
+・○月○日（火）14:00〜
+・○月○日（水）15:00〜
+
+ご検討のほど、よろしくお願いいたします。</div>
+                <div class="translation" data-lang="zh">
+<strong>中文翻译：</strong>
+主题：请求会面
+
+○○株式会社
+△△部 □□先生/女士
+
+一直以来承蒙关照。
+我是○○公司的山田。
+
+希望能有机会与您会面商谈。
+
+请问以下时间您是否方便？
+
+【候选日期】
+・○月○日（周一）10:00〜
+・○月○日（周二）14:00〜
+・○月○日（周三）15:00〜
+
+请您考虑，谢谢。
+                </div>
+                <button class="copy-btn" onclick="copyTemplate(this)">コピー</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Category tabs
+        document.querySelectorAll('.category-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.template-list').forEach(l => l.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.category).classList.add('active');
+            });
+        });
+
+        // Language selector
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const lang = btn.dataset.lang;
+                document.querySelectorAll('.translation').forEach(t => {
+                    t.classList.remove('active');
+                    if (t.dataset.lang === lang && lang !== 'ja') {
+                        t.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Copy template
+        function copyTemplate(btn) {
+            const content = btn.previousElementSibling.classList.contains('translation')
+                ? btn.parentElement.querySelector('.template-content').textContent
+                : btn.previousElementSibling.textContent;
+
+            navigator.clipboard.writeText(content).then(() => {
+                btn.textContent = 'コピーしました！';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = 'コピー';
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

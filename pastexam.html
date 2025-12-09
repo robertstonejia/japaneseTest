@@ -1,0 +1,2466 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JLPT過去問練習 - Past Exam Practice</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', 'Segoe UI', sans-serif;
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            background: white;
+            border-radius: 30px;
+            padding: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+            border: 5px solid #667eea;
+            box-shadow: 0 10px 0 #667eea, 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        h1 {
+            text-align: center;
+            color: #667eea;
+            font-size: 2.2em;
+            flex: 1;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        /* Level Tabs */
+        .level-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .level-tab {
+            padding: 15px 30px;
+            border: 4px solid #667eea;
+            border-radius: 20px;
+            background: white;
+            color: #667eea;
+            font-size: 1.3em;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .level-tab:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .level-tab.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 0 #4c5fd5;
+        }
+
+        /* Year & Section Selection */
+        .selection-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .select-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .select-group label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .select-group select {
+            padding: 12px 20px;
+            border: 3px solid #667eea;
+            border-radius: 15px;
+            font-size: 1em;
+            font-weight: bold;
+            color: #333;
+            background: white;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .select-group select:focus {
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Section Tabs */
+        .section-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .section-tab {
+            padding: 12px 25px;
+            border: 3px solid #764ba2;
+            border-radius: 25px;
+            background: white;
+            color: #764ba2;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-tab:hover {
+            background: #f5f0ff;
+        }
+
+        .section-tab.active {
+            background: linear-gradient(135deg, #764ba2, #f093fb);
+            color: white;
+        }
+
+        .section-tab .icon {
+            font-size: 1.2em;
+        }
+
+        /* Exam Info */
+        .exam-info {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .info-item {
+            text-align: center;
+        }
+
+        .info-item .label {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .info-item .value {
+            font-size: 1.5em;
+            font-weight: 800;
+            color: #2e7d32;
+        }
+
+        /* Question Area */
+        .question-area {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .question-number {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 15px;
+            font-weight: bold;
+        }
+
+        .timer {
+            background: #ff5722;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 15px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .question-text {
+            font-size: 1.3em;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+
+        .question-text ruby {
+            font-size: 1em;
+        }
+
+        .question-text rt {
+            font-size: 0.6em;
+            color: #888;
+        }
+
+        .underline {
+            text-decoration: underline;
+            text-decoration-style: wavy;
+            text-decoration-color: #f44336;
+            font-weight: bold;
+        }
+
+        /* Options */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .option {
+            padding: 20px;
+            background: white;
+            border: 3px solid #e0e0e0;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .option:hover {
+            border-color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .option.selected {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .option.correct {
+            border-color: #4caf50;
+            background: #e8f5e9;
+        }
+
+        .option.wrong {
+            border-color: #f44336;
+            background: #ffebee;
+        }
+
+        .option-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #667eea;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .option.correct .option-number {
+            background: #4caf50;
+        }
+
+        .option.wrong .option-number {
+            background: #f44336;
+        }
+
+        .option-text {
+            font-size: 1.1em;
+        }
+
+        /* Navigation Buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .nav-btn.prev {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .nav-btn.prev:hover {
+            background: #bdbdbd;
+        }
+
+        .nav-btn.next {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .nav-btn.next:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .nav-btn.submit {
+            background: linear-gradient(135deg, #4caf50, #8bc34a);
+            color: white;
+        }
+
+        .nav-btn.submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            margin-bottom: 25px;
+        }
+
+        .progress-bar {
+            height: 15px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            border-radius: 10px;
+            transition: width 0.3s;
+        }
+
+        .progress-text {
+            text-align: center;
+            margin-top: 8px;
+            font-weight: bold;
+            color: #666;
+        }
+
+        /* Question Navigation Dots */
+        .question-dots {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        .q-dot {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            font-size: 0.9em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .q-dot:hover {
+            background: #f0f4ff;
+        }
+
+        .q-dot.current {
+            background: #667eea;
+            color: white;
+        }
+
+        .q-dot.answered {
+            background: #4caf50;
+            border-color: #4caf50;
+            color: white;
+        }
+
+        .q-dot.wrong-answer {
+            background: #f44336;
+            border-color: #f44336;
+            color: white;
+        }
+
+        /* Results Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            animation: modalPop 0.3s ease;
+        }
+
+        @keyframes modalPop {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal h2 {
+            font-size: 2em;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+        }
+
+        .score-circle .score {
+            font-size: 3em;
+            font-weight: 800;
+        }
+
+        .score-circle .label {
+            font-size: 0.9em;
+        }
+
+        .result-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 25px 0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat .number {
+            font-size: 2em;
+            font-weight: 800;
+        }
+
+        .stat .label {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .stat.correct .number {
+            color: #4caf50;
+        }
+
+        .stat.wrong .number {
+            color: #f44336;
+        }
+
+        .modal-btn {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+
+        .modal-btn.retry {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .modal-btn.review {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        /* Start Screen */
+        .start-screen {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .start-screen h2 {
+            font-size: 2em;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .start-screen p {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .start-btn {
+            padding: 20px 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.3em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .start-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        /* External Resources */
+        .external-resources {
+            background: #fff3e0;
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        .external-resources h3 {
+            color: #e65100;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .resource-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .resource-link {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .resource-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .level-tab {
+                padding: 10px 20px;
+                font-size: 1.1em;
+            }
+
+            .question-text {
+                font-size: 1.1em;
+            }
+
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html" class="back-btn">← ホームへ</a>
+            <h1>JLPT過去問練習</h1>
+            <div style="width: 120px;"></div>
+        </div>
+        <p class="subtitle">Past Exam Practice / 历年真题练习</p>
+
+        <!-- Level Tabs -->
+        <div class="level-tabs">
+            <button class="level-tab" data-level="N5">N5</button>
+            <button class="level-tab" data-level="N4">N4</button>
+            <button class="level-tab active" data-level="N3">N3</button>
+            <button class="level-tab" data-level="N2">N2</button>
+            <button class="level-tab" data-level="N1">N1</button>
+        </div>
+
+        <!-- Year & Section Selection -->
+        <div class="selection-row">
+            <div class="select-group">
+                <label>年度:</label>
+                <select id="yearSelect">
+                    <option value="2024-07">2024年7月</option>
+                    <option value="2024-12">2024年12月</option>
+                    <option value="2023-12">2023年12月</option>
+                    <option value="2023-07">2023年7月</option>
+                    <option value="2022-12">2022年12月</option>
+                    <option value="2022-07">2022年7月</option>
+                    <option value="2021-12">2021年12月</option>
+                    <option value="2021-07">2021年7月</option>
+                    <option value="2020-12">2020年12月</option>
+                    <option value="2020-07">2020年7月</option>
+                    <option value="2019-12">2019年12月</option>
+                    <option value="2019-07">2019年7月</option>
+                    <option value="2018-12">2018年12月</option>
+                    <option value="2018-07">2018年7月</option>
+                    <option value="2017-12">2017年12月</option>
+                    <option value="2017-07">2017年7月</option>
+                    <option value="2016-12">2016年12月</option>
+                    <option value="2016-07">2016年7月</option>
+                    <option value="2015-12">2015年12月</option>
+                    <option value="2015-07">2015年7月</option>
+                    <option value="2014-12">2014年12月</option>
+                    <option value="2014-07">2014年7月</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Section Tabs -->
+        <div class="section-tabs">
+            <button class="section-tab active" data-section="vocabulary_grammar">
+                <span class="icon">📝</span>
+                <span>文字・語彙・文法</span>
+            </button>
+            <button class="section-tab" data-section="reading">
+                <span class="icon">📖</span>
+                <span>読解</span>
+            </button>
+            <button class="section-tab" data-section="listening">
+                <span class="icon">🎧</span>
+                <span>聴解</span>
+            </button>
+        </div>
+
+        <!-- Start Screen -->
+        <div id="startScreen" class="start-screen">
+            <h2>N3 文字・語彙 (2024年7月)</h2>
+            <p>
+                問題数: 35問<br>
+                制限時間: 30分<br><br>
+                準備ができたら「スタート」ボタンを押してください。
+            </p>
+            <button class="start-btn" onclick="startExam()">スタート</button>
+        </div>
+
+        <!-- Exam Area (Hidden initially) -->
+        <div id="examArea" style="display: none;">
+            <!-- Exam Info -->
+            <div class="exam-info">
+                <div class="info-item">
+                    <div class="label">レベル</div>
+                    <div class="value" id="infoLevel">N3</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">セクション</div>
+                    <div class="value" id="infoSection">語彙</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">正解数</div>
+                    <div class="value" id="infoScore">0/0</div>
+                </div>
+                <div class="info-item">
+                    <div class="label">残り時間</div>
+                    <div class="value" id="infoTime">30:00</div>
+                </div>
+            </div>
+
+            <!-- Progress -->
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+                </div>
+                <div class="progress-text" id="progressText">問題 1 / 35</div>
+            </div>
+
+            <!-- Question Dots -->
+            <div class="question-dots" id="questionDots"></div>
+
+            <!-- Question Area -->
+            <div class="question-area">
+                <div class="question-header">
+                    <div class="question-number" id="questionNumber">問題 1</div>
+                    <div class="timer" id="timer">
+                        <span>⏱</span>
+                        <span id="timerDisplay">30:00</span>
+                    </div>
+                </div>
+
+                <div class="question-text" id="questionText">
+                    <!-- Question will be inserted here -->
+                </div>
+
+                <div class="options-grid" id="optionsGrid">
+                    <!-- Options will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <button class="nav-btn prev" onclick="prevQuestion()">← 前へ</button>
+                <button class="nav-btn next" onclick="nextQuestion()">次へ →</button>
+                <button class="nav-btn submit" onclick="submitExam()" style="display: none;">採点する</button>
+            </div>
+        </div>
+
+        <!-- External Resources -->
+        <div class="external-resources">
+            <h3>📚 外部資源リンク</h3>
+            <div class="resource-links">
+                <a href="https://dethitiengnhat.com/en" target="_blank" class="resource-link">dethitiengnhat.com</a>
+                <a href="https://www.jlpt.jp/samples/forlearners.html" target="_blank" class="resource-link">JLPT公式サンプル</a>
+                <a href="https://www.studyinjapan.in/2025/11/jlpt-previous-years-question-papers.html" target="_blank" class="resource-link">StudyInJapan</a>
+                <a href="https://migii.net/en/blog/jlpt-n1-practice-test" target="_blank" class="resource-link">Migii JLPT</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Modal -->
+    <div class="modal-overlay" id="resultsModal">
+        <div class="modal">
+            <h2>試験結果</h2>
+            <div class="score-circle">
+                <div class="score" id="finalScore">85%</div>
+                <div class="label">正解率</div>
+            </div>
+            <div class="result-stats">
+                <div class="stat correct">
+                    <div class="number" id="correctCount">30</div>
+                    <div class="label">正解</div>
+                </div>
+                <div class="stat wrong">
+                    <div class="number" id="wrongCount">5</div>
+                    <div class="label">不正解</div>
+                </div>
+            </div>
+            <div>
+                <button class="modal-btn retry" onclick="retryExam()">もう一度</button>
+                <button class="modal-btn review" onclick="reviewExam()">解説を見る</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JLPT Past Exam Questions - Load from JSON files
+        let examData = {};
+        let dataLoaded = {};
+        let loadingPromises = {};
+
+        // Async function to load exam data from JSON files
+        async function loadExamData(level) {
+            if (dataLoaded[level]) {
+                return examData[level];
+            }
+
+            if (loadingPromises[level]) {
+                return loadingPromises[level];
+            }
+
+            loadingPromises[level] = fetch(`examdata/${level}.json`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Failed to load ${level} data`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Convert old format to new format for backward compatibility
+                    if (data.vocabulary && !data.vocabulary_grammar) {
+                        data.vocabulary_grammar = [...(data.vocabulary || []), ...(data.grammar || [])];
+                        data.reading = data.reading || [];
+                    }
+                    examData[level] = data;
+                    dataLoaded[level] = true;
+                    return data;
+                })
+                .catch(error => {
+                    console.error(`Error loading ${level}:`, error);
+                    return { vocabulary_grammar: [], reading: [], listening: [] };
+                });
+
+            return loadingPromises[level];
+        }
+
+        // Preload all levels
+        async function preloadAllData() {
+            const levels = ['N5', 'N4', 'N3', 'N2', 'N1'];
+            await Promise.all(levels.map(level => loadExamData(level)));
+        }
+
+        // Legacy support - inline fallback data for N5 if JSON fails
+        const fallbackData = {
+            'N5': {
+                'vocabulary': [
+                    {
+                        question: 'これは<span class="underline">本</span>です。',
+                        instruction: '「本」の読み方を選んでください。',
+                        options: ['ほん', 'もと', 'ぼん', 'もん'],
+                        answer: 0,
+                        explanation: '「本」は「ほん」と読みます。書籍を意味します。'
+                    },
+                    {
+                        question: '私は<span class="underline">学生</span>です。',
+                        instruction: '「学生」の読み方を選んでください。',
+                        options: ['がくせい', 'がくしょう', 'まなびせい', 'がくせ'],
+                        answer: 0,
+                        explanation: '「学生」は「がくせい」と読みます。'
+                    },
+                    {
+                        question: '<span class="underline">水</span>をください。',
+                        instruction: '「水」の読み方を選んでください。',
+                        options: ['みず', 'すい', 'みす', 'すず'],
+                        answer: 0,
+                        explanation: '「水」は「みず」と読みます。'
+                    },
+                    {
+                        question: '今日は<span class="underline">月曜日</span>です。',
+                        instruction: '「月曜日」の読み方を選んでください。',
+                        options: ['げつようび', 'つきようび', 'かようび', 'にちようび'],
+                        answer: 0,
+                        explanation: '「月曜日」は「げつようび」と読みます。週の最初の平日です。'
+                    },
+                    {
+                        question: '<span class="underline">電話</span>をかけます。',
+                        instruction: '「電話」の読み方を選んでください。',
+                        options: ['でんわ', 'てんわ', 'でんば', 'てんば'],
+                        answer: 0,
+                        explanation: '「電話」は「でんわ」と読みます。'
+                    },
+                    {
+                        question: '<span class="underline">先生</span>はどこですか。',
+                        instruction: '「先生」の読み方を選んでください。',
+                        options: ['せんせい', 'せんしょう', 'さきせい', 'さきしょう'],
+                        answer: 0,
+                        explanation: '「先生」は「せんせい」と読みます。教師を意味します。'
+                    },
+                    {
+                        question: '私の<span class="underline">友達</span>です。',
+                        instruction: '「友達」の読み方を選んでください。',
+                        options: ['ともだち', 'ゆうたつ', 'ともたち', 'ゆうだち'],
+                        answer: 0,
+                        explanation: '「友達」は「ともだち」と読みます。友人を意味します。'
+                    },
+                    {
+                        question: '<span class="underline">食べ物</span>を買います。',
+                        instruction: '「食べ物」の読み方を選んでください。',
+                        options: ['たべもの', 'くいもの', 'しょくもつ', 'くらべもの'],
+                        answer: 0,
+                        explanation: '「食べ物」は「たべもの」と読みます。食品を意味します。'
+                    },
+                    {
+                        question: '<span class="underline">日本語</span>を勉強します。',
+                        instruction: '「日本語」の読み方を選んでください。',
+                        options: ['にほんご', 'にっぽんご', 'ひもとご', 'にほんこ'],
+                        answer: 0,
+                        explanation: '「日本語」は「にほんご」と読みます。'
+                    },
+                    {
+                        question: '<span class="underline">毎日</span>学校へ行きます。',
+                        instruction: '「毎日」の読み方を選んでください。',
+                        options: ['まいにち', 'まいひ', 'ごとにち', 'ごとひ'],
+                        answer: 0,
+                        explanation: '「毎日」は「まいにち」と読みます。every dayの意味です。'
+                    },
+                    {
+                        question: '（　　）に入る言葉を選んでください。<br><br>りんご（　　）みかん、どちらが好きですか。',
+                        instruction: '',
+                        options: ['と', 'を', 'に', 'で'],
+                        answer: 0,
+                        explanation: '「AとB、どちらが〜」は比較の表現です。'
+                    },
+                    {
+                        question: '（　　）に入る言葉を選んでください。<br><br>駅（　　）歩いて5分です。',
+                        instruction: '',
+                        options: ['から', 'を', 'に', 'で'],
+                        answer: 0,
+                        explanation: '起点を表す「から」を使います。'
+                    },
+                    {
+                        question: '（　　）に入る言葉を選んでください。<br><br>昨日、映画（　　）見ました。',
+                        instruction: '',
+                        options: ['を', 'に', 'で', 'が'],
+                        answer: 0,
+                        explanation: '「見る」の目的語には「を」を使います。'
+                    },
+                    {
+                        question: '（　　）に入る言葉を選んでください。<br><br>バス（　　）学校へ行きます。',
+                        instruction: '',
+                        options: ['で', 'を', 'に', 'が'],
+                        answer: 0,
+                        explanation: '交通手段には「で」を使います。'
+                    },
+                    {
+                        question: '（　　）に入る言葉を選んでください。<br><br>この本は（　　）ですか。',
+                        instruction: '',
+                        options: ['だれの', 'なに', 'どこ', 'いつ'],
+                        answer: 0,
+                        explanation: '所有者を尋ねる「だれの」を使います。'
+                    }
+                ],
+                'grammar': [
+                    {
+                        question: 'これ（　　）本です。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['は', 'が', 'を', 'に'],
+                        answer: 0,
+                        explanation: '「これは〜です」は基本的な文型です。'
+                    },
+                    {
+                        question: '私は毎日コーヒー（　　）飲みます。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['を', 'が', 'に', 'で'],
+                        answer: 0,
+                        explanation: '「飲む」の目的語には「を」を使います。'
+                    },
+                    {
+                        question: '田中さんは医者（　　）。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['です', 'ます', 'あります', 'います'],
+                        answer: 0,
+                        explanation: '名詞文には「です」を使います。'
+                    },
+                    {
+                        question: '部屋に犬（　　）います。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['が', 'を', 'に', 'で'],
+                        answer: 0,
+                        explanation: '存在を表す「います」の主語には「が」を使います。'
+                    },
+                    {
+                        question: '明日、友達（　　）会います。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['に', 'を', 'で', 'が'],
+                        answer: 0,
+                        explanation: '「会う」は「〜に会う」の形で使います。'
+                    },
+                    {
+                        question: '電車（　　）学校へ行きます。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['で', 'を', 'に', 'は'],
+                        answer: 0,
+                        explanation: '手段・方法には「で」を使います。'
+                    },
+                    {
+                        question: '昨日、映画を（　　）。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['見ました', '見ます', '見る', '見て'],
+                        answer: 0,
+                        explanation: '「昨日」は過去なので「見ました」を使います。'
+                    },
+                    {
+                        question: 'このりんごは（　　）おいしいです。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['とても', 'たくさん', 'もう', 'まだ'],
+                        answer: 0,
+                        explanation: '「とても」は程度を表す副詞です。'
+                    },
+                    {
+                        question: '私は日本語（　　）英語を勉強しています。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['と', 'に', 'を', 'で'],
+                        answer: 0,
+                        explanation: '並列を表す「と」を使います。'
+                    },
+                    {
+                        question: '今日は日曜日です（　　）、学校は休みです。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['から', 'でも', 'が', 'と'],
+                        answer: 0,
+                        explanation: '理由を表す「から」を使います。'
+                    }
+                ],
+                'listening': [
+                    {
+                        question: '【音声問題】<br><br>A: おはようございます。<br>B: おはようございます。',
+                        instruction: '何時ごろの挨拶ですか。',
+                        options: ['朝', '昼', '夜', '夕方'],
+                        answer: 0,
+                        explanation: '「おはようございます」は朝の挨拶です。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>A: すみません、駅はどこですか。<br>B: まっすぐ行って、右に曲がってください。',
+                        instruction: '駅はどちらにありますか。',
+                        options: ['まっすぐ行って右', 'まっすぐ行って左', 'すぐ右', 'すぐ左'],
+                        answer: 0,
+                        explanation: '「まっすぐ行って、右に曲がってください」と言っています。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>A: この本はいくらですか。<br>B: 500円です。',
+                        instruction: '本はいくらですか。',
+                        options: ['500円', '50円', '5000円', '5円'],
+                        answer: 0,
+                        explanation: 'Bが「500円です」と答えています。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>A: 今日は何曜日ですか。<br>B: 水曜日です。',
+                        instruction: '今日は何曜日ですか。',
+                        options: ['水曜日', '火曜日', '木曜日', '金曜日'],
+                        answer: 0,
+                        explanation: 'Bが「水曜日です」と答えています。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>店員: いらっしゃいませ。<br>客: コーヒーをお願いします。<br>店員: ホットですか、アイスですか。<br>客: ホットでお願いします。',
+                        instruction: '客は何を注文しましたか。',
+                        options: ['ホットコーヒー', 'アイスコーヒー', 'ホットティー', 'アイスティー'],
+                        answer: 0,
+                        explanation: '客は「コーヒー」の「ホット」を注文しました。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>A: 田中さんの電話番号を知っていますか。<br>B: はい、03-1234-5678です。',
+                        instruction: '田中さんの電話番号は何ですか。',
+                        options: ['03-1234-5678', '03-1234-5687', '03-1243-5678', '03-1234-6578'],
+                        answer: 0,
+                        explanation: 'Bが「03-1234-5678」と答えています。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>A: 何人家族ですか。<br>B: 4人です。父と母と姉と私です。',
+                        instruction: 'この人は何人家族ですか。',
+                        options: ['4人', '3人', '5人', '2人'],
+                        answer: 0,
+                        explanation: 'Bが「4人です」と答えています。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>A: 今、何時ですか。<br>B: 3時15分です。',
+                        instruction: '今、何時ですか。',
+                        options: ['3時15分', '3時50分', '3時5分', '4時15分'],
+                        answer: 0,
+                        explanation: 'Bが「3時15分です」と答えています。'
+                    }
+                ]
+            },
+            'N4': {
+                'vocabulary': [
+                    {
+                        question: '私は毎日<span class="underline">勉強</span>します。',
+                        instruction: '「勉強」の読み方を選んでください。',
+                        options: ['べんきょう', 'べんきゅう', 'べんきょ', 'べんこう'],
+                        answer: 0,
+                        explanation: '「勉強」は「べんきょう」と読みます。'
+                    },
+                    {
+                        question: '明日は<span class="underline">天気</span>がいいでしょう。',
+                        instruction: '「天気」の読み方を選んでください。',
+                        options: ['てんき', 'てんけ', 'あめき', 'そらき'],
+                        answer: 0,
+                        explanation: '「天気」は「てんき」と読みます。'
+                    },
+                    {
+                        question: 'この<span class="underline">問題</span>は難しいです。',
+                        instruction: '「問題」の読み方を選んでください。',
+                        options: ['もんだい', 'もだい', 'とだい', 'もんたい'],
+                        answer: 0,
+                        explanation: '「問題」は「もんだい」と読みます。'
+                    },
+                    {
+                        question: '<span class="underline">旅行</span>に行きたいです。',
+                        instruction: '「旅行」の読み方を選んでください。',
+                        options: ['りょこう', 'りょうこう', 'たびこう', 'りょこ'],
+                        answer: 0,
+                        explanation: '「旅行」は「りょこう」と読みます。'
+                    },
+                    {
+                        question: '<span class="underline">料理</span>が好きです。',
+                        instruction: '「料理」の読み方を選んでください。',
+                        options: ['りょうり', 'りょり', 'りょうり', 'りょり'],
+                        answer: 0,
+                        explanation: '「料理」は「りょうり」と読みます。'
+                    },
+                    {
+                        question: '<span class="underline">音楽</span>を聞きます。',
+                        instruction: '「音楽」の読み方を選んでください。',
+                        options: ['おんがく', 'おとがく', 'おんらく', 'いんがく'],
+                        answer: 0,
+                        explanation: '「音楽」は「おんがく」と読みます。'
+                    },
+                    {
+                        question: '<span class="underline">運動</span>は体にいいです。',
+                        instruction: '「運動」の読み方を選んでください。',
+                        options: ['うんどう', 'うんとう', 'うどう', 'うんど'],
+                        answer: 0,
+                        explanation: '「運動」は「うんどう」と読みます。'
+                    },
+                    {
+                        question: '<span class="underline">病院</span>へ行きます。',
+                        instruction: '「病院」の読み方を選んでください。',
+                        options: ['びょういん', 'びょいん', 'やまいん', 'びょういん'],
+                        answer: 0,
+                        explanation: '「病院」は「びょういん」と読みます。'
+                    },
+                    {
+                        question: '<span class="underline">練習</span>します。',
+                        instruction: '「練習」の読み方を選んでください。',
+                        options: ['れんしゅう', 'れんしゅ', 'れしゅう', 'ねんしゅう'],
+                        answer: 0,
+                        explanation: '「練習」は「れんしゅう」と読みます。'
+                    },
+                    {
+                        question: '<span class="underline">地図</span>を見てください。',
+                        instruction: '「地図」の読み方を選んでください。',
+                        options: ['ちず', 'じず', 'ちと', 'じと'],
+                        answer: 0,
+                        explanation: '「地図」は「ちず」と読みます。'
+                    },
+                    {
+                        question: '（　　）に入る言葉を選んでください。<br><br>この映画は（　　）面白かったです。',
+                        instruction: '',
+                        options: ['とても', 'たくさん', 'ぜんぜん', 'ちょっと'],
+                        answer: 0,
+                        explanation: '「とても」は程度を強調する副詞です。'
+                    },
+                    {
+                        question: '（　　）に入る言葉を選んでください。<br><br>コーヒー（　　）紅茶、どちらがいいですか。',
+                        instruction: '',
+                        options: ['か', 'と', 'を', 'に'],
+                        answer: 0,
+                        explanation: '選択を表す「か」を使います。'
+                    },
+                    {
+                        question: '（　　）に入る言葉を選んでください。<br><br>試験に（　　）勉強しなければなりません。',
+                        instruction: '',
+                        options: ['合格するために', '合格するから', '合格するのに', '合格して'],
+                        answer: 0,
+                        explanation: '目的を表す「ために」を使います。'
+                    },
+                    {
+                        question: '（　　）に入る言葉を選んでください。<br><br>電車が（　　）遅れています。',
+                        instruction: '',
+                        options: ['少し', '少ない', '小さい', '短い'],
+                        answer: 0,
+                        explanation: '程度を表す「少し」を使います。'
+                    },
+                    {
+                        question: '（　　）に入る言葉を選んでください。<br><br>今日は暑いですから、エアコンを（　　）。',
+                        instruction: '',
+                        options: ['つけましょう', 'つけたい', 'つけること', 'つけよう'],
+                        answer: 0,
+                        explanation: '勧誘を表す「〜ましょう」を使います。'
+                    }
+                ],
+                'grammar': [
+                    {
+                        question: '明日、友達（　　）会います。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['に', 'を', 'で', 'が'],
+                        answer: 0,
+                        explanation: '「会う」は「〜に会う」の形で使います。'
+                    },
+                    {
+                        question: '私は毎日学校（　　）行きます。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['へ', 'を', 'に', 'で'],
+                        answer: 0,
+                        explanation: '「行く」は「〜へ行く」または「〜に行く」の形で使います。'
+                    },
+                    {
+                        question: '雨が降っているので、傘（　　）持っていきます。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['を', 'が', 'に', 'で'],
+                        answer: 0,
+                        explanation: '「持っていく」の目的語には「を」を使います。'
+                    },
+                    {
+                        question: '日本語を勉強し（　　）2年になります。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['て', 'た', 'ている', 'たい'],
+                        answer: 0,
+                        explanation: '「〜して〜になる」の形で期間を表します。'
+                    },
+                    {
+                        question: 'この本は私（　　）買ったものです。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['が', 'を', 'に', 'で'],
+                        answer: 0,
+                        explanation: '主語を表す「が」を使います。'
+                    },
+                    {
+                        question: '明日は雨が降る（　　）。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['かもしれません', 'つもりです', 'ことにします', 'ようにします'],
+                        answer: 0,
+                        explanation: '推量を表す「かもしれません」を使います。'
+                    },
+                    {
+                        question: 'もっと野菜を食べた（　　）がいいですよ。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['ほう', 'こと', 'もの', 'ところ'],
+                        answer: 0,
+                        explanation: 'アドバイスを表す「〜たほうがいい」を使います。'
+                    },
+                    {
+                        question: '彼は日本語（　　）話せます。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['が', 'を', 'に', 'で'],
+                        answer: 0,
+                        explanation: '可能形の対象には「が」を使います。'
+                    },
+                    {
+                        question: '疲れた（　　）、まだ仕事があります。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['けど', 'から', 'ので', 'し'],
+                        answer: 0,
+                        explanation: '逆接を表す「けど」を使います。'
+                    },
+                    {
+                        question: '宿題を（　　）から、遊びに行きます。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['してから', 'したら', 'すると', 'すれば'],
+                        answer: 0,
+                        explanation: '順序を表す「〜てから」を使います。'
+                    }
+                ],
+                'listening': [
+                    {
+                        question: '【音声問題】<br><br>男の人と女の人が話しています。<br><br>男: 今日は何曜日ですか。<br>女: 水曜日です。',
+                        instruction: '今日は何曜日ですか。',
+                        options: ['水曜日', '月曜日', '金曜日', '日曜日'],
+                        answer: 0,
+                        explanation: '女の人が「水曜日です」と答えています。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>電話での会話です。<br><br>A: もしもし、田中さんのお宅ですか。<br>B: いいえ、違います。<br>A: あ、すみません。番号を間違えました。',
+                        instruction: 'この電話は誰にかかりましたか。',
+                        options: ['田中さんではない人', '田中さん', '田中さんの家族', '田中さんの友達'],
+                        answer: 0,
+                        explanation: 'Bが「いいえ、違います」と答えているので、田中さんの家ではありません。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>店での会話です。<br><br>客: すみません、このシャツはいくらですか。<br>店員: 3000円です。<br>客: じゃあ、これをください。<br>店員: はい、ありがとうございます。5000円からお預かりします。',
+                        instruction: 'お釣りはいくらですか。',
+                        options: ['2000円', '3000円', '5000円', '8000円'],
+                        answer: 0,
+                        explanation: '5000円−3000円＝2000円のお釣りです。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>A: 週末、何をしましたか。<br>B: 友達と映画を見に行きました。<br>A: どんな映画でしたか。<br>B: アクション映画でした。とても面白かったです。',
+                        instruction: 'Bは週末何をしましたか。',
+                        options: ['映画を見た', 'テレビを見た', '買い物をした', '旅行をした'],
+                        answer: 0,
+                        explanation: 'Bは「友達と映画を見に行きました」と言っています。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>A: 来週の会議は何時からですか。<br>B: 午後2時からです。<br>A: 場所はどこですか。<br>B: 3階の会議室です。',
+                        instruction: '会議は何時からですか。',
+                        options: ['午後2時', '午前2時', '午後3時', '午前3時'],
+                        answer: 0,
+                        explanation: 'Bは「午後2時から」と答えています。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>A: 日本語の勉強はどうですか。<br>B: 漢字が難しいですが、楽しいです。<br>A: 一番難しいのは何ですか。<br>B: 聴解です。日本人の話すスピードが速いです。',
+                        instruction: 'Bにとって一番難しいのは何ですか。',
+                        options: ['聴解', '漢字', '文法', '読解'],
+                        answer: 0,
+                        explanation: 'Bは「一番難しいのは聴解です」と言っています。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>駅のアナウンスです。<br><br>「まもなく、2番線に電車が参ります。危ないですから、黄色い線の内側にお下がりください。」',
+                        instruction: '電車は何番線に来ますか。',
+                        options: ['2番線', '1番線', '3番線', '4番線'],
+                        answer: 0,
+                        explanation: 'アナウンスで「2番線に電車が参ります」と言っています。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>天気予報です。<br><br>「明日の天気です。午前中は曇りですが、午後から晴れるでしょう。最高気温は25度の予想です。」',
+                        instruction: '明日の午後の天気はどうですか。',
+                        options: ['晴れ', '曇り', '雨', '雪'],
+                        answer: 0,
+                        explanation: '予報では「午後から晴れるでしょう」と言っています。'
+                    }
+                ]
+            },
+            'N3': {
+                'vocabulary': [
+                    {
+                        question: '<ruby>今日<rt>きょう</rt></ruby>は<span class="underline">暖かい</span>ですね。',
+                        instruction: '「暖かい」の読み方を選んでください。',
+                        options: ['あたたかい', 'あつかい', 'つめたい', 'さむかい'],
+                        answer: 0,
+                        explanation: '「暖かい」は「あたたかい」と読みます。気温が心地よい程度に高いことを表します。'
+                    },
+                    {
+                        question: '彼は<span class="underline">親切</span>な人です。',
+                        instruction: '「親切」の読み方を選んでください。',
+                        options: ['しんせつ', 'しんきり', 'おやきり', 'ちかきり'],
+                        answer: 0,
+                        explanation: '「親切」は「しんせつ」と読みます。人に対して思いやりがあることを表します。'
+                    },
+                    {
+                        question: '電車が<span class="underline">遅れて</span>いる。',
+                        instruction: '「遅れて」の読み方を選んでください。',
+                        options: ['おくれて', 'おそれて', 'くずれて', 'はずれて'],
+                        answer: 0,
+                        explanation: '「遅れる」は「おくれる」と読みます。予定の時間より後になることを表します。'
+                    },
+                    {
+                        question: 'この問題は<span class="underline">簡単</span>です。',
+                        instruction: '「簡単」の読み方を選んでください。',
+                        options: ['かんたん', 'かんだん', 'けんたん', 'げんたん'],
+                        answer: 0,
+                        explanation: '「簡単」は「かんたん」と読みます。難しくないこと、容易であることを表します。'
+                    },
+                    {
+                        question: '彼女は<span class="underline">美しい</span>声で歌った。',
+                        instruction: '「美しい」の読み方を選んでください。',
+                        options: ['うつくしい', 'たのしい', 'やさしい', 'くわしい'],
+                        answer: 0,
+                        explanation: '「美しい」は「うつくしい」と読みます。見た目や音が美的に優れていることを表します。'
+                    },
+                    {
+                        question: '（　　）に入る言葉を選んでください。<br><br>この仕事は（　　）が必要です。',
+                        instruction: '',
+                        options: ['経験', '景色', '計算', '結果'],
+                        answer: 0,
+                        explanation: '「経験」（けいけん）は仕事に必要なスキルや知識を指します。'
+                    },
+                    {
+                        question: '（　　）に入る言葉を選んでください。<br><br>明日の会議は（　　）10時からです。',
+                        instruction: '',
+                        options: ['予定', '予想', '予約', '用意'],
+                        answer: 0,
+                        explanation: '「予定」（よてい）は前もって決めた計画を表します。'
+                    },
+                    {
+                        question: '（　　）に入る言葉を選んでください。<br><br>彼は料理が（　　）です。',
+                        instruction: '',
+                        options: ['得意', '意味', '意見', '注意'],
+                        answer: 0,
+                        explanation: '「得意」（とくい）は上手であること、自信があることを表します。'
+                    },
+                    {
+                        question: '（　　）に入る言葉を選んでください。<br><br>ここでタバコを吸うのは（　　）です。',
+                        instruction: '',
+                        options: ['禁止', '禁煙', '危険', '許可'],
+                        answer: 0,
+                        explanation: '「禁止」（きんし）はしてはいけないこと、禁じられていることを表します。'
+                    },
+                    {
+                        question: '彼の話は（　　）でわかりやすい。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['明確', '複雑', '曖昧', '困難'],
+                        answer: 0,
+                        explanation: '「明確」（めいかく）ははっきりしていてわかりやすいことを表します。'
+                    }
+                ],
+                'grammar': [
+                    {
+                        question: '雨が降っている（　　）、サッカーの試合は行われた。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['にもかかわらず', 'によると', 'において', 'に対して'],
+                        answer: 0,
+                        explanation: '「にもかかわらず」は逆接を表し、前の状況から予想される結果と異なることを表します。'
+                    },
+                    {
+                        question: '彼女は日本語（　　）、中国語も話せる。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['だけでなく', 'ばかりに', 'どころか', 'ながらも'],
+                        answer: 0,
+                        explanation: '「だけでなく」は「〜も」と一緒に使い、追加を表します。'
+                    },
+                    {
+                        question: '明日は会議がある（　　）、今日中にレポートを完成させなければならない。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['ため', 'から', 'のに', 'ながら'],
+                        answer: 0,
+                        explanation: '「ため」は理由を表し、後の行動の目的や原因を示します。'
+                    },
+                    {
+                        question: '彼は病気（　　）、学校を休んだ。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['で', 'に', 'を', 'が'],
+                        answer: 0,
+                        explanation: '「で」は原因・理由を表す助詞として使われます。'
+                    },
+                    {
+                        question: 'この仕事は私（　　）できません。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['には', 'では', 'にも', 'とは'],
+                        answer: 0,
+                        explanation: '「には」は「〜にとっては」の意味で、能力や可能性の限界を表します。'
+                    }
+                ],
+                'listening': [
+                    {
+                        question: '【音声問題】<br><br>男の人と女の人が話しています。女の人は何をしますか。<br><br>（音声の代わりにテキストで表示）<br>男: 明日のパーティー、何か持っていく？<br>女: うーん、ケーキを作ろうかな。<br>男: いいね。じゃあ、僕は飲み物を用意するよ。',
+                        instruction: '女の人は何をしますか。',
+                        options: ['ケーキを作る', '飲み物を用意する', 'パーティーに行かない', '何も持っていかない'],
+                        answer: 0,
+                        explanation: '女の人は「ケーキを作ろうかな」と言っています。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>駅のアナウンスです。<br><br>（音声の代わりにテキストで表示）<br>「お客様にお知らせいたします。3番線の電車は、事故のため約10分遅れております。ご迷惑をおかけして申し訳ございません。」',
+                        instruction: '電車はどうなっていますか。',
+                        options: ['10分遅れている', '運転を中止している', '時間通りに来る', '5分遅れている'],
+                        answer: 0,
+                        explanation: 'アナウンスで「約10分遅れております」と言っています。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>店での会話です。<br><br>店員: いらっしゃいませ。何かお探しですか。<br>客: あの、この前買ったカバンなんですが、ファスナーが壊れてしまって...<br>店員: 大変申し訳ございません。レシートはお持ちですか。<br>客: はい、あります。<br>店員: では、新しいものとお取り替えいたします。',
+                        instruction: '店員は何をしますか。',
+                        options: ['商品を交換する', '修理する', '返金する', '別の商品を勧める'],
+                        answer: 0,
+                        explanation: '店員は「新しいものとお取り替えいたします」と言っています。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>会社での会話です。<br><br>上司: 田中君、来週の出張の準備はできてる？<br>田中: はい、ホテルと新幹線の予約は完了しました。<br>上司: 会議の資料は？<br>田中: 明日中に仕上げる予定です。',
+                        instruction: 'まだできていないことは何ですか。',
+                        options: ['会議の資料', 'ホテルの予約', '新幹線の予約', '出張の計画'],
+                        answer: 0,
+                        explanation: '田中さんは「明日中に仕上げる予定」と言っているので、資料はまだできていません。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>電話での会話です。<br><br>A: お電話ありがとうございます。ABCクリニックです。<br>B: 予約をしたいのですが。<br>A: 何科の診察ですか。<br>B: 内科をお願いします。<br>A: 来週の火曜日の10時はいかがでしょうか。<br>B: 大丈夫です。',
+                        instruction: '予約は何曜日ですか。',
+                        options: ['火曜日', '月曜日', '水曜日', '木曜日'],
+                        answer: 0,
+                        explanation: '「来週の火曜日の10時」で予約しています。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>ラジオの天気予報です。<br><br>「明日の天気をお伝えします。午前中は雲が多いですが、午後からは晴れて気温も上がるでしょう。最高気温は28度の予想です。洗濯物は午後から干すのがおすすめです。」',
+                        instruction: '洗濯物はいつ干すのがいいですか。',
+                        options: ['午後から', '午前中', '夕方', '明日はやめたほうがいい'],
+                        answer: 0,
+                        explanation: '「洗濯物は午後から干すのがおすすめ」と言っています。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>大学での会話です。<br><br>学生: 先生、レポートの提出日について質問があるのですが。<br>先生: はい、何でしょう。<br>学生: 来週の金曜日までですよね。<br>先生: いいえ、締め切りは木曜日の5時です。気をつけてください。',
+                        instruction: 'レポートの締め切りはいつですか。',
+                        options: ['木曜日の5時', '金曜日', '来週の月曜日', '今週の金曜日'],
+                        answer: 0,
+                        explanation: '先生は「締め切りは木曜日の5時」と訂正しています。'
+                    }
+                ]
+            },
+            'N2': {
+                'vocabulary': [
+                    {
+                        question: '彼の<span class="underline">態度</span>は問題だ。',
+                        instruction: '「態度」の読み方を選んでください。',
+                        options: ['たいど', 'たいと', 'たど', 'ていど'],
+                        answer: 0,
+                        explanation: '「態度」は「たいど」と読みます。行動や振る舞いの様子を表します。'
+                    },
+                    {
+                        question: 'この計画を<span class="underline">実行</span>する。',
+                        instruction: '「実行」の読み方を選んでください。',
+                        options: ['じっこう', 'じつこう', 'じこう', 'しっこう'],
+                        answer: 0,
+                        explanation: '「実行」は「じっこう」と読みます。計画などを実際に行うことを表します。'
+                    },
+                    {
+                        question: '<span class="underline">影響</span>を受ける。',
+                        instruction: '「影響」の読み方を選んでください。',
+                        options: ['えいきょう', 'かげきょう', 'えきょう', 'いんきょう'],
+                        answer: 0,
+                        explanation: '「影響」は「えいきょう」と読みます。'
+                    },
+                    {
+                        question: '<span class="underline">制度</span>を改革する。',
+                        instruction: '「制度」の読み方を選んでください。',
+                        options: ['せいど', 'さいど', 'じど', 'せど'],
+                        answer: 0,
+                        explanation: '「制度」は「せいど」と読みます。'
+                    },
+                    {
+                        question: '問題の<span class="underline">解決</span>を図る。',
+                        instruction: '「解決」の読み方を選んでください。',
+                        options: ['かいけつ', 'かいけち', 'げけつ', 'げっけつ'],
+                        answer: 0,
+                        explanation: '「解決」は「かいけつ」と読みます。'
+                    },
+                    {
+                        question: '<span class="underline">現象</span>を分析する。',
+                        instruction: '「現象」の読み方を選んでください。',
+                        options: ['げんしょう', 'けんしょう', 'げんそう', 'けんそう'],
+                        answer: 0,
+                        explanation: '「現象」は「げんしょう」と読みます。'
+                    },
+                    {
+                        question: '<span class="underline">責任</span>を取る。',
+                        instruction: '「責任」の読み方を選んでください。',
+                        options: ['せきにん', 'せいにん', 'せきじん', 'せいじん'],
+                        answer: 0,
+                        explanation: '「責任」は「せきにん」と読みます。'
+                    },
+                    {
+                        question: '<span class="underline">環境</span>問題に取り組む。',
+                        instruction: '「環境」の読み方を選んでください。',
+                        options: ['かんきょう', 'がんきょう', 'わんきょう', 'えんきょう'],
+                        answer: 0,
+                        explanation: '「環境」は「かんきょう」と読みます。'
+                    },
+                    {
+                        question: '<span class="underline">判断</span>を下す。',
+                        instruction: '「判断」の読み方を選んでください。',
+                        options: ['はんだん', 'ばんだん', 'はんたん', 'ばんたん'],
+                        answer: 0,
+                        explanation: '「判断」は「はんだん」と読みます。'
+                    },
+                    {
+                        question: '<span class="underline">効果</span>が現れる。',
+                        instruction: '「効果」の読み方を選んでください。',
+                        options: ['こうか', 'こうが', 'きょうか', 'ごうか'],
+                        answer: 0,
+                        explanation: '「効果」は「こうか」と読みます。'
+                    },
+                    {
+                        question: '（　　）に入る言葉を選んでください。<br><br>この問題は（　　）検討が必要だ。',
+                        instruction: '',
+                        options: ['慎重な', '慎重で', '慎重に', '慎重と'],
+                        answer: 0,
+                        explanation: '名詞を修飾するナ形容詞は「〜な」の形を取ります。'
+                    },
+                    {
+                        question: '（　　）に入る言葉を選んでください。<br><br>彼の意見は（　　）価値がある。',
+                        instruction: '',
+                        options: ['傾聴に', '傾聴を', '傾聴が', '傾聴で'],
+                        answer: 0,
+                        explanation: '「傾聴に値する」という表現があります。'
+                    },
+                    {
+                        question: '（　　）に入る言葉を選んでください。<br><br>この製品は品質が（　　）。',
+                        instruction: '',
+                        options: ['優れている', '優れる', '優れた', '優れ'],
+                        answer: 0,
+                        explanation: '状態を表す「〜ている」の形を使います。'
+                    },
+                    {
+                        question: '（　　）に入る言葉を選んでください。<br><br>計画の（　　）には時間がかかる。',
+                        instruction: '',
+                        options: ['実現', '実現する', '実現した', '実現して'],
+                        answer: 0,
+                        explanation: '「〜の実現」という名詞の形を使います。'
+                    },
+                    {
+                        question: '（　　）に入る言葉を選んでください。<br><br>彼は（　　）な態度で話を聞いていた。',
+                        instruction: '',
+                        options: ['真剣', '真剣に', '真剣で', '真剣と'],
+                        answer: 0,
+                        explanation: '名詞を修飾するナ形容詞は「〜な」の形を取ります。'
+                    }
+                ],
+                'grammar': [
+                    {
+                        question: '努力した（　　）、結果が出なかった。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['にもかかわらず', 'おかげで', 'せいで', 'ために'],
+                        answer: 0,
+                        explanation: '「にもかかわらず」は逆接を表し、予想に反する結果を示します。'
+                    },
+                    {
+                        question: '彼女は医者である（　　）、患者に優しく接する。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['からには', 'としたら', 'にしても', 'ばかりに'],
+                        answer: 0,
+                        explanation: '「からには」は「〜である以上」という意味です。'
+                    },
+                    {
+                        question: '雨（　　）、サッカーの試合は中止になった。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['のため', 'のせいに', 'のために', 'のおかげ'],
+                        answer: 0,
+                        explanation: '原因を表す「のため」を使います。'
+                    },
+                    {
+                        question: '彼は忙しい（　　）、いつも時間を作ってくれる。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['ながらも', 'ばかりで', 'かぎり', 'ところで'],
+                        answer: 0,
+                        explanation: '「ながらも」は逆接を表します。'
+                    },
+                    {
+                        question: '彼は日本語はもちろん、中国語（　　）話せる。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['さえ', 'しか', 'だけ', 'ばかり'],
+                        answer: 0,
+                        explanation: '「さえ」は「〜も」の強調を表します。'
+                    },
+                    {
+                        question: '時間が（　　）、もっと勉強したい。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['あれば', 'あったら', 'あるなら', 'あって'],
+                        answer: 0,
+                        explanation: '仮定を表す「ば」を使います。'
+                    },
+                    {
+                        question: '彼女は努力家である（　　）、謙虚でもある。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['と同時に', 'とともに', 'と一緒に', 'といっしょで'],
+                        answer: 0,
+                        explanation: '「と同時に」は二つの特徴が同時に存在することを表します。'
+                    },
+                    {
+                        question: '練習する（　　）、上手になる。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['につれて', 'について', 'に関して', 'にとって'],
+                        answer: 0,
+                        explanation: '「につれて」は変化の相関を表します。'
+                    },
+                    {
+                        question: '彼は怒っている（　　）だ。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['に違いない', 'に相違ない', 'に間違いない', 'に誤りない'],
+                        answer: 0,
+                        explanation: '「に違いない」は確信を表します。'
+                    },
+                    {
+                        question: '彼女は音楽を聴き（　　）、勉強している。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['ながら', 'つつ', 'がてら', 'かたがた'],
+                        answer: 0,
+                        explanation: '「ながら」は同時動作を表します。'
+                    }
+                ],
+                'listening': [
+                    {
+                        question: '【音声問題】<br><br>会議での発言です。<br><br>「この件については、もう少し時間をかけて検討する必要があると思います。」',
+                        instruction: '話し手は何を言っていますか。',
+                        options: ['検討に時間が必要だ', 'すぐに決定すべきだ', '検討する必要はない', '時間がない'],
+                        answer: 0,
+                        explanation: '「もう少し時間をかけて検討する必要がある」と言っています。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>ラジオ番組での話です。<br><br>「最近の調査によると、若者のテレビ離れが進んでいるようです。インターネットでの動画視聴が増えていることが主な要因とされています。」',
+                        instruction: '調査の結果は何ですか。',
+                        options: ['若者がテレビを見なくなっている', '若者がテレビを見る時間が増えた', 'インターネット利用が減った', '動画配信サービスが減った'],
+                        answer: 0,
+                        explanation: '「若者のテレビ離れが進んでいる」と言っています。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>会社での会話です。<br><br>部長: 田中君、この資料、来週の会議までに準備できる？<br>田中: 申し訳ありません。今週は別のプロジェクトで手一杯でして...来週末なら可能かと。<br>部長: そうか。じゃあ、他の人に頼むよ。',
+                        instruction: '田中さんは資料を準備しますか。',
+                        options: ['いいえ、部長が他の人に頼む', 'はい、来週までに準備する', 'はい、来週末までに準備する', 'いいえ、断った'],
+                        answer: 0,
+                        explanation: '部長が「他の人に頼むよ」と言っています。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>電話での会話です。<br><br>A: もしもし、山田商事ですが、鈴木部長はいらっしゃいますか。<br>B: 申し訳ございません。鈴木はただいま外出しております。<br>A: いつ頃お戻りでしょうか。<br>B: 3時頃には戻る予定です。',
+                        instruction: '鈴木部長は今どこにいますか。',
+                        options: ['外出中', '会議中', '休憩中', '出張中'],
+                        answer: 0,
+                        explanation: '「ただいま外出しております」と言っています。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>ニュースの一部です。<br><br>「政府は来年度の予算案を発表しました。教育関連の予算は前年比5%増加となっており、特にデジタル教育への投資が拡大されています。」',
+                        instruction: '教育予算はどうなりましたか。',
+                        options: ['増加した', '減少した', '変わらない', '半分になった'],
+                        answer: 0,
+                        explanation: '「前年比5%増加」と言っています。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>インタビューの一部です。<br><br>記者: この本を書かれたきっかけは何ですか。<br>著者: 実は、自分の経験をもとに書いたんです。10年前の失敗があったからこそ、今の自分があると思っています。',
+                        instruction: '著者が本を書いたきっかけは何ですか。',
+                        options: ['自分の経験', '編集者からの依頼', '読者からの要望', '友人のアドバイス'],
+                        answer: 0,
+                        explanation: '「自分の経験をもとに書いた」と言っています。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>講演の一部です。<br><br>「環境問題を解決するためには、一人一人の意識改革が必要です。小さな行動の積み重ねが、大きな変化につながります。」',
+                        instruction: '話し手は何が大切だと言っていますか。',
+                        options: ['個人の意識改革', '政府の政策', '企業の取り組み', '技術の進歩'],
+                        answer: 0,
+                        explanation: '「一人一人の意識改革が必要」と言っています。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>店での会話です。<br><br>客: すみません、この商品を交換していただけますか。<br>店員: 申し訳ございません。交換はご購入から2週間以内となっております。<br>客: 買ったのは先月なんですが...<br>店員: 大変申し訳ございませんが、その場合は対応いたしかねます。',
+                        instruction: '客の要求はどうなりましたか。',
+                        options: ['断られた', '受け入れられた', '検討中', '上司に確認する'],
+                        answer: 0,
+                        explanation: '「対応いたしかねます」と断られています。'
+                    }
+                ]
+            },
+            'N1': {
+                'vocabulary': [
+                    {
+                        question: '彼の<span class="underline">洞察力</span>は鋭い。',
+                        instruction: '「洞察力」の読み方を選んでください。',
+                        options: ['どうさつりょく', 'とうさつりょく', 'どさつりょく', 'どうさりょく'],
+                        answer: 0,
+                        explanation: '「洞察力」は「どうさつりょく」と読みます。物事の本質を見抜く力を表します。'
+                    },
+                    {
+                        question: '<span class="underline">顕著</span>な成果を上げた。',
+                        instruction: '「顕著」の読み方を選んでください。',
+                        options: ['けんちょ', 'げんちょ', 'けんしょ', 'げんしょ'],
+                        answer: 0,
+                        explanation: '「顕著」は「けんちょ」と読みます。はっきりと目立つ様子を表します。'
+                    },
+                    {
+                        question: '問題を<span class="underline">抜本的</span>に解決する。',
+                        instruction: '「抜本的」の読み方を選んでください。',
+                        options: ['ばっぽんてき', 'ぬきほんてき', 'ばっぽてき', 'ぬくほんてき'],
+                        answer: 0,
+                        explanation: '「抜本的」は「ばっぽんてき」と読みます。根本から改める様子を表します。'
+                    },
+                    {
+                        question: '彼の<span class="underline">威厳</span>に圧倒された。',
+                        instruction: '「威厳」の読み方を選んでください。',
+                        options: ['いげん', 'いごん', 'みげん', 'みごん'],
+                        answer: 0,
+                        explanation: '「威厳」は「いげん」と読みます。'
+                    },
+                    {
+                        question: '<span class="underline">紛争</span>の解決を図る。',
+                        instruction: '「紛争」の読み方を選んでください。',
+                        options: ['ふんそう', 'びんそう', 'ぶんそう', 'へんそう'],
+                        answer: 0,
+                        explanation: '「紛争」は「ふんそう」と読みます。'
+                    },
+                    {
+                        question: '<span class="underline">曖昧</span>な返事をした。',
+                        instruction: '「曖昧」の読み方を選んでください。',
+                        options: ['あいまい', 'わいまい', 'あいばい', 'わいばい'],
+                        answer: 0,
+                        explanation: '「曖昧」は「あいまい」と読みます。'
+                    },
+                    {
+                        question: '彼女は<span class="underline">憂鬱</span>そうだった。',
+                        instruction: '「憂鬱」の読み方を選んでください。',
+                        options: ['ゆううつ', 'ゆうつ', 'うつ', 'ゆいつ'],
+                        answer: 0,
+                        explanation: '「憂鬱」は「ゆううつ」と読みます。'
+                    },
+                    {
+                        question: '<span class="underline">膨大</span>な資料を分析した。',
+                        instruction: '「膨大」の読み方を選んでください。',
+                        options: ['ぼうだい', 'ほうだい', 'ぼだい', 'ほだい'],
+                        answer: 0,
+                        explanation: '「膨大」は「ぼうだい」と読みます。'
+                    },
+                    {
+                        question: '計画は<span class="underline">頓挫</span>した。',
+                        instruction: '「頓挫」の読み方を選んでください。',
+                        options: ['とんざ', 'どんざ', 'とざ', 'どさ'],
+                        answer: 0,
+                        explanation: '「頓挫」は「とんざ」と読みます。途中で行き詰まることを表します。'
+                    },
+                    {
+                        question: '<span class="underline">稀有</span>な才能の持ち主だ。',
+                        instruction: '「稀有」の読み方を選んでください。',
+                        options: ['けう', 'きゆう', 'けゆう', 'きう'],
+                        answer: 0,
+                        explanation: '「稀有」は「けう」と読みます。非常に珍しいことを表します。'
+                    },
+                    {
+                        question: '（　　）に入る言葉を選んでください。<br><br>彼の発言は（　　）を欠いている。',
+                        instruction: '',
+                        options: ['一貫性', '一貫的', '一貫する', '一貫した'],
+                        answer: 0,
+                        explanation: '「一貫性を欠く」という表現を使います。'
+                    },
+                    {
+                        question: '（　　）に入る言葉を選んでください。<br><br>この問題は（　　）を極めている。',
+                        instruction: '',
+                        options: ['困難', '困難な', '困難に', '困難で'],
+                        answer: 0,
+                        explanation: '「困難を極める」という表現を使います。'
+                    },
+                    {
+                        question: '（　　）に入る言葉を選んでください。<br><br>彼は（　　）の域に達している。',
+                        instruction: '',
+                        options: ['熟練', '熟練な', '熟練した', '熟練して'],
+                        answer: 0,
+                        explanation: '「熟練の域に達する」という表現を使います。'
+                    },
+                    {
+                        question: '（　　）に入る言葉を選んでください。<br><br>彼女の演技は（　　）を帯びていた。',
+                        instruction: '',
+                        options: ['哀愁', '哀愁的', '哀愁な', '哀愁と'],
+                        answer: 0,
+                        explanation: '「哀愁を帯びる」という表現を使います。'
+                    },
+                    {
+                        question: '（　　）に入る言葉を選んでください。<br><br>彼の行動は（　　）に触れる。',
+                        instruction: '',
+                        options: ['逆鱗', '逆鱗的', '逆鱗な', '逆鱗と'],
+                        answer: 0,
+                        explanation: '「逆鱗に触れる」は怒らせることを意味する慣用句です。'
+                    }
+                ],
+                'grammar': [
+                    {
+                        question: '彼は社長（　　）、会社の将来を考えなければならない。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['たるもの', 'ならでは', 'ともなく', 'とあって'],
+                        answer: 0,
+                        explanation: '「たるもの」は「〜である以上」という意味で、その立場にふさわしい行動を求める表現です。'
+                    },
+                    {
+                        question: '彼女の美しさは言葉（　　）表現できない。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['では', 'には', 'とは', 'からは'],
+                        answer: 0,
+                        explanation: '「言葉では表現できない」は手段の限界を表します。'
+                    },
+                    {
+                        question: '戦争が終わって50年（　　）、その傷跡は今も残っている。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['たった今も', 'が経った今も', 'である今も', 'の今も'],
+                        answer: 1,
+                        explanation: '「〜が経った今も」は時間の経過後も続く状態を表します。'
+                    },
+                    {
+                        question: '彼は怒りの（　　）、言ってはならないことを言ってしまった。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['あまり', 'ため', 'せいで', 'かぎり'],
+                        answer: 0,
+                        explanation: '「〜のあまり」は感情が極端になって〜する表現です。'
+                    },
+                    {
+                        question: '彼は黙って聞いていた（　　）、突然立ち上がった。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['かと思うと', 'と思えば', 'かと思えば', 'と思うと'],
+                        answer: 0,
+                        explanation: '「かと思うと」は予想外の急な変化を表します。'
+                    },
+                    {
+                        question: 'この問題（　　）、誰にも解決できないだろう。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['ともなると', 'となると', 'にしても', 'からすると'],
+                        answer: 0,
+                        explanation: '「ともなると」は「〜ほどの難しいものになると」の意味です。'
+                    },
+                    {
+                        question: '彼女は泣き（　　）訴えた。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['ながらに', 'つつも', 'がてら', 'かたわら'],
+                        answer: 0,
+                        explanation: '「〜ながらに」は感情を伴う動作を表します。'
+                    },
+                    {
+                        question: '彼の話（　　）、状況は深刻なようだ。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['によると', 'について', 'に関して', 'にとって'],
+                        answer: 0,
+                        explanation: '「によると」は情報源を示します。'
+                    },
+                    {
+                        question: '彼は努力する（　　）成功した。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['に足るだけ', 'に値するだけ', 'に応じて', 'に際して'],
+                        answer: 0,
+                        explanation: '「に足るだけ」は十分な程度を表します。'
+                    },
+                    {
+                        question: '彼女は医者である（　　）、看護師としても活動している。',
+                        instruction: '（　　）に入る言葉を選んでください。',
+                        options: ['かたわら', 'あまり', 'そばから', 'てまえ'],
+                        answer: 0,
+                        explanation: '「かたわら」は「〜する一方で」の意味です。'
+                    }
+                ],
+                'listening': [
+                    {
+                        question: '【音声問題】<br><br>ニュースの一部です。<br><br>「政府は新たな経済政策を発表し、来年度からの実施を目指すとしています。」',
+                        instruction: '政策はいつから始まりますか。',
+                        options: ['来年度から', '今すぐ', '再来年から', '今年度中'],
+                        answer: 0,
+                        explanation: '「来年度からの実施を目指す」と言っています。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>学会発表の一部です。<br><br>「今回の研究では、従来の方法とは異なるアプローチを採用しました。その結果、処理速度が従来比で約3倍に向上することが確認されました。」',
+                        instruction: '研究の成果は何ですか。',
+                        options: ['処理速度が3倍になった', '費用が3分の1になった', '時間が3分の1になった', 'エラーが3分の1になった'],
+                        answer: 0,
+                        explanation: '「処理速度が従来比で約3倍に向上」と言っています。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>討論番組での発言です。<br><br>「確かに短期的にはコスト増になりますが、長期的な視点で見れば、この投資は必ず回収できると考えています。」',
+                        instruction: '話し手は投資についてどう考えていますか。',
+                        options: ['長期的には価値がある', '投資すべきではない', '短期で回収できる', 'コストが高すぎる'],
+                        answer: 0,
+                        explanation: '「長期的な視点で見れば、この投資は必ず回収できる」と言っています。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>インタビューの一部です。<br><br>記者: この作品を通じて伝えたかったことは何ですか。<br>監督: 人間の弱さと強さ、その両面を描きたかったんです。私たちは皆、弱さを抱えながらも、それを乗り越える力を持っています。',
+                        instruction: '監督が描きたかったのは何ですか。',
+                        options: ['人間の弱さと強さ', '社会問題', '恋愛', '家族の絆'],
+                        answer: 0,
+                        explanation: '「人間の弱さと強さ、その両面を描きたかった」と言っています。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>講演の一部です。<br><br>「グローバル化が進む現代において、異文化理解はますます重要になっています。しかし、それは自国の文化を軽視することではありません。むしろ、自国の文化を深く理解することが、他の文化を理解する基盤となるのです。」',
+                        instruction: '話し手は何が重要だと言っていますか。',
+                        options: ['自国文化と異文化両方の理解', '異文化理解だけ', '自国文化だけ', 'グローバル化への反対'],
+                        answer: 0,
+                        explanation: '自国の文化を深く理解することが他の文化を理解する基盤になると言っています。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>会議での発言です。<br><br>「この案件については、各部門の意見を集約した上で、来週の役員会で最終決定することになりました。それまでに、各部門長は意見書を提出してください。」',
+                        instruction: '最終決定はいつされますか。',
+                        options: ['来週の役員会で', '今日の会議で', '各部門での話し合い後', '意見書提出後すぐに'],
+                        answer: 0,
+                        explanation: '「来週の役員会で最終決定する」と言っています。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>ドキュメンタリーのナレーションです。<br><br>「この地域では、伝統的な農法が今も受け継がれています。しかし、後継者不足により、その存続が危ぶまれています。若い世代への技術継承が急務となっています。」',
+                        instruction: 'この地域の課題は何ですか。',
+                        options: ['後継者不足', '農法の近代化', '土地不足', '水不足'],
+                        answer: 0,
+                        explanation: '「後継者不足により、その存続が危ぶまれている」と言っています。'
+                    },
+                    {
+                        question: '【音声問題】<br><br>ラジオ番組での専門家の発言です。<br><br>「AI技術の発展は、私たちの生活を便利にする一方で、新たな倫理的課題を生み出しています。技術の進歩と倫理のバランスをどう取るか、社会全体で議論していく必要があります。」',
+                        instruction: '専門家は何を訴えていますか。',
+                        options: ['技術と倫理のバランスについての社会的議論', 'AI技術の禁止', 'AI技術の推進', '技術者の責任'],
+                        answer: 0,
+                        explanation: '「技術の進歩と倫理のバランスをどう取るか、社会全体で議論していく必要がある」と言っています。'
+                    }
+                ]
+            }
+        };
+
+        // State
+        let currentLevel = 'N3';
+        let currentSection = 'vocabulary_grammar';
+        let currentYear = '2024-07';
+        let currentQuestionIndex = 0;
+        let userAnswers = [];
+        let timeRemaining = 30 * 60; // 30 minutes in seconds
+        let timerInterval = null;
+        let questions = [];
+        let isReviewMode = false;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Show loading indicator
+            document.querySelector('#startScreen p').innerHTML = 'データを読み込み中...';
+
+            // Preload all exam data
+            await preloadAllData();
+
+            // Level tabs
+            document.querySelectorAll('.level-tab').forEach(tab => {
+                tab.addEventListener('click', async () => {
+                    document.querySelectorAll('.level-tab').forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    currentLevel = tab.dataset.level;
+
+                    // Check if exam is in progress
+                    const examArea = document.getElementById('examArea');
+                    const isExamInProgress = examArea.style.display === 'block';
+
+                    if (isExamInProgress) {
+                        // Stop current timer
+                        if (timerInterval) {
+                            clearInterval(timerInterval);
+                        }
+
+                        // Restart exam with new level
+                        await startExam();
+                    } else {
+                        // Add visual feedback with fade animation
+                        const startScreen = document.getElementById('startScreen');
+                        startScreen.style.opacity = '0.5';
+                        startScreen.style.transition = 'opacity 0.2s';
+
+                        await updateStartScreen();
+
+                        // Restore opacity
+                        setTimeout(() => {
+                            startScreen.style.opacity = '1';
+                        }, 100);
+                    }
+                });
+            });
+
+            // Section tabs
+            document.querySelectorAll('.section-tab').forEach(tab => {
+                tab.addEventListener('click', async () => {
+                    document.querySelectorAll('.section-tab').forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    currentSection = tab.dataset.section;
+
+                    // Check if exam is in progress
+                    const examArea = document.getElementById('examArea');
+                    const isExamInProgress = examArea.style.display === 'block';
+
+                    if (isExamInProgress) {
+                        // Stop current timer
+                        if (timerInterval) {
+                            clearInterval(timerInterval);
+                        }
+
+                        // Restart exam with new section
+                        await startExam();
+                    } else {
+                        // Add visual feedback with fade animation
+                        const startScreen = document.getElementById('startScreen');
+                        startScreen.style.opacity = '0.5';
+                        startScreen.style.transition = 'opacity 0.2s';
+
+                        await updateStartScreen();
+
+                        // Restore opacity
+                        setTimeout(() => {
+                            startScreen.style.opacity = '1';
+                        }, 100);
+                    }
+                });
+            });
+
+            // Year select
+            document.getElementById('yearSelect').addEventListener('change', async (e) => {
+                currentYear = e.target.value;
+
+                // Check if exam is in progress
+                const examArea = document.getElementById('examArea');
+                const isExamInProgress = examArea.style.display === 'block';
+
+                if (isExamInProgress) {
+                    // Stop current timer
+                    if (timerInterval) {
+                        clearInterval(timerInterval);
+                    }
+
+                    // Restart exam with new year
+                    await startExam();
+                } else {
+                    // Add visual feedback with fade animation
+                    const startScreen = document.getElementById('startScreen');
+                    startScreen.style.opacity = '0.5';
+                    startScreen.style.transition = 'opacity 0.2s';
+
+                    await updateStartScreen();
+
+                    // Restore opacity
+                    setTimeout(() => {
+                        startScreen.style.opacity = '1';
+                    }, 100);
+                }
+            });
+
+            await updateStartScreen();
+        });
+
+        // Helper function to get questions for a section (handles old and new format)
+        function getQuestionsForSection(data, section) {
+            if (!data) return [];
+
+            // Direct match for new format
+            if (data[section] && data[section].length > 0) {
+                return data[section];
+            }
+
+            // Handle old format mapping
+            if (section === 'vocabulary_grammar') {
+                const vocab = data.vocabulary || [];
+                const grammar = data.grammar || [];
+                return [...vocab, ...grammar];
+            }
+
+            if (section === 'reading') {
+                return data.reading || [];
+            }
+
+            if (section === 'listening') {
+                return data.listening || [];
+            }
+
+            return [];
+        }
+
+        async function updateStartScreen() {
+            console.log('updateStartScreen called');
+            console.log('currentLevel:', currentLevel, 'currentSection:', currentSection, 'currentYear:', currentYear);
+            const sectionNames = {
+                'vocabulary_grammar': '文字・語彙・文法',
+                'reading': '読解',
+                'listening': '聴解'
+            };
+            const yearText = currentYear.replace('-', '年') + '月';
+
+            // Load exam data for current level
+            await loadExamData(currentLevel);
+            console.log('examData loaded:', examData[currentLevel] ? 'yes' : 'no');
+
+            // Get questions from loaded data or fallback
+            const levelData = examData[currentLevel] || fallbackData[currentLevel] || {};
+            const allQuestions = getQuestionsForSection(levelData, currentSection);
+
+            // Filter by year (if year field exists, otherwise include all)
+            questions = allQuestions.filter(q => !q.year || q.year === currentYear);
+            const questionCount = questions.length;
+
+            document.querySelector('#startScreen h2').textContent =
+                `${currentLevel} ${sectionNames[currentSection]} (${yearText})`;
+
+            // Show different message based on question count
+            if (questionCount === 0) {
+                // Find available years for this section
+                const availableYears = [...new Set(allQuestions.map(q => q.year).filter(y => y))];
+                const availableYearsText = availableYears.length > 0
+                    ? availableYears.map(y => y.replace('-', '年') + '月').join(', ')
+                    : 'なし';
+
+                document.querySelector('#startScreen p').innerHTML =
+                    `<span style="color: #e74c3c; font-weight: bold;">この年度の問題はまだ準備中です。</span><br><br>` +
+                    `利用可能な年度: ${availableYearsText}<br><br>` +
+                    `他の年度を選択してください。`;
+
+                // Disable start button
+                const startBtn = document.querySelector('#startScreen button');
+                if (startBtn) {
+                    startBtn.disabled = true;
+                    startBtn.style.opacity = '0.5';
+                }
+            } else {
+                document.querySelector('#startScreen p').innerHTML =
+                    `問題数: ${questionCount}問<br>制限時間: 30分<br><br>準備ができたら「スタート」ボタンを押してください。`;
+
+                // Enable start button
+                const startBtn = document.querySelector('#startScreen button');
+                if (startBtn) {
+                    startBtn.disabled = false;
+                    startBtn.style.opacity = '1';
+                }
+            }
+        }
+
+        async function startExam() {
+            // Load exam data for current level
+            await loadExamData(currentLevel);
+            console.log('examData loaded:', examData[currentLevel] ? 'yes' : 'no');
+
+            // Get questions from loaded data or fallback, filtered by year
+            const levelData = examData[currentLevel] || fallbackData[currentLevel] || {};
+            const allQuestions = getQuestionsForSection(levelData, currentSection);
+            questions = allQuestions.filter(q => !q.year || q.year === currentYear);
+
+            if (questions.length === 0) {
+                alert('この年度・セクションの問題はまだ準備中です。他の年度を選択してください。');
+                return;
+            }
+
+            currentQuestionIndex = 0;
+            userAnswers = new Array(questions.length).fill(-1);
+            timeRemaining = 30 * 60;
+            isReviewMode = false;
+
+            document.getElementById('startScreen').style.display = 'none';
+            document.getElementById('examArea').style.display = 'block';
+
+            // Update info
+            document.getElementById('infoLevel').textContent = currentLevel;
+            const sectionNames = { 'vocabulary_grammar': '文字・語彙・文法', 'reading': '読解', 'listening': '聴解' };
+            document.getElementById('infoSection').textContent = sectionNames[currentSection];
+
+            // Create question dots
+            createQuestionDots();
+
+            // Show first question
+            showQuestion(0);
+
+            // Start timer
+            startTimer();
+        }
+
+        function createQuestionDots() {
+            const container = document.getElementById('questionDots');
+            container.innerHTML = '';
+            questions.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = 'q-dot';
+                dot.textContent = index + 1;
+                dot.onclick = () => showQuestion(index);
+                container.appendChild(dot);
+            });
+        }
+
+        function updateQuestionDots() {
+            const dots = document.querySelectorAll('.q-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.remove('current', 'answered', 'wrong-answer');
+                if (index === currentQuestionIndex) {
+                    dot.classList.add('current');
+                } else if (userAnswers[index] !== -1) {
+                    if (isReviewMode && userAnswers[index] !== questions[index].answer) {
+                        dot.classList.add('wrong-answer');
+                    } else {
+                        dot.classList.add('answered');
+                    }
+                }
+            });
+        }
+
+        let currentMondai = null;
+
+        function showQuestion(index) {
+            currentQuestionIndex = index;
+            const question = questions[index];
+
+            // Check if we need to show mondai header
+            let mondaiHeader = document.getElementById('mondaiHeader');
+            if (!mondaiHeader) {
+                mondaiHeader = document.createElement('div');
+                mondaiHeader.id = 'mondaiHeader';
+                const questionArea = document.querySelector('.question-area');
+                questionArea.insertBefore(mondaiHeader, questionArea.firstChild);
+            }
+
+            if (question.mondai && question.mondai !== currentMondai) {
+                currentMondai = question.mondai;
+                mondaiHeader.innerHTML = `
+                    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 15px 20px; border-radius: 10px; margin-bottom: 15px;">
+                        <h3 style="margin: 0 0 8px 0; font-size: 1.3em;">${question.mondai_title || '問題' + question.mondai}</h3>
+                        <p style="margin: 0; font-size: 0.95em; opacity: 0.95;">${question.mondai_description || ''}</p>
+                    </div>
+                `;
+                mondaiHeader.style.display = 'block';
+            } else if (!question.mondai) {
+                mondaiHeader.style.display = 'none';
+                currentMondai = null;
+            }
+
+            // Display passage for reading comprehension questions (問題7)
+            let passageDiv = document.getElementById('passageDiv');
+            if (!passageDiv) {
+                passageDiv = document.createElement('div');
+                passageDiv.id = 'passageDiv';
+                passageDiv.style.cssText = 'background: #f8f9fa; border-left: 4px solid #667eea; padding: 15px 20px; margin-bottom: 20px; border-radius: 0 8px 8px 0; line-height: 1.8; font-size: 1em;';
+                const questionArea = document.querySelector('.question-area');
+                const mondaiHeaderEl = document.getElementById('mondaiHeader');
+                if (mondaiHeaderEl && mondaiHeaderEl.nextSibling) {
+                    questionArea.insertBefore(passageDiv, mondaiHeaderEl.nextSibling);
+                }
+            }
+            if (question.passage) {
+                passageDiv.innerHTML = question.passage;
+                passageDiv.style.display = 'block';
+            } else {
+                passageDiv.style.display = 'none';
+            }
+
+            // Update question number
+            const qNum = question.question_number || (index + 1);
+            document.getElementById('questionNumber').textContent = `問 ${qNum}`;
+
+            // Update progress
+            const progress = ((index + 1) / questions.length) * 100;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+            document.getElementById('progressText').textContent = `問 ${qNum} / ${questions.length}問`;
+
+            // Update question text
+            let questionHTML = question.question;
+            document.getElementById('questionText').innerHTML = questionHTML;
+
+            // Update options
+            const optionsGrid = document.getElementById('optionsGrid');
+            optionsGrid.innerHTML = '';
+            question.options.forEach((option, optIndex) => {
+                const optionDiv = document.createElement('div');
+                optionDiv.className = 'option';
+
+                if (userAnswers[index] === optIndex) {
+                    optionDiv.classList.add('selected');
+                }
+
+                if (isReviewMode) {
+                    if (optIndex === question.answer) {
+                        optionDiv.classList.add('correct');
+                    } else if (userAnswers[index] === optIndex) {
+                        optionDiv.classList.add('wrong');
+                    }
+                }
+
+                optionDiv.innerHTML = `
+                    <div class="option-number">${optIndex + 1}</div>
+                    <div class="option-text">${option}</div>
+                `;
+
+                if (!isReviewMode) {
+                    optionDiv.onclick = () => selectOption(optIndex);
+                }
+
+                optionsGrid.appendChild(optionDiv);
+            });
+
+            // Update navigation buttons
+            const submitBtn = document.querySelector('.nav-btn.submit');
+            const nextBtn = document.querySelector('.nav-btn.next');
+
+            if (index === questions.length - 1) {
+                nextBtn.style.display = 'none';
+                if (!isReviewMode) {
+                    submitBtn.style.display = 'inline-block';
+                }
+            } else {
+                nextBtn.style.display = 'inline-block';
+                submitBtn.style.display = 'none';
+            }
+
+            // Update score
+            updateScore();
+            updateQuestionDots();
+        }
+
+        function selectOption(optIndex) {
+            userAnswers[currentQuestionIndex] = optIndex;
+            showQuestion(currentQuestionIndex);
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                showQuestion(currentQuestionIndex - 1);
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                showQuestion(currentQuestionIndex + 1);
+            }
+        }
+
+        function updateScore() {
+            const answered = userAnswers.filter(a => a !== -1).length;
+            const correct = userAnswers.filter((a, i) => a === questions[i]?.answer).length;
+            document.getElementById('infoScore').textContent = `${correct}/${answered}`;
+        }
+
+        function startTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+
+                const minutes = Math.floor(timeRemaining / 60);
+                const seconds = timeRemaining % 60;
+                const timeStr = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+                document.getElementById('timerDisplay').textContent = timeStr;
+                document.getElementById('infoTime').textContent = timeStr;
+
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    submitExam();
+                }
+            }, 1000);
+        }
+
+        function submitExam() {
+            if (timerInterval) clearInterval(timerInterval);
+
+            const correct = userAnswers.filter((a, i) => a === questions[i]?.answer).length;
+            const total = questions.length;
+            const percentage = Math.round((correct / total) * 100);
+
+            document.getElementById('finalScore').textContent = `${percentage}%`;
+            document.getElementById('correctCount').textContent = correct;
+            document.getElementById('wrongCount').textContent = total - correct;
+
+            document.getElementById('resultsModal').classList.add('show');
+        }
+
+        function retryExam() {
+            document.getElementById('resultsModal').classList.remove('show');
+            startExam();
+        }
+
+        function reviewExam() {
+            document.getElementById('resultsModal').classList.remove('show');
+            isReviewMode = true;
+            document.querySelector('.nav-btn.submit').style.display = 'none';
+            showQuestion(0);
+            updateQuestionDots();
+        }
+    </script>
+</body>
+</html>

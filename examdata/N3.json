@@ -1,0 +1,2036 @@
+{
+  "vocabulary": [
+    {
+      "question": "<span class=\"underline\">暖かい</span>ですね。",
+      "instruction": "「暖かい」の読み方を選んでください。",
+      "options": [
+        "あたたかい",
+        "あつかい",
+        "つめたい",
+        "さむかい"
+      ],
+      "answer": 0,
+      "explanation": "「暖かい」は「あたたかい」と読みます。",
+      "year": "2024-07"
+    },
+    {
+      "question": "彼は<span class=\"underline\">親切</span>な人です。",
+      "instruction": "「親切」の読み方を選んでください。",
+      "options": [
+        "しんせつ",
+        "しんきり",
+        "おやきり",
+        "ちかきり"
+      ],
+      "answer": 0,
+      "explanation": "「親切」は「しんせつ」と読みます。",
+      "year": "2024-07"
+    },
+    {
+      "question": "電車が<span class=\"underline\">遅れて</span>いる。",
+      "instruction": "「遅れて」の読み方を選んでください。",
+      "options": [
+        "おくれて",
+        "おそれて",
+        "くずれて",
+        "はずれて"
+      ],
+      "answer": 0,
+      "explanation": "「遅れる」は「おくれる」と読みます。",
+      "year": "2024-07"
+    },
+    {
+      "question": "この問題は<span class=\"underline\">簡単</span>です。",
+      "instruction": "「簡単」の読み方を選んでください。",
+      "options": [
+        "かんたん",
+        "かんだん",
+        "けんたん",
+        "げんたん"
+      ],
+      "answer": 0,
+      "explanation": "「簡単」は「かんたん」と読みます。",
+      "year": "2024-07"
+    },
+    {
+      "question": "彼女は<span class=\"underline\">美しい</span>声で歌った。",
+      "instruction": "「美しい」の読み方を選んでください。",
+      "options": [
+        "うつくしい",
+        "たのしい",
+        "やさしい",
+        "くわしい"
+      ],
+      "answer": 0,
+      "explanation": "「美しい」は「うつくしい」と読みます。",
+      "year": "2024-07"
+    },
+    {
+      "question": "<span class=\"underline\">経験</span>が必要です。",
+      "instruction": "「経験」の読み方を選んでください。",
+      "options": [
+        "けいけん",
+        "きょうけん",
+        "けっけん",
+        "きょけん"
+      ],
+      "answer": 0,
+      "explanation": "「経験」は「けいけん」と読みます。",
+      "year": "2023-12"
+    },
+    {
+      "question": "明日の会議は<span class=\"underline\">予定</span>通りです。",
+      "instruction": "「予定」の読み方を選んでください。",
+      "options": [
+        "よてい",
+        "よじょう",
+        "よさだ",
+        "よせい"
+      ],
+      "answer": 0,
+      "explanation": "「予定」は「よてい」と読みます。",
+      "year": "2023-12"
+    },
+    {
+      "question": "彼は料理が<span class=\"underline\">得意</span>です。",
+      "instruction": "「得意」の読み方を選んでください。",
+      "options": [
+        "とくい",
+        "とくぎ",
+        "えい",
+        "うい"
+      ],
+      "answer": 0,
+      "explanation": "「得意」は「とくい」と読みます。",
+      "year": "2023-12"
+    },
+    {
+      "question": "ここでタバコを吸うのは<span class=\"underline\">禁止</span>です。",
+      "instruction": "「禁止」の読み方を選んでください。",
+      "options": [
+        "きんし",
+        "きんじ",
+        "きし",
+        "きじ"
+      ],
+      "answer": 0,
+      "explanation": "「禁止」は「きんし」と読みます。",
+      "year": "2023-12"
+    },
+    {
+      "question": "彼の話は<span class=\"underline\">明確</span>でわかりやすい。",
+      "instruction": "「明確」の読み方を選んでください。",
+      "options": [
+        "めいかく",
+        "めいがく",
+        "みょうかく",
+        "みょうがく"
+      ],
+      "answer": 0,
+      "explanation": "「明確」は「めいかく」と読みます。",
+      "year": "2023-12"
+    },
+    {
+      "question": "<span class=\"underline\">影響</span>を受けました。",
+      "instruction": "「影響」の読み方を選んでください。",
+      "options": [
+        "えいきょう",
+        "いんきょう",
+        "かげひびき",
+        "えきょう"
+      ],
+      "answer": 0,
+      "explanation": "「影響」は「えいきょう」と読みます。",
+      "year": "2023-07"
+    },
+    {
+      "question": "<span class=\"underline\">環境</span>問題について話し合いました。",
+      "instruction": "「環境」の読み方を選んでください。",
+      "options": [
+        "かんきょう",
+        "かんけい",
+        "わんきょう",
+        "えんきょう"
+      ],
+      "answer": 0,
+      "explanation": "「環境」は「かんきょう」と読みます。",
+      "year": "2023-07"
+    },
+    {
+      "question": "<span class=\"underline\">状況</span>を説明してください。",
+      "instruction": "「状況」の読み方を選んでください。",
+      "options": [
+        "じょうきょう",
+        "じょうけい",
+        "じょうこう",
+        "じょきょう"
+      ],
+      "answer": 0,
+      "explanation": "「状況」は「じょうきょう」と読みます。",
+      "year": "2023-07"
+    },
+    {
+      "question": "<span class=\"underline\">貿易</span>会社で働いています。",
+      "instruction": "「貿易」の読み方を選んでください。",
+      "options": [
+        "ぼうえき",
+        "ばいえき",
+        "ぼえき",
+        "ばえき"
+      ],
+      "answer": 0,
+      "explanation": "「貿易」は「ぼうえき」と読みます。",
+      "year": "2023-07"
+    },
+    {
+      "question": "<span class=\"underline\">輸出</span>が増えました。",
+      "instruction": "「輸出」の読み方を選んでください。",
+      "options": [
+        "ゆしゅつ",
+        "ゆしゅう",
+        "ゆでる",
+        "ゆにゅう"
+      ],
+      "answer": 0,
+      "explanation": "「輸出」は「ゆしゅつ」と読みます。",
+      "year": "2023-07"
+    },
+    {
+      "question": "<span class=\"underline\">輸入</span>品が安くなりました。",
+      "instruction": "「輸入」の読み方を選んでください。",
+      "options": [
+        "ゆにゅう",
+        "ゆにゅ",
+        "ゆいれ",
+        "ゆいり"
+      ],
+      "answer": 0,
+      "explanation": "「輸入」は「ゆにゅう」と読みます。",
+      "year": "2022-12"
+    },
+    {
+      "question": "<span class=\"underline\">政治</span>に興味があります。",
+      "instruction": "「政治」の読み方を選んでください。",
+      "options": [
+        "せいじ",
+        "せいち",
+        "しょうじ",
+        "しょうち"
+      ],
+      "answer": 0,
+      "explanation": "「政治」は「せいじ」と読みます。",
+      "year": "2022-12"
+    },
+    {
+      "question": "<span class=\"underline\">経済</span>が発展しています。",
+      "instruction": "「経済」の読み方を選んでください。",
+      "options": [
+        "けいざい",
+        "けいさい",
+        "きょうざい",
+        "きょうさい"
+      ],
+      "answer": 0,
+      "explanation": "「経済」は「けいざい」と読みます。",
+      "year": "2022-12"
+    },
+    {
+      "question": "<span class=\"underline\">社会</span>問題について考えます。",
+      "instruction": "「社会」の読み方を選んでください。",
+      "options": [
+        "しゃかい",
+        "しゃえ",
+        "しゃがい",
+        "じゃかい"
+      ],
+      "answer": 0,
+      "explanation": "「社会」は「しゃかい」と読みます。",
+      "year": "2022-12"
+    },
+    {
+      "question": "<span class=\"underline\">文化</span>の違いを感じます。",
+      "instruction": "「文化」の読み方を選んでください。",
+      "options": [
+        "ぶんか",
+        "もんか",
+        "ぶんけ",
+        "もんけ"
+      ],
+      "answer": 0,
+      "explanation": "「文化」は「ぶんか」と読みます。",
+      "year": "2022-12"
+    },
+    {
+      "question": "<span class=\"underline\">伝統</span>的な行事です。",
+      "instruction": "「伝統」の読み方を選んでください。",
+      "options": [
+        "でんとう",
+        "てんとう",
+        "でんとお",
+        "てんどう"
+      ],
+      "answer": 0,
+      "explanation": "「伝統」は「でんとう」と読みます。",
+      "year": "2022-07"
+    },
+    {
+      "question": "<span class=\"underline\">歴史</span>を学んでいます。",
+      "instruction": "「歴史」の読み方を選んでください。",
+      "options": [
+        "れきし",
+        "れいし",
+        "りきし",
+        "りいし"
+      ],
+      "answer": 0,
+      "explanation": "「歴史」は「れきし」と読みます。",
+      "year": "2022-07"
+    },
+    {
+      "question": "<span class=\"underline\">地理</span>に詳しいです。",
+      "instruction": "「地理」の読み方を選んでください。",
+      "options": [
+        "ちり",
+        "じり",
+        "ちぎり",
+        "じぎり"
+      ],
+      "answer": 0,
+      "explanation": "「地理」は「ちり」と読みます。",
+      "year": "2022-07"
+    },
+    {
+      "question": "<span class=\"underline\">科学</span>技術が進歩しています。",
+      "instruction": "「科学」の読み方を選んでください。",
+      "options": [
+        "かがく",
+        "かかく",
+        "きがく",
+        "きかく"
+      ],
+      "answer": 0,
+      "explanation": "「科学」は「かがく」と読みます。",
+      "year": "2022-07"
+    },
+    {
+      "question": "<span class=\"underline\">技術</span>者になりたいです。",
+      "instruction": "「技術」の読み方を選んでください。",
+      "options": [
+        "ぎじゅつ",
+        "ぎじゅう",
+        "きじゅつ",
+        "きじゅう"
+      ],
+      "answer": 0,
+      "explanation": "「技術」は「ぎじゅつ」と読みます。",
+      "year": "2022-07"
+    },
+    {
+      "question": "（　　）に入る言葉を選んでください。<br><br>この映画は（　　）評判がいいです。",
+      "instruction": "",
+      "options": [
+        "とても",
+        "たくさん",
+        "ぜんぜん",
+        "あまり"
+      ],
+      "answer": 0,
+      "explanation": "肯定文で程度を表す「とても」を使います。",
+      "year": "2021-12"
+    },
+    {
+      "question": "（　　）に入る言葉を選んでください。<br><br>彼女は日本語（　　）中国語も話せます。",
+      "instruction": "",
+      "options": [
+        "だけでなく",
+        "ばかりに",
+        "どころか",
+        "ながらも"
+      ],
+      "answer": 0,
+      "explanation": "「だけでなく〜も」は追加を表します。",
+      "year": "2021-12"
+    },
+    {
+      "question": "（　　）に入る言葉を選んでください。<br><br>この店は（　　）人気があります。",
+      "instruction": "",
+      "options": [
+        "非常に",
+        "非常",
+        "非常の",
+        "非常な"
+      ],
+      "answer": 0,
+      "explanation": "「非常に」は程度を表す副詞です。",
+      "year": "2021-12"
+    },
+    {
+      "question": "（　　）に入る言葉を選んでください。<br><br>彼の話は（　　）信じられません。",
+      "instruction": "",
+      "options": [
+        "とても",
+        "とても",
+        "あまり",
+        "たくさん"
+      ],
+      "answer": 0,
+      "explanation": "「とても〜ない」は強い否定を表します。",
+      "year": "2021-12"
+    },
+    {
+      "question": "（　　）に入る言葉を選んでください。<br><br>この本は（　　）読みやすいです。",
+      "instruction": "",
+      "options": [
+        "比較的",
+        "比較",
+        "比較の",
+        "比較な"
+      ],
+      "answer": 0,
+      "explanation": "「比較的」は程度を表す副詞です。",
+      "year": "2021-12"
+    },
+    {
+      "question": "（　　）に入る言葉を選んでください。<br><br>会議の（　　）、食事に行きましょう。",
+      "instruction": "",
+      "options": [
+        "後で",
+        "前で",
+        "間で",
+        "中で"
+      ],
+      "answer": 0,
+      "explanation": "「〜の後で」は時間の順序を表します。",
+      "year": "2021-07"
+    },
+    {
+      "question": "（　　）に入る言葉を選んでください。<br><br>彼は（　　）仕事熱心です。",
+      "instruction": "",
+      "options": [
+        "実に",
+        "実",
+        "実の",
+        "実な"
+      ],
+      "answer": 0,
+      "explanation": "「実に」は程度を表す副詞です。",
+      "year": "2021-07"
+    },
+    {
+      "question": "（　　）に入る言葉を選んでください。<br><br>この問題は（　　）難しいです。",
+      "instruction": "",
+      "options": [
+        "かなり",
+        "かなりの",
+        "かなりな",
+        "かなりに"
+      ],
+      "answer": 0,
+      "explanation": "「かなり」は程度を表す副詞です。",
+      "year": "2021-07"
+    },
+    {
+      "question": "（　　）に入る言葉を選んでください。<br><br>彼女は（　　）優秀な学生です。",
+      "instruction": "",
+      "options": [
+        "極めて",
+        "極めての",
+        "極めてな",
+        "極めに"
+      ],
+      "answer": 0,
+      "explanation": "「極めて」は最高の程度を表す副詞です。",
+      "year": "2021-07"
+    },
+    {
+      "question": "（　　）に入る言葉を選んでください。<br><br>この料理は（　　）おいしいです。",
+      "instruction": "",
+      "options": [
+        "実際に",
+        "実際",
+        "実際の",
+        "実際な"
+      ],
+      "answer": 0,
+      "explanation": "「実際に」は本当にという意味の副詞です。",
+      "year": "2021-07"
+    },
+    {
+      "question": "<span class=\"underline\">発展</span>している国です。",
+      "instruction": "「発展」の読み方を選んでください。",
+      "options": [
+        "はってん",
+        "はつてん",
+        "はっでん",
+        "はつでん"
+      ],
+      "answer": 0,
+      "explanation": "「発展」は「はってん」と読みます。",
+      "year": "2020-12"
+    },
+    {
+      "question": "<span class=\"underline\">成長</span>が早いです。",
+      "instruction": "「成長」の読み方を選んでください。",
+      "options": [
+        "せいちょう",
+        "せいちょ",
+        "なりちょう",
+        "なるちょう"
+      ],
+      "answer": 0,
+      "explanation": "「成長」は「せいちょう」と読みます。",
+      "year": "2020-12"
+    },
+    {
+      "question": "<span class=\"underline\">改善</span>が必要です。",
+      "instruction": "「改善」の読み方を選んでください。",
+      "options": [
+        "かいぜん",
+        "かいせん",
+        "かいよし",
+        "かいよく"
+      ],
+      "answer": 0,
+      "explanation": "「改善」は「かいぜん」と読みます。",
+      "year": "2020-12"
+    },
+    {
+      "question": "<span class=\"underline\">解決</span>しました。",
+      "instruction": "「解決」の読み方を選んでください。",
+      "options": [
+        "かいけつ",
+        "かいけす",
+        "げけつ",
+        "げけす"
+      ],
+      "answer": 0,
+      "explanation": "「解決」は「かいけつ」と読みます。",
+      "year": "2020-12"
+    },
+    {
+      "question": "<span class=\"underline\">達成</span>できました。",
+      "instruction": "「達成」の読み方を選んでください。",
+      "options": [
+        "たっせい",
+        "たつせい",
+        "たっしょう",
+        "たつしょう"
+      ],
+      "answer": 0,
+      "explanation": "「達成」は「たっせい」と読みます。",
+      "year": "2020-12"
+    },
+    {
+      "question": "<span class=\"underline\">努力</span>しています。",
+      "instruction": "「努力」の読み方を選んでください。",
+      "options": [
+        "どりょく",
+        "どりき",
+        "のりょく",
+        "のりき"
+      ],
+      "answer": 0,
+      "explanation": "「努力」は「どりょく」と読みます。",
+      "year": "2020-07"
+    },
+    {
+      "question": "<span class=\"underline\">挑戦</span>します。",
+      "instruction": "「挑戦」の読み方を選んでください。",
+      "options": [
+        "ちょうせん",
+        "いどせん",
+        "ちょせん",
+        "いどむせん"
+      ],
+      "answer": 0,
+      "explanation": "「挑戦」は「ちょうせん」と読みます。",
+      "year": "2020-07"
+    },
+    {
+      "question": "<span class=\"underline\">成功</span>しました。",
+      "instruction": "「成功」の読み方を選んでください。",
+      "options": [
+        "せいこう",
+        "なりこう",
+        "せいく",
+        "なりく"
+      ],
+      "answer": 0,
+      "explanation": "「成功」は「せいこう」と読みます。",
+      "year": "2020-07"
+    },
+    {
+      "question": "<span class=\"underline\">失敗</span>しました。",
+      "instruction": "「失敗」の読み方を選んでください。",
+      "options": [
+        "しっぱい",
+        "しつはい",
+        "しっばい",
+        "しつばい"
+      ],
+      "answer": 0,
+      "explanation": "「失敗」は「しっぱい」と読みます。",
+      "year": "2020-07"
+    },
+    {
+      "question": "<span class=\"underline\">責任</span>を取ります。",
+      "instruction": "「責任」の読み方を選んでください。",
+      "options": [
+        "せきにん",
+        "せきじん",
+        "せきみ",
+        "せきしん"
+      ],
+      "answer": 0,
+      "explanation": "「責任」は「せきにん」と読みます。",
+      "year": "2020-07"
+    },
+    {
+      "question": "<span class=\"underline\">義務</span>があります。",
+      "instruction": "「義務」の読み方を選んでください。",
+      "options": [
+        "ぎむ",
+        "ぎぶ",
+        "よしむ",
+        "よしぶ"
+      ],
+      "answer": 0,
+      "explanation": "「義務」は「ぎむ」と読みます。",
+      "year": "2019-12"
+    },
+    {
+      "question": "<span class=\"underline\">権利</span>を主張します。",
+      "instruction": "「権利」の読み方を選んでください。",
+      "options": [
+        "けんり",
+        "ごんり",
+        "けんりき",
+        "ごんりき"
+      ],
+      "answer": 0,
+      "explanation": "「権利」は「けんり」と読みます。",
+      "year": "2019-12"
+    },
+    {
+      "question": "<span class=\"underline\">自由</span>に使ってください。",
+      "instruction": "「自由」の読み方を選んでください。",
+      "options": [
+        "じゆう",
+        "しゆう",
+        "じゆ",
+        "しゆ"
+      ],
+      "answer": 0,
+      "explanation": "「自由」は「じゆう」と読みます。",
+      "year": "2019-12"
+    },
+    {
+      "question": "<span class=\"underline\">平和</span>を願います。",
+      "instruction": "「平和」の読み方を選んでください。",
+      "options": [
+        "へいわ",
+        "ひらわ",
+        "へいか",
+        "ひらか"
+      ],
+      "answer": 0,
+      "explanation": "「平和」は「へいわ」と読みます。",
+      "year": "2019-12"
+    },
+    {
+      "question": "<span class=\"underline\">安心</span>しました。",
+      "instruction": "「安心」の読み方を選んでください。",
+      "options": [
+        "あんしん",
+        "やすごころ",
+        "あんこころ",
+        "やすしん"
+      ],
+      "answer": 0,
+      "explanation": "「安心」は「あんしん」と読みます。",
+      "year": "2019-12"
+    },
+    {
+      "question": "その会社の<span class=\"underline\">情報</span>はインターネットで見ました。",
+      "instruction": "「情報」の読み方を選んでください。",
+      "options": [
+        "じょうほう",
+        "ちょうほう",
+        "じょうぼう",
+        "ちょうぼう"
+      ],
+      "answer": 0,
+      "explanation": "「情報」は「じょうほう」と読みます。",
+      "year": "2022-07"
+    },
+    {
+      "question": "兄は、<span class=\"underline\">現在</span>は海外で働いています。",
+      "instruction": "「現在」の読み方を選んでください。",
+      "options": [
+        "けんさい",
+        "げんさい",
+        "けんざい",
+        "げんざい"
+      ],
+      "answer": 3,
+      "explanation": "「現在」は「げんざい」と読みます。",
+      "year": "2022-07"
+    },
+    {
+      "question": "小さくて<span class=\"underline\">丸い</span>いすがほしいです。",
+      "instruction": "「丸い」の読み方を選んでください。",
+      "options": [
+        "くろい",
+        "まるい",
+        "あおい",
+        "かるい"
+      ],
+      "answer": 1,
+      "explanation": "「丸い」は「まるい」と読みます。",
+      "year": "2022-07"
+    },
+    {
+      "question": "その歌は日本でも<span class=\"underline\">有名</span>です。",
+      "instruction": "「有名」の読み方を選んでください。",
+      "options": [
+        "ゆめ",
+        "ゆめい",
+        "ゆうめ",
+        "ゆうめい"
+      ],
+      "answer": 3,
+      "explanation": "「有名」は「ゆうめい」と読みます。",
+      "year": "2022-07"
+    },
+    {
+      "question": "そこの通りの<span class=\"underline\">角</span>に、コンビニができたそうだ。",
+      "instruction": "「角」の読み方を選んでください。",
+      "options": [
+        "かど",
+        "そば",
+        "はし",
+        "よこ"
+      ],
+      "answer": 0,
+      "explanation": "「角」は「かど」と読みます。",
+      "year": "2022-07"
+    },
+    {
+      "question": "大切なものなので、丁寧に<span class=\"underline\">包んで</span>ください。",
+      "instruction": "「包んで」の読み方を選んでください。",
+      "options": [
+        "たたんで",
+        "はこんで",
+        "すすんで",
+        "つつんで"
+      ],
+      "answer": 3,
+      "explanation": "「包む」は「つつむ」と読みます。",
+      "year": "2022-07"
+    },
+    {
+      "question": "それは、もう<span class=\"underline\">計算</span>しました。",
+      "instruction": "「計算」の読み方を選んでください。",
+      "options": [
+        "けいけん",
+        "けけん",
+        "けいさん",
+        "けさん"
+      ],
+      "answer": 2,
+      "explanation": "「計算」は「けいさん」と読みます。",
+      "year": "2022-07"
+    },
+    {
+      "question": "この国の人は<span class=\"underline\">自然</span>を大切にしている。",
+      "instruction": "「自然」の読み方を選んでください。",
+      "options": [
+        "しぜん",
+        "じぜん",
+        "しせん",
+        "じせん"
+      ],
+      "answer": 0,
+      "explanation": "「自然」は「しぜん」と読みます。",
+      "year": "2021-12"
+    },
+    {
+      "question": "あと30<span class=\"underline\">秒</span>で完成します。",
+      "instruction": "「秒」の読み方を選んでください。",
+      "options": [
+        "じょう",
+        "しょう",
+        "びょう",
+        "ひょう"
+      ],
+      "answer": 2,
+      "explanation": "「秒」は「びょう」と読みます。",
+      "year": "2021-12"
+    },
+    {
+      "question": "夏休みも<span class=\"underline\">残り</span>三日になってしまった。",
+      "instruction": "「残り」の読み方を選んでください。",
+      "options": [
+        "もとり",
+        "おわり",
+        "のこり",
+        "あまり"
+      ],
+      "answer": 2,
+      "explanation": "「残り」は「のこり」と読みます。",
+      "year": "2021-12"
+    },
+    {
+      "question": "このグラフは、人口の<span class=\"underline\">増減</span>を表している。",
+      "instruction": "「増減」の読み方を選んでください。",
+      "options": [
+        "ぞうけん",
+        "ぞうげん",
+        "じょうけん",
+        "じょうげん"
+      ],
+      "answer": 1,
+      "explanation": "「増減」は「ぞうげん」と読みます。",
+      "year": "2021-12"
+    },
+    {
+      "question": "面接の結果は、1週間以内に<span class=\"underline\">通知</span>します。",
+      "instruction": "「通知」の読み方を選んでください。",
+      "options": [
+        "つうち",
+        "とおち",
+        "つうし",
+        "とおし"
+      ],
+      "answer": 0,
+      "explanation": "「通知」は「つうち」と読みます。",
+      "year": "2021-12"
+    },
+    {
+      "question": "庭に<span class=\"underline\">生えた</span>草にきれいな花が咲いていた。",
+      "instruction": "「生えた」の読み方を選んでください。",
+      "options": [
+        "はえた",
+        "せいえた",
+        "しようえた",
+        "うえた"
+      ],
+      "answer": 0,
+      "explanation": "「生える」は「はえる」と読みます。",
+      "year": "2021-12"
+    },
+    {
+      "question": "外国で一人暮らしをしているので、国の料理が<span class=\"underline\">恋しく</span>なる。",
+      "instruction": "「恋しく」の読み方を選んでください。",
+      "options": [
+        "なつかしく",
+        "うれしく",
+        "ほしく",
+        "こいしく"
+      ],
+      "answer": 3,
+      "explanation": "「恋しい」は「こいしい」と読みます。",
+      "year": "2021-12"
+    },
+    {
+      "question": "これを<span class=\"underline\">郵送</span>してください。",
+      "instruction": "「郵送」の読み方を選んでください。",
+      "options": [
+        "ほそう",
+        "ほうそう",
+        "ゆそう",
+        "ゆうそう"
+      ],
+      "answer": 3,
+      "explanation": "「郵送」は「ゆうそう」と読みます。",
+      "year": "2021-12"
+    },
+    {
+      "question": "あそこにいるのが私の<span class=\"underline\">娘</span>です。",
+      "instruction": "「むすめ」の漢字を選んでください。",
+      "options": [
+        "妹",
+        "嫁",
+        "婦",
+        "娘"
+      ],
+      "answer": 3,
+      "explanation": "「むすめ」は「娘」と書きます。",
+      "year": "2021-12"
+    },
+    {
+      "question": "彼女は頭もいいし、<span class=\"underline\">性格</span>もいい。",
+      "instruction": "「せいかく」の漢字を選んでください。",
+      "options": [
+        "性格",
+        "正格",
+        "性確",
+        "正確"
+      ],
+      "answer": 0,
+      "explanation": "「せいかく」は「性格」と書きます。",
+      "year": "2021-12"
+    },
+    {
+      "question": "それは誰かの<span class=\"underline\">命令</span>ですか。",
+      "instruction": "「めいれい」の漢字を選んでください。",
+      "options": [
+        "命例",
+        "命令",
+        "企例",
+        "企令"
+      ],
+      "answer": 1,
+      "explanation": "「めいれい」は「命令」と書きます。",
+      "year": "2021-12"
+    },
+    {
+      "question": "銀行へお金を<span class=\"underline\">預け</span>に行ってきます。",
+      "instruction": "「あずけ」の漢字を選んでください。",
+      "options": [
+        "預け",
+        "借け",
+        "替け",
+        "貯け"
+      ],
+      "answer": 0,
+      "explanation": "「あずける」は「預ける」と書きます。",
+      "year": "2021-12"
+    },
+    {
+      "question": "テストの点数が<span class=\"underline\">予想</span>以上によかった。",
+      "instruction": "「よそう」の漢字を選んでください。",
+      "options": [
+        "予習",
+        "予測",
+        "予想",
+        "予定"
+      ],
+      "answer": 2,
+      "explanation": "「よそう」は「予想」と書きます。",
+      "year": "2021-12"
+    },
+    {
+      "question": "これはとても<span class=\"underline\">高価</span>なものだ。",
+      "instruction": "「こうか」の漢字を選んでください。",
+      "options": [
+        "高値",
+        "高費",
+        "高給",
+        "高価"
+      ],
+      "answer": 3,
+      "explanation": "「こうか」は「高価」と書きます。",
+      "year": "2021-12"
+    },
+    {
+      "question": "このビルの<span class=\"underline\">裏</span>に小さなレストランがあります。",
+      "instruction": "「裏」の読み方を選んでください。",
+      "options": [
+        "そば",
+        "よこ",
+        "かげ",
+        "うら"
+      ],
+      "answer": 3,
+      "explanation": "「裏」は「うら」と読みます。",
+      "year": "2021-07"
+    },
+    {
+      "question": "それではゆっくり<span class=\"underline\">呼吸</span>をしてください。",
+      "instruction": "「呼吸」の読み方を選んでください。",
+      "options": [
+        "こぎゅう",
+        "こきゅう",
+        "よぎゅう",
+        "よきゅう"
+      ],
+      "answer": 1,
+      "explanation": "「呼吸」は「こきゅう」と読みます。",
+      "year": "2021-07"
+    },
+    {
+      "question": "あの少年の<span class=\"underline\">悲しそう</span>な顔が忘れられない。",
+      "instruction": "「悲しそう」の読み方を選んでください。",
+      "options": [
+        "やさしそう",
+        "かなしそう",
+        "きびしそう",
+        "さびしそう"
+      ],
+      "answer": 1,
+      "explanation": "「悲しい」は「かなしい」と読みます。",
+      "year": "2021-07"
+    },
+    {
+      "question": "このあたりに<span class=\"underline\">駐車</span>しましょう。",
+      "instruction": "「駐車」の読み方を選んでください。",
+      "options": [
+        "しゅしや",
+        "しゅうし",
+        "ちゅしや",
+        "ちゅうしゃ"
+      ],
+      "answer": 3,
+      "explanation": "「駐車」は「ちゅうしゃ」と読みます。",
+      "year": "2021-07"
+    },
+    {
+      "question": "もう<span class=\"underline\">逃げて</span>しまったようだ。",
+      "instruction": "「逃げて」の読み方を選んでください。",
+      "options": [
+        "にげて",
+        "なげて",
+        "こげて",
+        "あげて"
+      ],
+      "answer": 0,
+      "explanation": "「逃げる」は「にげる」と読みます。",
+      "year": "2021-07"
+    },
+    {
+      "question": "<span class=\"underline\">努力</span>することは大切だと思います。",
+      "instruction": "「努力」の読み方を選んでください。",
+      "options": [
+        "どうりよく",
+        "とうりよく",
+        "どりょく",
+        "とりよく"
+      ],
+      "answer": 2,
+      "explanation": "「努力」は「どりょく」と読みます。",
+      "year": "2021-07"
+    },
+    {
+      "question": "それは<span class=\"underline\">過去</span>のことです。",
+      "instruction": "「過去」の読み方を選んでください。",
+      "options": [
+        "かこ",
+        "かこう",
+        "かきょ",
+        "かきよう"
+      ],
+      "answer": 0,
+      "explanation": "「過去」は「かこ」と読みます。",
+      "year": "2021-07"
+    },
+    {
+      "question": "彼は話し方も<span class=\"underline\">動作</span>もゆっくりしている。",
+      "instruction": "「動作」の読み方を選んでください。",
+      "options": [
+        "とうさ",
+        "とうさく",
+        "どうさ",
+        "どうさく"
+      ],
+      "answer": 2,
+      "explanation": "「動作」は「どうさ」と読みます。",
+      "year": "2021-07"
+    },
+    {
+      "question": "昨日、友達が家に<span class=\"underline\">泊まり</span>にきた。",
+      "instruction": "「とまり」の漢字を選んでください。",
+      "options": [
+        "亭まり",
+        "留まり",
+        "泊まり",
+        "止まり"
+      ],
+      "answer": 2,
+      "explanation": "「とまる」は「泊まる」と書きます。",
+      "year": "2021-07"
+    },
+    {
+      "question": "書類にはこの学校の<span class=\"underline\">規則</span>が書かれていた。",
+      "instruction": "「きそく」の漢字を選んでください。",
+      "options": [
+        "現販",
+        "規則",
+        "規販",
+        "現則"
+      ],
+      "answer": 1,
+      "explanation": "「きそく」は「規則」と書きます。",
+      "year": "2021-07"
+    },
+    {
+      "question": "ここは<span class=\"underline\">暖かい</span>ですね。",
+      "instruction": "「あたたかい」の漢字を選んでください。",
+      "options": [
+        "明かい",
+        "暑かい",
+        "暖かい",
+        "熱かい"
+      ],
+      "answer": 2,
+      "explanation": "「あたたかい」は「暖かい」と書きます。",
+      "year": "2021-07"
+    },
+    {
+      "question": "<span class=\"underline\">薬局</span>がなかなか見つかりません。",
+      "instruction": "「やっきょく」の漢字を選んでください。",
+      "options": [
+        "薬局",
+        "薬曲",
+        "楽局",
+        "楽曲"
+      ],
+      "answer": 0,
+      "explanation": "「やっきょく」は「薬局」と書きます。",
+      "year": "2021-07"
+    },
+    {
+      "question": "お皿は<span class=\"underline\">重ねて</span>その棚にしまってください。",
+      "instruction": "「かさねて」の漢字を選んでください。",
+      "options": [
+        "整ねて",
+        "死ねて",
+        "階ねて",
+        "重ねて"
+      ],
+      "answer": 3,
+      "explanation": "「かさねる」は「重ねる」と書きます。",
+      "year": "2021-07"
+    },
+    {
+      "question": "机の上に<span class=\"underline\">伝言</span>のメモがあった。",
+      "instruction": "「でんごん」の漢字を選んでください。",
+      "options": [
+        "伝記",
+        "伝言",
+        "転記",
+        "転々"
+      ],
+      "answer": 1,
+      "explanation": "「でんごん」は「伝言」と書きます。",
+      "year": "2021-07"
+    },
+    {
+      "question": "マラソン大会は台風で（　　）されることになりました。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "遅刻",
+        "運休",
+        "延期",
+        "早退"
+      ],
+      "answer": 2,
+      "explanation": "「延期」は予定を後に延ばすことです。",
+      "year": "2021-07"
+    },
+    {
+      "question": "毎日水をやらないと花が（　　）しまう。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "とめて",
+        "きめて",
+        "やせて",
+        "かれて"
+      ],
+      "answer": 3,
+      "explanation": "花が枯れる（かれる）という表現です。",
+      "year": "2021-07"
+    },
+    {
+      "question": "この犬は子供のころから（　　）されているので、人が大勢いてもおとなしい。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "工夫",
+        "用意",
+        "計画",
+        "訓練"
+      ],
+      "answer": 3,
+      "explanation": "「訓練」はトレーニングという意味です。",
+      "year": "2021-07"
+    },
+    {
+      "question": "明日は7時に出かけるので、目覚まし時計を6時に（　　）した。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "スタート",
+        "セット",
+        "ストップ",
+        "マーク"
+      ],
+      "answer": 1,
+      "explanation": "目覚まし時計を「セット」する表現です。",
+      "year": "2021-07"
+    },
+    {
+      "question": "忙しいのにこんな待たされて時間が（　　）。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "だらしない",
+        "しようがない",
+        "なさけない",
+        "もったいない"
+      ],
+      "answer": 3,
+      "explanation": "時間がもったいない（無駄になる）。",
+      "year": "2021-07"
+    },
+    {
+      "question": "友人の家で食べたケーキが美味しかったので（　　）と作り方を教えてもらった。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "資源",
+        "材料",
+        "部品",
+        "原因"
+      ],
+      "answer": 1,
+      "explanation": "料理の「材料」という意味です。",
+      "year": "2021-07"
+    }
+  ],
+  "grammar": [
+    {
+      "question": "雨が降っている（　　）、サッカーの試合は行われた。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "にもかかわらず",
+        "によると",
+        "において",
+        "に対して"
+      ],
+      "answer": 0,
+      "explanation": "「にもかかわらず」は逆接を表します。",
+      "year": "2024-07"
+    },
+    {
+      "question": "彼女は日本語（　　）、中国語も話せる。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "だけでなく",
+        "ばかりに",
+        "どころか",
+        "ながらも"
+      ],
+      "answer": 0,
+      "explanation": "「だけでなく〜も」は追加を表します。",
+      "year": "2024-07"
+    },
+    {
+      "question": "明日は会議がある（　　）、今日中にレポートを完成させなければならない。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "ため",
+        "から",
+        "のに",
+        "ながら"
+      ],
+      "answer": 0,
+      "explanation": "「ため」は理由を表します。",
+      "year": "2024-07"
+    },
+    {
+      "question": "彼は病気（　　）、学校を休んだ。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "で",
+        "に",
+        "を",
+        "が"
+      ],
+      "answer": 0,
+      "explanation": "「で」は原因・理由を表す助詞です。",
+      "year": "2024-07"
+    },
+    {
+      "question": "この仕事は私（　　）できません。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "には",
+        "では",
+        "にも",
+        "とは"
+      ],
+      "answer": 0,
+      "explanation": "「には」は能力の限界を表します。",
+      "year": "2024-07"
+    },
+    {
+      "question": "新聞（　　）、明日は雨らしい。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "によると",
+        "によって",
+        "について",
+        "に対して"
+      ],
+      "answer": 0,
+      "explanation": "「によると」は情報源を表します。",
+      "year": "2023-12"
+    },
+    {
+      "question": "彼は努力した（　　）、成功した。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "結果",
+        "ために",
+        "おかげで",
+        "せいで"
+      ],
+      "answer": 0,
+      "explanation": "「〜た結果」は結果を表します。",
+      "year": "2023-12"
+    },
+    {
+      "question": "日本に来た（　　）、日本語が全然話せませんでした。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "当時",
+        "とき",
+        "間",
+        "ころ"
+      ],
+      "answer": 0,
+      "explanation": "「当時」はその時点を表します。",
+      "year": "2023-12"
+    },
+    {
+      "question": "彼女は仕事（　　）、趣味も楽しんでいる。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "をしながら",
+        "をしつつ",
+        "とともに",
+        "につれて"
+      ],
+      "answer": 0,
+      "explanation": "「〜ながら」は同時動作を表します。",
+      "year": "2023-12"
+    },
+    {
+      "question": "年齢（　　）、健康に気をつけるべきだ。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "にかかわらず",
+        "によって",
+        "において",
+        "に対して"
+      ],
+      "answer": 0,
+      "explanation": "「にかかわらず」は関係なくを意味します。",
+      "year": "2023-12"
+    },
+    {
+      "question": "彼は（　　）ばかりで、何もしない。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "文句を言う",
+        "文句を言い",
+        "文句を言って",
+        "文句を言った"
+      ],
+      "answer": 0,
+      "explanation": "「〜ばかりで」の前は辞書形です。",
+      "year": "2023-07"
+    },
+    {
+      "question": "一生懸命勉強した（　　）、試験に落ちた。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "のに",
+        "から",
+        "ので",
+        "けど"
+      ],
+      "answer": 0,
+      "explanation": "「のに」は期待に反する結果を表します。",
+      "year": "2023-07"
+    },
+    {
+      "question": "彼女は泣き（　　）話した。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "ながら",
+        "つつ",
+        "がてら",
+        "ついでに"
+      ],
+      "answer": 0,
+      "explanation": "「〜ながら」は同時動作を表します。",
+      "year": "2023-07"
+    },
+    {
+      "question": "この問題は難しい（　　）、誰も解けなかった。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "あまり",
+        "ほど",
+        "だけ",
+        "くらい"
+      ],
+      "answer": 0,
+      "explanation": "「〜あまり」は程度が過ぎることを表します。",
+      "year": "2023-07"
+    },
+    {
+      "question": "彼は約束を（　　）にした。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "無視",
+        "無視して",
+        "無視する",
+        "無視した"
+      ],
+      "answer": 0,
+      "explanation": "「〜を〜にする」の形です。",
+      "year": "2023-07"
+    },
+    {
+      "question": "この本は読む（　　）ある。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "価値が",
+        "価値を",
+        "価値に",
+        "価値で"
+      ],
+      "answer": 0,
+      "explanation": "「〜価値がある」は worth の意味です。",
+      "year": "2022-12"
+    },
+    {
+      "question": "彼は何を（　　）うまくいく。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "やっても",
+        "やったら",
+        "やると",
+        "やれば"
+      ],
+      "answer": 0,
+      "explanation": "「〜ても」は条件に関わらず結果が同じことを表します。",
+      "year": "2022-12"
+    },
+    {
+      "question": "時間が（　　）次第、連絡します。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "あり",
+        "あって",
+        "ある",
+        "あった"
+      ],
+      "answer": 0,
+      "explanation": "「〜次第」の前は「ます形」の語幹です。",
+      "year": "2022-12"
+    },
+    {
+      "question": "彼女は美人（　　）頭もいい。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "な上に",
+        "なので",
+        "だから",
+        "なのに"
+      ],
+      "answer": 0,
+      "explanation": "「な上に」は追加を表します。",
+      "year": "2022-12"
+    },
+    {
+      "question": "この問題は難し（　　）。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "すぎる",
+        "すぎ",
+        "すぎて",
+        "すぎた"
+      ],
+      "answer": 0,
+      "explanation": "「〜すぎる」は程度が過ぎることを表します。",
+      "year": "2022-12"
+    },
+    {
+      "question": "彼は何も言わ（　　）出て行った。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "ずに",
+        "ないで",
+        "なくて",
+        "ず"
+      ],
+      "answer": 0,
+      "explanation": "「〜ずに」は「〜しないで」の意味です。",
+      "year": "2022-07"
+    },
+    {
+      "question": "電車が来る（　　）、走り出した。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "や否や",
+        "とたんに",
+        "なり",
+        "が早いか"
+      ],
+      "answer": 0,
+      "explanation": "「〜や否や」は直後を表します。",
+      "year": "2022-07"
+    },
+    {
+      "question": "彼女は泣か（　　）を得なかった。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "ざる",
+        "ない",
+        "なく",
+        "ず"
+      ],
+      "answer": 0,
+      "explanation": "「〜ざるを得ない」は仕方なくの意味です。",
+      "year": "2022-07"
+    },
+    {
+      "question": "この本は読め（　　）読むほど面白い。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "ば",
+        "たら",
+        "と",
+        "なら"
+      ],
+      "answer": 0,
+      "explanation": "「〜ば〜ほど」は比例を表します。",
+      "year": "2022-07"
+    },
+    {
+      "question": "彼は仕事（　　）、趣味に時間を使う余裕がない。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "に追われて",
+        "を追われて",
+        "が追われて",
+        "で追われて"
+      ],
+      "answer": 0,
+      "explanation": "「〜に追われる」は忙しいことを表します。",
+      "year": "2022-07"
+    },
+    {
+      "question": "この問題は、（　　）としても解決できない。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "努力した",
+        "努力して",
+        "努力する",
+        "努力し"
+      ],
+      "answer": 0,
+      "explanation": "「〜としても」の前は普通形です。",
+      "year": "2021-12"
+    },
+    {
+      "question": "彼は怒り（　　）あまり、何も言えなかった。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "の",
+        "で",
+        "に",
+        "を"
+      ],
+      "answer": 0,
+      "explanation": "「〜のあまり」は感情の程度を表します。",
+      "year": "2021-12"
+    },
+    {
+      "question": "この問題は彼（　　）解けない。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "にしか",
+        "でしか",
+        "としか",
+        "からしか"
+      ],
+      "answer": 0,
+      "explanation": "「〜にしか〜ない」は限定を表します。",
+      "year": "2021-12"
+    },
+    {
+      "question": "彼女は仕事（　　）、家事もこなしている。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "のかたわら",
+        "のついでに",
+        "のあまり",
+        "のせいで"
+      ],
+      "answer": 0,
+      "explanation": "「〜のかたわら」は同時にを意味します。",
+      "year": "2021-12"
+    },
+    {
+      "question": "この料理は見た（　　）おいしそうだ。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "目から",
+        "目で",
+        "目に",
+        "目を"
+      ],
+      "answer": 0,
+      "explanation": "「見た目から」は外見からという意味です。",
+      "year": "2021-12"
+    },
+    {
+      "question": "彼は（　　）限り、成功するだろう。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "努力する",
+        "努力して",
+        "努力した",
+        "努力し"
+      ],
+      "answer": 0,
+      "explanation": "「〜限り」の前は辞書形です。",
+      "year": "2021-07"
+    },
+    {
+      "question": "この問題は（　　）ものがある。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "考えさせられる",
+        "考えさせる",
+        "考えられる",
+        "考える"
+      ],
+      "answer": 0,
+      "explanation": "「〜させられるものがある」は深く考えさせるという意味です。",
+      "year": "2021-07"
+    },
+    {
+      "question": "彼女は笑顔（　　）答えた。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "で",
+        "に",
+        "を",
+        "が"
+      ],
+      "answer": 0,
+      "explanation": "「笑顔で」は様態を表します。",
+      "year": "2021-07"
+    },
+    {
+      "question": "この仕事は彼（　　）できない。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "にしか",
+        "でしか",
+        "としか",
+        "からしか"
+      ],
+      "answer": 0,
+      "explanation": "「〜にしか〜ない」は限定を表します。",
+      "year": "2021-07"
+    },
+    {
+      "question": "彼は（　　）に違いない。",
+      "instruction": "（　　）に入る言葉を選んでください。",
+      "options": [
+        "成功する",
+        "成功して",
+        "成功した",
+        "成功し"
+      ],
+      "answer": 0,
+      "explanation": "「〜に違いない」の前は普通形です。",
+      "year": "2021-07"
+    }
+  ],
+  "listening": [
+    {
+      "question": "【音声問題】<br><br>男の人と女の人が話しています。<br><br>男: 明日のパーティー、何か持っていく？<br>女: うーん、ケーキを作ろうかな。<br>男: いいね。じゃあ、僕は飲み物を用意するよ。",
+      "instruction": "女の人は何をしますか。",
+      "options": [
+        "ケーキを作る",
+        "飲み物を用意する",
+        "パーティーに行かない",
+        "何も持っていかない"
+      ],
+      "answer": 0,
+      "explanation": "女の人は「ケーキを作ろうかな」と言っています。",
+      "year": "2024-07"
+    },
+    {
+      "question": "【音声問題】<br><br>駅のアナウンスです。<br><br>「お客様にお知らせいたします。3番線の電車は、事故のため約10分遅れております。」",
+      "instruction": "電車はどうなっていますか。",
+      "options": [
+        "10分遅れている",
+        "運転を中止している",
+        "時間通りに来る",
+        "5分遅れている"
+      ],
+      "answer": 0,
+      "explanation": "「約10分遅れております」と言っています。",
+      "year": "2024-07"
+    },
+    {
+      "question": "【音声問題】<br><br>店での会話です。<br><br>店員: いらっしゃいませ。何かお探しですか。<br>客: この前買ったカバンなんですが、ファスナーが壊れてしまって...<br>店員: 大変申し訳ございません。新しいものとお取り替えいたします。",
+      "instruction": "店員は何をしますか。",
+      "options": [
+        "商品を交換する",
+        "修理する",
+        "返金する",
+        "別の商品を勧める"
+      ],
+      "answer": 0,
+      "explanation": "「新しいものとお取り替えいたします」と言っています。",
+      "year": "2024-07"
+    },
+    {
+      "question": "【音声問題】<br><br>会社での会話です。<br><br>上司: 田中君、来週の出張の準備はできてる？<br>田中: はい、ホテルと新幹線の予約は完了しました。会議の資料は明日中に仕上げる予定です。",
+      "instruction": "まだできていないことは何ですか。",
+      "options": [
+        "会議の資料",
+        "ホテルの予約",
+        "新幹線の予約",
+        "出張の計画"
+      ],
+      "answer": 0,
+      "explanation": "「明日中に仕上げる予定」と言っているので、資料はまだです。",
+      "year": "2024-07"
+    },
+    {
+      "question": "【音声問題】<br><br>電話での会話です。<br><br>A: お電話ありがとうございます。ABCクリニックです。<br>B: 予約をしたいのですが。<br>A: 来週の火曜日の10時はいかがでしょうか。<br>B: 大丈夫です。",
+      "instruction": "予約は何曜日ですか。",
+      "options": [
+        "火曜日",
+        "月曜日",
+        "水曜日",
+        "木曜日"
+      ],
+      "answer": 0,
+      "explanation": "「来週の火曜日の10時」で予約しています。",
+      "year": "2023-12"
+    },
+    {
+      "question": "【音声問題】<br><br>ラジオの天気予報です。<br><br>「明日の天気をお伝えします。午前中は雲が多いですが、午後からは晴れて気温も上がるでしょう。」",
+      "instruction": "明日の午後の天気はどうですか。",
+      "options": [
+        "晴れ",
+        "曇り",
+        "雨",
+        "雪"
+      ],
+      "answer": 0,
+      "explanation": "「午後からは晴れる」と言っています。",
+      "year": "2023-12"
+    },
+    {
+      "question": "【音声問題】<br><br>大学での会話です。<br><br>学生: 先生、レポートの提出日について質問があるのですが。<br>先生: はい、何でしょう。<br>学生: 来週の金曜日までですよね。<br>先生: いいえ、締め切りは木曜日の5時です。",
+      "instruction": "レポートの締め切りはいつですか。",
+      "options": [
+        "木曜日の5時",
+        "金曜日",
+        "来週の月曜日",
+        "今週の金曜日"
+      ],
+      "answer": 0,
+      "explanation": "先生は「締め切りは木曜日の5時」と訂正しています。",
+      "year": "2023-12"
+    },
+    {
+      "question": "【音声問題】<br><br>A: 最近、日本語が上手になりましたね。どうやって勉強していますか。<br>B: 毎日30分、日本のニュースを聞いています。それと、週に2回日本語学校に通っています。",
+      "instruction": "Bは週に何回日本語学校に通っていますか。",
+      "options": [
+        "2回",
+        "3回",
+        "毎日",
+        "1回"
+      ],
+      "answer": 0,
+      "explanation": "「週に2回日本語学校に通っています」と言っています。",
+      "year": "2023-12"
+    },
+    {
+      "question": "【音声問題】<br><br>会議での会話です。<br><br>部長: 今回のプロジェクトの問題点について意見を聞かせてください。<br>山田: 私は予算が足りないことが一番の問題だと思います。<br>鈴木: 私は人手不足だと思います。<br>部長: なるほど。両方とも重要な問題ですね。",
+      "instruction": "山田さんは何が問題だと言っていますか。",
+      "options": [
+        "予算が足りないこと",
+        "人手不足",
+        "時間がないこと",
+        "技術が足りないこと"
+      ],
+      "answer": 0,
+      "explanation": "山田さんは「予算が足りないこと」と言っています。",
+      "year": "2023-07"
+    },
+    {
+      "question": "【音声問題】<br><br>A: 来月から新しいアルバイトを始めることにしました。<br>B: そうですか。どこで働くんですか。<br>A: 駅前のカフェです。週3回、夕方から働きます。<br>B: いいですね。何時から何時までですか。<br>A: 5時から9時までです。",
+      "instruction": "アルバイトは何時間ですか。",
+      "options": [
+        "4時間",
+        "3時間",
+        "5時間",
+        "6時間"
+      ],
+      "answer": 0,
+      "explanation": "5時から9時まで、つまり4時間です。",
+      "year": "2023-07"
+    },
+    {
+      "question": "【音声問題】<br><br>電話での会話です。<br><br>A: もしもし、山本と申しますが、田中部長はいらっしゃいますか。<br>B: 申し訳ございません。田中は只今外出しております。3時ごろには戻る予定です。<br>A: そうですか。では、また後でかけ直します。",
+      "instruction": "田中部長は今どこにいますか。",
+      "options": [
+        "外出中",
+        "会議中",
+        "休憩中",
+        "出張中"
+      ],
+      "answer": 0,
+      "explanation": "「外出しております」と言っています。",
+      "year": "2023-07"
+    },
+    {
+      "question": "【音声問題】<br><br>お店での会話です。<br><br>店員: いらっしゃいませ。本日のランチは、Aセットが魚料理で980円、Bセットが肉料理で1100円となっております。<br>客: じゃあ、Aセットをお願いします。<br>店員: かしこまりました。お飲み物はいかがですか。<br>客: コーヒーをお願いします。セットに含まれていますよね。<br>店員: はい、セットに含まれております。",
+      "instruction": "客はいくら払いますか。",
+      "options": [
+        "980円",
+        "1100円",
+        "1080円",
+        "1200円"
+      ],
+      "answer": 0,
+      "explanation": "Aセットは980円で、コーヒーはセットに含まれています。",
+      "year": "2023-07"
+    },
+    {
+      "question": "【音声問題】<br><br>A: 明日の会議は何時からでしたっけ。<br>B: 10時からの予定でしたが、部長の都合で11時に変更になりました。<br>A: そうですか。場所は同じですか。<br>B: いいえ、3階の会議室から5階の大会議室に変わりました。",
+      "instruction": "会議の場所はどこですか。",
+      "options": [
+        "5階の大会議室",
+        "3階の会議室",
+        "10階の会議室",
+        "1階のロビー"
+      ],
+      "answer": 0,
+      "explanation": "「5階の大会議室に変わりました」と言っています。",
+      "year": "2022-12"
+    },
+    {
+      "question": "【音声問題】<br><br>病院での会話です。<br><br>医者: 検査の結果が出ました。特に大きな問題はありませんでした。<br>患者: よかったです。<br>医者: ただ、血圧が少し高めなので、塩分を控えめにしてください。あと、適度な運動も大切ですよ。<br>患者: わかりました。気をつけます。",
+      "instruction": "患者は何に気をつけなければなりませんか。",
+      "options": [
+        "塩分と運動",
+        "糖分と睡眠",
+        "カロリーと水分",
+        "脂肪と休息"
+      ],
+      "answer": 0,
+      "explanation": "「塩分を控えめに」「適度な運動」と言っています。",
+      "year": "2022-12"
+    },
+    {
+      "question": "【音声問題】<br><br>A: 今度の日曜日、映画を見に行きませんか。<br>B: いいですね。何時にしましょうか。<br>A: 午後2時からの回はどうですか。<br>B: ちょっと遅いですね。午前10時の回にしませんか。<br>A: そうですね。じゃあ、9時半に駅で会いましょう。",
+      "instruction": "二人は何時に会いますか。",
+      "options": [
+        "9時半",
+        "10時",
+        "2時",
+        "1時半"
+      ],
+      "answer": 0,
+      "explanation": "「9時半に駅で会いましょう」と決まりました。",
+      "year": "2022-12"
+    },
+    {
+      "question": "【音声問題】<br><br>ニュースです。<br><br>「本日午後3時ごろ、東京都内で地震がありました。マグニチュードは4.2で、最大震度は3でした。この地震による津波の心配はありません。」",
+      "instruction": "地震の最大震度はいくつでしたか。",
+      "options": [
+        "3",
+        "4.2",
+        "4",
+        "5"
+      ],
+      "answer": 0,
+      "explanation": "「最大震度は3」と言っています。",
+      "year": "2022-12"
+    },
+    {
+      "question": "【音声問題】<br><br>デパートでの会話です。<br><br>店員: いらっしゃいませ。何かお探しですか。<br>客: 母の誕生日プレゼントを探しているんですが...<br>店員: ご予算はおいくらぐらいですか。<br>客: 1万円ぐらいで考えています。<br>店員: でしたら、こちらのスカーフはいかがでしょうか。今とても人気があります。",
+      "instruction": "客は何を探していますか。",
+      "options": [
+        "母へのプレゼント",
+        "自分の服",
+        "父へのプレゼント",
+        "友達へのプレゼント"
+      ],
+      "answer": 0,
+      "explanation": "「母の誕生日プレゼントを探している」と言っています。",
+      "year": "2022-07"
+    },
+    {
+      "question": "【音声問題】<br><br>留守番電話のメッセージです。<br><br>「田中です。今日の5時にお伺いする予定でしたが、急用ができまして、明日の同じ時間に変更させていただきたいのですが。ご都合がよろしければ、折り返しお電話いただけますでしょうか。よろしくお願いします。」",
+      "instruction": "田中さんは何を伝えていますか。",
+      "options": [
+        "訪問を明日に変更したい",
+        "訪問をキャンセルしたい",
+        "時間を遅くしたい",
+        "場所を変更したい"
+      ],
+      "answer": 0,
+      "explanation": "「明日の同じ時間に変更させていただきたい」と言っています。",
+      "year": "2022-07"
+    },
+    {
+      "question": "【音声問題】<br><br>A: すみません、この電車は横浜に止まりますか。<br>B: いいえ、これは急行なので、横浜には止まりません。各駅停車に乗ってください。<br>A: 各駅停車は何分後に来ますか。<br>B: 5分後です。",
+      "instruction": "横浜に行くにはどうすればいいですか。",
+      "options": [
+        "各駅停車に乗る",
+        "この電車に乗る",
+        "急行に乗る",
+        "特急に乗る"
+      ],
+      "answer": 0,
+      "explanation": "「各駅停車に乗ってください」と案内しています。",
+      "year": "2022-07"
+    },
+    {
+      "question": "【音声問題】<br><br>A: 最近、仕事が忙しすぎて、疲れています。<br>B: それは大変ですね。週末は何をしていますか。<br>A: 土曜日は家で寝ていることが多いです。日曜日は友達と会ったりしています。<br>B: 適度に休息を取ることも大切ですよ。",
+      "instruction": "Aは土曜日に何をしていますか。",
+      "options": [
+        "家で寝ている",
+        "友達と会っている",
+        "仕事をしている",
+        "運動をしている"
+      ],
+      "answer": 0,
+      "explanation": "「土曜日は家で寝ていることが多い」と言っています。",
+      "year": "2022-07"
+    },
+    {
+      "question": "【音声問題】<br><br>旅行会社での会話です。<br><br>客: 京都への旅行を考えているのですが。<br>担当者: いつごろがご希望ですか。<br>客: 来月の連休を考えています。<br>担当者: 連休は人気がありますので、お早めにご予約ください。今なら2泊3日のプランで、1人3万円からございます。<br>客: じゃあ、そのプランで2人分お願いします。",
+      "instruction": "2人で旅行すると最低いくらかかりますか。",
+      "options": [
+        "6万円",
+        "3万円",
+        "9万円",
+        "4万円"
+      ],
+      "answer": 0,
+      "explanation": "1人3万円×2人で最低6万円です。",
+      "year": "2021-12"
+    },
+    {
+      "question": "【音声問題】<br><br>美術館での会話です。<br><br>係員: いらっしゃいませ。入場料は大人1人1500円です。<br>客: 学生割引はありますか。<br>係員: はい、学生は1000円になります。学生証をご提示ください。<br>客: じゃあ、大人1人と学生1人でお願いします。",
+      "instruction": "合計いくらですか。",
+      "options": [
+        "2500円",
+        "3000円",
+        "2000円",
+        "1500円"
+      ],
+      "answer": 0,
+      "explanation": "大人1500円＋学生1000円で2500円です。",
+      "year": "2021-12"
+    },
+    {
+      "question": "【音声問題】<br><br>A: 山田さん、来週の送別会の幹事をお願いできますか。<br>B: はい、いいですよ。日時と場所を決めればいいですか。<br>A: そうですね。あと、参加者の確認もお願いします。予算は一人3000円ぐらいでお願いします。<br>B: わかりました。金曜日の夜でいいですか。<br>A: 金曜日がいいと思います。",
+      "instruction": "山田さんは何を頼まれましたか。",
+      "options": [
+        "送別会の幹事",
+        "送別会の挨拶",
+        "プレゼントの準備",
+        "案内状の作成"
+      ],
+      "answer": 0,
+      "explanation": "「送別会の幹事をお願いできますか」と頼んでいます。",
+      "year": "2021-12"
+    },
+    {
+      "question": "【音声問題】<br><br>図書館での会話です。<br><br>利用者: すみません、パソコンを使いたいのですが。<br>職員: はい、3階のパソコンコーナーをご利用ください。利用時間は1回2時間までとなっております。<br>利用者: 延長はできますか。<br>職員: 次の方がいらっしゃらなければ、1時間延長できます。",
+      "instruction": "パソコンは最初何時間使えますか。",
+      "options": [
+        "2時間",
+        "1時間",
+        "3時間",
+        "30分"
+      ],
+      "answer": 0,
+      "explanation": "「1回2時間まで」と言っています。",
+      "year": "2021-12"
+    },
+    {
+      "question": "【音声問題】<br><br>スーパーでの会話です。<br><br>客: すみません、この牛乳はいつまで持ちますか。<br>店員: 製造日から1週間です。こちらの商品は明後日までとなっております。<br>客: じゃあ、奥のものをください。<br>店員: こちらは4日後までです。<br>客: それをお願いします。",
+      "instruction": "客が選んだ牛乳はいつまで持ちますか。",
+      "options": [
+        "4日後",
+        "明後日",
+        "1週間後",
+        "今日中"
+      ],
+      "answer": 0,
+      "explanation": "奥の牛乳は「4日後まで」と言っています。",
+      "year": "2021-07"
+    },
+    {
+      "question": "【音声問題】<br><br>A: 新しいプロジェクトの進捗はどうですか。<br>B: 予定より少し遅れています。先週、技術的な問題が見つかりまして。<br>A: そうですか。いつごろ解決できそうですか。<br>B: 今週中には解決できると思います。<br>A: わかりました。何か必要なことがあれば言ってください。",
+      "instruction": "プロジェクトはどうなっていますか。",
+      "options": [
+        "予定より遅れている",
+        "予定通り",
+        "予定より早い",
+        "中止になった"
+      ],
+      "answer": 0,
+      "explanation": "「予定より少し遅れています」と言っています。",
+      "year": "2021-07"
+    },
+    {
+      "question": "【音声問題】<br><br>銀行での会話です。<br><br>客: すみません、口座を開きたいのですが。<br>行員: はい、本人確認書類をお持ちですか。<br>客: 運転免許証でいいですか。<br>行員: はい、大丈夫です。あと、印鑑もお持ちください。<br>客: 印鑑は持っていないのですが...<br>行員: でしたら、サインでも大丈夫です。",
+      "instruction": "印鑑がない場合はどうすればいいですか。",
+      "options": [
+        "サインでも大丈夫",
+        "後で持ってくる",
+        "口座は開けない",
+        "別の銀行に行く"
+      ],
+      "answer": 0,
+      "explanation": "「サインでも大丈夫」と言っています。",
+      "year": "2021-07"
+    },
+    {
+      "question": "【音声問題】<br><br>A: 明日の天気はどうかな。<br>B: 天気予報では、午前中は曇りで、午後から雨が降るって言ってたよ。<br>A: そうか。じゃあ、傘を持っていった方がいいね。<br>B: うん、折り畳み傘があると便利だよ。",
+      "instruction": "明日の午後の天気はどうですか。",
+      "options": [
+        "雨",
+        "曇り",
+        "晴れ",
+        "雪"
+      ],
+      "answer": 0,
+      "explanation": "「午後から雨が降る」と言っています。",
+      "year": "2021-07"
+    },
+    {
+      "question": "【音声問題】<br><br>会社での会話です。<br><br>部長: 今回の新製品、売れ行きはどうですか。<br>営業: おかげさまで、予想を上回っています。特に若い女性に人気があります。<br>部長: それはいいニュースですね。<br>営業: はい、来月からテレビCMも始まりますので、さらに売上が伸びると思います。",
+      "instruction": "新製品の売れ行きはどうですか。",
+      "options": [
+        "予想を上回っている",
+        "予想通り",
+        "予想より悪い",
+        "まだ分からない"
+      ],
+      "answer": 0,
+      "explanation": "「予想を上回っています」と言っています。",
+      "year": "2020-12"
+    },
+    {
+      "question": "【音声問題】<br><br>電話での会話です。<br><br>A: もしもし、田中さんのお宅ですか。<br>B: はい、そうですが。<br>A: 私、山本と申しますが、恵子さんはいらっしゃいますか。<br>B: 恵子は今出かけております。6時ごろ戻る予定ですが。<br>A: では、また後でお電話いたします。<br>B: 何かお伝えしましょうか。<br>A: いえ、結構です。失礼いたします。",
+      "instruction": "恵子さんは今どうしていますか。",
+      "options": [
+        "出かけている",
+        "電話中",
+        "寝ている",
+        "お風呂に入っている"
+      ],
+      "answer": 0,
+      "explanation": "「出かけております」と言っています。",
+      "year": "2020-12"
+    }
+  ]
+}

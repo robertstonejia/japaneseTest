@@ -17,12 +17,15 @@ from googletrans import Translator
 
 # Language codes
 LANGUAGES = {
-    'zh-cn': '中文',    # Chinese (Simplified)
-    'vi': 'Tiếng Việt', # Vietnamese
-    'ar': 'العربية',    # Arabic
-    'es': 'Español',    # Spanish
-    'de': 'Deutsch',    # German
-    'fr': 'Français'    # French
+    'zh-cn': '中文',      # Chinese (Simplified)
+    'ne': 'नेपाली',       # Nepali
+    'vi': 'Tiếng Việt',   # Vietnamese
+    'my': 'မြန်မာ',       # Myanmar (Burmese)
+    'ko': '한국어',        # Korean
+    'ar': 'العربية',      # Arabic
+    'es': 'Español',      # Spanish
+    'de': 'Deutsch',      # German
+    'fr': 'Français'      # French
 }
 
 def translate_vocabulary_file(input_file, output_file=None):

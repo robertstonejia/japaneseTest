@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>敬語変換練習 - 敬语转换练习</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(-45deg, #a18cd1, #fbc2eb, #a18cd1, #fbc2eb);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #a18cd1;
+            margin-bottom: 10px;
+            font-size: 2.2em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #a18cd1;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #917cc1;
+            transform: translateY(-2px);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+            border-radius: 15px;
+            color: white;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .mode-selector {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .mode-btn {
+            padding: 15px 30px;
+            border: 2px solid #a18cd1;
+            border-radius: 15px;
+            background: white;
+            color: #a18cd1;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .mode-btn:hover, .mode-btn.active {
+            background: #a18cd1;
+            color: white;
+        }
+
+        .practice-area {
+            display: none;
+        }
+
+        .practice-area.active {
+            display: block;
+        }
+
+        .question-card {
+            background: linear-gradient(135deg, #f5f0ff, #fff0f5);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .question-label {
+            font-size: 1em;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .question-text {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .hint {
+            font-size: 0.9em;
+            color: #a18cd1;
+            margin-bottom: 20px;
+        }
+
+        .answer-input {
+            width: 100%;
+            max-width: 400px;
+            padding: 15px 20px;
+            font-size: 1.3em;
+            border: 3px solid #a18cd1;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .answer-input:focus {
+            outline: none;
+            border-color: #917cc1;
+            box-shadow: 0 0 10px rgba(161, 140, 209, 0.3);
+        }
+
+        .btn {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(161, 140, 209, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .feedback {
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 1.2em;
+            display: none;
+        }
+
+        .feedback.correct {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+
+        .feedback.wrong {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+
+        .reference-table {
+            margin-top: 30px;
+            overflow-x: auto;
+        }
+
+        .reference-table h3 {
+            color: #a18cd1;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+            color: white;
+        }
+
+        tr:hover {
+            background: #f5f0ff;
+        }
+
+        .type-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        .type-badge.sonkei {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .type-badge.kenjou {
+            background: #fce4ec;
+            color: #c2185b;
+        }
+
+        .type-badge.teinei {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #eee;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+            transition: width 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">← ホームへ戻る</a>
+
+        <h1>🎭 敬語変換練習</h1>
+        <p class="subtitle">Keigo Conversion Practice / 敬语转换练习</p>
+
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-value" id="score">0</span>
+                <span class="stat-label">スコア</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="correct">0</span>
+                <span class="stat-label">正解</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="wrong">0</span>
+                <span class="stat-label">不正解</span>
+            </div>
+        </div>
+
+        <div class="mode-selector">
+            <button class="mode-btn active" data-mode="practice">練習モード</button>
+            <button class="mode-btn" data-mode="reference">参考表</button>
+        </div>
+
+        <!-- Practice Mode -->
+        <div class="practice-area active" id="practiceArea">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-label">次の言葉を敬語に変換してください</div>
+                <div class="question-text" id="questionText">行く</div>
+                <div class="hint" id="hint">ヒント: 尊敬語で答えてください</div>
+            </div>
+
+            <div style="text-align: center;">
+                <input type="text" class="answer-input" id="answerInput" placeholder="敬語を入力...">
+                <br>
+                <button class="btn btn-primary" id="checkBtn">確認</button>
+                <button class="btn btn-secondary" id="skipBtn">スキップ</button>
+            </div>
+
+            <div class="feedback" id="feedback"></div>
+        </div>
+
+        <!-- Reference Table -->
+        <div class="practice-area" id="referenceArea">
+            <div class="reference-table">
+                <h3>🔄 敬語変換表 / Keigo Conversion Table</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>普通体</th>
+                            <th>尊敬語</th>
+                            <th>謙譲語</th>
+                            <th>丁寧語</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>行く / 来る</td>
+                            <td>いらっしゃる</td>
+                            <td>参る / 伺う</td>
+                            <td>行きます / 来ます</td>
+                        </tr>
+                        <tr>
+                            <td>いる</td>
+                            <td>いらっしゃる</td>
+                            <td>おる</td>
+                            <td>います</td>
+                        </tr>
+                        <tr>
+                            <td>言う</td>
+                            <td>おっしゃる</td>
+                            <td>申す / 申し上げる</td>
+                            <td>言います</td>
+                        </tr>
+                        <tr>
+                            <td>見る</td>
+                            <td>ご覧になる</td>
+                            <td>拝見する</td>
+                            <td>見ます</td>
+                        </tr>
+                        <tr>
+                            <td>食べる / 飲む</td>
+                            <td>召し上がる</td>
+                            <td>いただく</td>
+                            <td>食べます / 飲みます</td>
+                        </tr>
+                        <tr>
+                            <td>する</td>
+                            <td>なさる</td>
+                            <td>いたす</td>
+                            <td>します</td>
+                        </tr>
+                        <tr>
+                            <td>知る</td>
+                            <td>ご存じ</td>
+                            <td>存じる / 存じ上げる</td>
+                            <td>知っています</td>
+                        </tr>
+                        <tr>
+                            <td>聞く</td>
+                            <td>お聞きになる</td>
+                            <td>伺う / 拝聴する</td>
+                            <td>聞きます</td>
+                        </tr>
+                        <tr>
+                            <td>読む</td>
+                            <td>お読みになる</td>
+                            <td>拝読する</td>
+                            <td>読みます</td>
+                        </tr>
+                        <tr>
+                            <td>もらう</td>
+                            <td>お受け取りになる</td>
+                            <td>いただく / 頂戴する</td>
+                            <td>もらいます</td>
+                        </tr>
+                        <tr>
+                            <td>あげる</td>
+                            <td>くださる</td>
+                            <td>差し上げる</td>
+                            <td>あげます</td>
+                        </tr>
+                        <tr>
+                            <td>会う</td>
+                            <td>お会いになる</td>
+                            <td>お目にかかる</td>
+                            <td>会います</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Keigo data
+        const keigoData = [
+            { plain: '行く', sonkei: 'いらっしゃる', kenjou: '参る', teinei: '行きます' },
+            { plain: '来る', sonkei: 'いらっしゃる', kenjou: '参る', teinei: '来ます' },
+            { plain: 'いる', sonkei: 'いらっしゃる', kenjou: 'おる', teinei: 'います' },
+            { plain: '言う', sonkei: 'おっしゃる', kenjou: '申す', teinei: '言います' },
+            { plain: '見る', sonkei: 'ご覧になる', kenjou: '拝見する', teinei: '見ます' },
+            { plain: '食べる', sonkei: '召し上がる', kenjou: 'いただく', teinei: '食べます' },
+            { plain: '飲む', sonkei: '召し上がる', kenjou: 'いただく', teinei: '飲みます' },
+            { plain: 'する', sonkei: 'なさる', kenjou: 'いたす', teinei: 'します' },
+            { plain: '知る', sonkei: 'ご存じ', kenjou: '存じる', teinei: '知っています' },
+            { plain: '聞く', sonkei: 'お聞きになる', kenjou: '伺う', teinei: '聞きます' },
+            { plain: '読む', sonkei: 'お読みになる', kenjou: '拝読する', teinei: '読みます' },
+            { plain: 'もらう', sonkei: 'お受け取りになる', kenjou: 'いただく', teinei: 'もらいます' },
+            { plain: 'あげる', sonkei: 'くださる', kenjou: '差し上げる', teinei: 'あげます' },
+            { plain: '会う', sonkei: 'お会いになる', kenjou: 'お目にかかる', teinei: '会います' },
+            { plain: '待つ', sonkei: 'お待ちになる', kenjou: 'お待ちする', teinei: '待ちます' },
+        ];
+
+        const keigoTypes = ['sonkei', 'kenjou', 'teinei'];
+        const keigoLabels = {
+            sonkei: '尊敬語',
+            kenjou: '謙譲語',
+            teinei: '丁寧語'
+        };
+
+        let currentQuestion = null;
+        let currentType = null;
+        let score = 0;
+        let correct = 0;
+        let wrong = 0;
+        let questionIndex = 0;
+        const totalQuestions = 10;
+
+        // DOM elements
+        const questionText = document.getElementById('questionText');
+        const hint = document.getElementById('hint');
+        const answerInput = document.getElementById('answerInput');
+        const checkBtn = document.getElementById('checkBtn');
+        const skipBtn = document.getElementById('skipBtn');
+        const feedback = document.getElementById('feedback');
+        const progressFill = document.getElementById('progressFill');
+
+        // Mode switching
+        document.querySelectorAll('.mode-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                document.querySelectorAll('.practice-area').forEach(area => area.classList.remove('active'));
+                if (btn.dataset.mode === 'practice') {
+                    document.getElementById('practiceArea').classList.add('active');
+                } else {
+                    document.getElementById('referenceArea').classList.add('active');
+                }
+            });
+        });
+
+        // Load question
+        function loadQuestion() {
+            if (questionIndex >= totalQuestions) {
+                showResults();
+                return;
+            }
+
+            feedback.className = 'feedback';
+            answerInput.value = '';
+
+            currentQuestion = keigoData[Math.floor(Math.random() * keigoData.length)];
+            currentType = keigoTypes[Math.floor(Math.random() * keigoTypes.length)];
+
+            questionText.textContent = currentQuestion.plain;
+            hint.textContent = `ヒント: ${keigoLabels[currentType]}で答えてください`;
+
+            progressFill.style.width = ((questionIndex / totalQuestions) * 100) + '%';
+            answerInput.focus();
+        }
+
+        // Check answer
+        function checkAnswer() {
+            const answer = answerInput.value.trim();
+            if (!answer) {
+                alert('答えを入力してください');
+                return;
+            }
+
+            const correctAnswer = currentQuestion[currentType];
+
+            if (answer === correctAnswer) {
+                feedback.textContent = `✓ 正解！ ${currentQuestion.plain} → ${correctAnswer}`;
+                feedback.className = 'feedback correct';
+                correct++;
+                score += 10;
+            } else {
+                feedback.textContent = `✗ 不正解。正解は「${correctAnswer}」です`;
+                feedback.className = 'feedback wrong';
+                wrong++;
+            }
+
+            updateStats();
+            questionIndex++;
+
+            setTimeout(loadQuestion, 2000);
+        }
+
+        // Skip question
+        function skipQuestion() {
+            const correctAnswer = currentQuestion[currentType];
+            feedback.textContent = `スキップ。正解は「${correctAnswer}」です`;
+            feedback.className = 'feedback wrong';
+            wrong++;
+            updateStats();
+            questionIndex++;
+            setTimeout(loadQuestion, 2000);
+        }
+
+        // Update stats
+        function updateStats() {
+            document.getElementById('score').textContent = score;
+            document.getElementById('correct').textContent = correct;
+            document.getElementById('wrong').textContent = wrong;
+        }
+
+        // Show results
+        function showResults() {
+            const percentage = Math.round((correct / totalQuestions) * 100);
+            let message = '';
+            if (percentage === 100) message = '完璧です！🎉';
+            else if (percentage >= 80) message = '素晴らしい！👏';
+            else if (percentage >= 60) message = '良いですね！💪';
+            else message = 'もう少し練習しましょう！📚';
+
+            questionText.textContent = `${percentage}%`;
+            hint.textContent = message;
+            feedback.textContent = `${correct}問正解 / ${totalQuestions}問中`;
+            feedback.className = 'feedback correct';
+
+            checkBtn.textContent = 'もう一度';
+            checkBtn.onclick = () => {
+                questionIndex = 0;
+                score = 0;
+                correct = 0;
+                wrong = 0;
+                updateStats();
+                checkBtn.textContent = '確認';
+                checkBtn.onclick = checkAnswer;
+                loadQuestion();
+            };
+        }
+
+        // Event listeners
+        checkBtn.addEventListener('click', checkAnswer);
+        skipBtn.addEventListener('click', skipQuestion);
+        answerInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') checkAnswer();
+        });
+
+        // Start
+        loadQuestion();
+    </script>
+</body>
+</html>
