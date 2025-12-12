@@ -231,16 +231,6 @@
             font-weight: bold;
         }
 
-        .timer {
-            background: #ff5722;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 15px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
 
         .question-text {
             font-size: 1.3em;
@@ -416,19 +406,19 @@
         }
 
         .q-dot {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
+            padding: 8px 16px;
+            border-radius: 6px;
             border: 2px solid #667eea;
             background: white;
             color: #667eea;
-            font-size: 0.9em;
+            font-size: 0.85em;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
+            white-space: nowrap;
         }
 
         .q-dot:hover {
@@ -449,6 +439,12 @@
         .q-dot.wrong-answer {
             background: #f44336;
             border-color: #f44336;
+            color: white;
+        }
+
+        .q-dot.partial {
+            background: #ff9800;
+            border-color: #ff9800;
             color: white;
         }
 
@@ -689,28 +685,28 @@
             <div class="select-group">
                 <label>年度:</label>
                 <select id="yearSelect">
-                    <option value="2024-07">2024年7月</option>
                     <option value="2024-12">2024年12月</option>
+                    <option value="2024-07">2024年07月</option>
                     <option value="2023-12">2023年12月</option>
-                    <option value="2023-07">2023年7月</option>
+                    <option value="2023-07">2023年07月</option>
                     <option value="2022-12">2022年12月</option>
-                    <option value="2022-07">2022年7月</option>
+                    <option value="2022-07">2022年07月</option>
                     <option value="2021-12">2021年12月</option>
-                    <option value="2021-07">2021年7月</option>
+                    <option value="2021-07">2021年07月</option>
                     <option value="2020-12">2020年12月</option>
-                    <option value="2020-07">2020年7月</option>
+                    <option value="2020-07">2020年07月</option>
                     <option value="2019-12">2019年12月</option>
-                    <option value="2019-07">2019年7月</option>
+                    <option value="2019-07">2019年07月</option>
                     <option value="2018-12">2018年12月</option>
-                    <option value="2018-07">2018年7月</option>
+                    <option value="2018-07">2018年07月</option>
                     <option value="2017-12">2017年12月</option>
-                    <option value="2017-07">2017年7月</option>
+                    <option value="2017-07">2017年07月</option>
                     <option value="2016-12">2016年12月</option>
-                    <option value="2016-07">2016年7月</option>
+                    <option value="2016-07">2016年07月</option>
                     <option value="2015-12">2015年12月</option>
-                    <option value="2015-07">2015年7月</option>
+                    <option value="2015-07">2015年07月</option>
                     <option value="2014-12">2014年12月</option>
-                    <option value="2014-07">2014年7月</option>
+                    <option value="2014-07">2014年07月</option>
                 </select>
             </div>
         </div>
@@ -736,7 +732,6 @@
             <h2>N3 文字・語彙 (2024年7月)</h2>
             <p>
                 問題数: 35問<br>
-                制限時間: 30分<br><br>
                 準備ができたら「スタート」ボタンを押してください。
             </p>
             <button class="start-btn" onclick="startExam()">スタート</button>
@@ -758,10 +753,6 @@
                     <div class="label">正解数</div>
                     <div class="value" id="infoScore">0/0</div>
                 </div>
-                <div class="info-item">
-                    <div class="label">残り時間</div>
-                    <div class="value" id="infoTime">30:00</div>
-                </div>
             </div>
 
             <!-- Progress -->
@@ -779,10 +770,6 @@
             <div class="question-area">
                 <div class="question-header">
                     <div class="question-number" id="questionNumber">問題 1</div>
-                    <div class="timer" id="timer">
-                        <span>⏱</span>
-                        <span id="timerDisplay">30:00</span>
-                    </div>
                 </div>
 
                 <div class="question-text" id="questionText">
@@ -845,6 +832,15 @@
         let dataLoaded = {};
         let loadingPromises = {};
 
+        // Available year files for each level
+        const availableYearFiles = {
+            'N1': ['202207', '202212', '202307', '202312', '202407', '202412'],
+            'N2': ['202212'],
+            'N3': ['202212'],
+            'N4': [],
+            'N5': []
+        };
+
         // Async function to load exam data from JSON files
         async function loadExamData(level) {
             if (dataLoaded[level]) {
@@ -855,29 +851,63 @@
                 return loadingPromises[level];
             }
 
-            loadingPromises[level] = fetch(`examdata/${level}.json`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`Failed to load ${level} data`);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    // Convert old format to new format for backward compatibility
-                    if (data.vocabulary && !data.vocabulary_grammar) {
-                        data.vocabulary_grammar = [...(data.vocabulary || []), ...(data.grammar || [])];
-                        data.reading = data.reading || [];
-                    }
-                    examData[level] = data;
-                    dataLoaded[level] = true;
-                    return data;
-                })
-                .catch(error => {
-                    console.error(`Error loading ${level}:`, error);
-                    return { vocabulary_grammar: [], reading: [], listening: [] };
-                });
+            // For levels with year files, load multiple year files and combine
+            if (availableYearFiles[level] && availableYearFiles[level].length > 0) {
+                loadingPromises[level] = loadMultipleYearFiles(level);
+            } else {
+                loadingPromises[level] = fetch(`examdata/${level}.json`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`Failed to load ${level} data`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        // Convert old format to new format for backward compatibility
+                        if (data.vocabulary && !data.vocabulary_grammar) {
+                            data.vocabulary_grammar = [...(data.vocabulary || []), ...(data.grammar || [])];
+                            data.reading = data.reading || [];
+                        }
+                        examData[level] = data;
+                        dataLoaded[level] = true;
+                        return data;
+                    })
+                    .catch(error => {
+                        console.error(`Error loading ${level}:`, error);
+                        return { vocabulary_grammar: [], reading: [], listening: [] };
+                    });
+            }
 
             return loadingPromises[level];
+        }
+
+        // Load multiple year files and combine them
+        async function loadMultipleYearFiles(level) {
+            const yearFiles = availableYearFiles[level];
+            const combinedData = {
+                vocabulary_grammar: [],
+                reading: [],
+                listening: []
+            };
+
+            // Load year-specific files (N1_202207.json, N1_202212.json, etc.)
+            for (const yearCode of yearFiles) {
+                try {
+                    const response = await fetch(`examdata/${level}_${yearCode}.json`);
+                    if (response.ok) {
+                        const data = await response.json();
+                        if (data.vocabulary_grammar) combinedData.vocabulary_grammar.push(...data.vocabulary_grammar);
+                        if (data.reading) combinedData.reading.push(...data.reading);
+                        if (data.listening) combinedData.listening.push(...data.listening);
+                    }
+                } catch (e) {
+                    console.error(`Error loading ${level}_${yearCode}.json:`, e);
+                }
+            }
+
+            examData[level] = combinedData;
+            dataLoaded[level] = true;
+            return combinedData;
         }
 
         // Preload all levels
@@ -2014,8 +2044,6 @@
         let currentYear = '2024-07';
         let currentQuestionIndex = 0;
         let userAnswers = [];
-        let timeRemaining = 30 * 60; // 30 minutes in seconds
-        let timerInterval = null;
         let questions = [];
         let isReviewMode = false;
 
@@ -2039,11 +2067,6 @@
                     const isExamInProgress = examArea.style.display === 'block';
 
                     if (isExamInProgress) {
-                        // Stop current timer
-                        if (timerInterval) {
-                            clearInterval(timerInterval);
-                        }
-
                         // Restart exam with new level
                         await startExam();
                     } else {
@@ -2074,11 +2097,6 @@
                     const isExamInProgress = examArea.style.display === 'block';
 
                     if (isExamInProgress) {
-                        // Stop current timer
-                        if (timerInterval) {
-                            clearInterval(timerInterval);
-                        }
-
                         // Restart exam with new section
                         await startExam();
                     } else {
@@ -2106,11 +2124,6 @@
                 const isExamInProgress = examArea.style.display === 'block';
 
                 if (isExamInProgress) {
-                    // Stop current timer
-                    if (timerInterval) {
-                        clearInterval(timerInterval);
-                    }
-
                     // Restart exam with new year
                     await startExam();
                 } else {
@@ -2204,7 +2217,7 @@
                 }
             } else {
                 document.querySelector('#startScreen p').innerHTML =
-                    `問題数: ${questionCount}問<br>制限時間: 30分<br><br>準備ができたら「スタート」ボタンを押してください。`;
+                    `問題数: ${questionCount}問<br>準備ができたら「スタート」ボタンを押してください。`;
 
                 // Enable start button
                 const startBtn = document.querySelector('#startScreen button');
@@ -2232,7 +2245,6 @@
 
             currentQuestionIndex = 0;
             userAnswers = new Array(questions.length).fill(-1);
-            timeRemaining = 30 * 60;
             isReviewMode = false;
 
             document.getElementById('startScreen').style.display = 'none';
@@ -2248,40 +2260,96 @@
 
             // Show first question
             showQuestion(0);
-
-            // Start timer
-            startTimer();
         }
+
+        // Store mondai groups for navigation
+        let mondaiGroups = [];
 
         function createQuestionDots() {
             const container = document.getElementById('questionDots');
             container.innerHTML = '';
-            questions.forEach((_, index) => {
+
+            // Find unique mondai groups and their first question index
+            mondaiGroups = [];
+            const seenMondai = new Set();
+
+            questions.forEach((q, index) => {
+                if (q.mondai && !seenMondai.has(q.mondai)) {
+                    seenMondai.add(q.mondai);
+                    mondaiGroups.push({
+                        mondai: q.mondai,
+                        title: q.mondai_title || `問題${q.mondai}`,
+                        firstIndex: index,
+                        indices: []
+                    });
+                }
+                // Add index to the current mondai group
+                if (q.mondai) {
+                    const group = mondaiGroups.find(g => g.mondai === q.mondai);
+                    if (group) {
+                        group.indices.push(index);
+                    }
+                }
+            });
+
+            // Create dots for each mondai group
+            mondaiGroups.forEach((group, idx) => {
                 const dot = document.createElement('div');
-                dot.className = 'q-dot';
-                dot.textContent = index + 1;
-                dot.onclick = () => showQuestion(index);
+                dot.className = 'q-dot mondai-dot';
+                dot.textContent = group.title;
+                dot.dataset.mondai = group.mondai;
+                dot.dataset.groupIdx = idx;
+                dot.style.cssText = 'padding: 5px 12px; min-width: auto; font-size: 0.85em;';
+                dot.onclick = () => showQuestion(group.firstIndex);
                 container.appendChild(dot);
             });
         }
 
         function updateQuestionDots() {
             const dots = document.querySelectorAll('.q-dot');
-            dots.forEach((dot, index) => {
-                dot.classList.remove('current', 'answered', 'wrong-answer');
-                if (index === currentQuestionIndex) {
+            const currentQuestion = questions[currentQuestionIndex];
+            const currentMondaiNum = currentQuestion?.mondai;
+
+            dots.forEach((dot) => {
+                dot.classList.remove('current', 'answered', 'wrong-answer', 'partial');
+                const dotMondai = parseInt(dot.dataset.mondai);
+                const group = mondaiGroups.find(g => g.mondai === dotMondai);
+
+                if (!group) return;
+
+                // Check if this is the current mondai
+                if (dotMondai === currentMondaiNum) {
                     dot.classList.add('current');
-                } else if (userAnswers[index] !== -1) {
-                    if (isReviewMode && userAnswers[index] !== questions[index].answer) {
-                        dot.classList.add('wrong-answer');
+                }
+
+                // Check answer status for this mondai group
+                const answeredCount = group.indices.filter(i => userAnswers[i] !== -1).length;
+                const totalCount = group.indices.length;
+
+                if (answeredCount === totalCount && totalCount > 0) {
+                    // All questions answered
+                    if (isReviewMode) {
+                        const wrongCount = group.indices.filter(i => userAnswers[i] !== questions[i].answer).length;
+                        if (wrongCount > 0) {
+                            dot.classList.add('wrong-answer');
+                        } else {
+                            dot.classList.add('answered');
+                        }
                     } else {
                         dot.classList.add('answered');
                     }
+                } else if (answeredCount > 0) {
+                    // Some questions answered
+                    dot.classList.add('partial');
                 }
             });
         }
 
         let currentMondai = null;
+        let currentMondaiDescription = null;
+
+        // Track grouped questions for 問題6 and 問題7
+        let groupedQuestionIndices = [];
 
         function showQuestion(index) {
             currentQuestionIndex = index;
@@ -2298,6 +2366,17 @@
 
             if (question.mondai && question.mondai !== currentMondai) {
                 currentMondai = question.mondai;
+                currentMondaiDescription = question.mondai_description;
+                mondaiHeader.innerHTML = `
+                    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 15px 20px; border-radius: 10px; margin-bottom: 15px;">
+                        <h3 style="margin: 0 0 8px 0; font-size: 1.3em;">${question.mondai_title || '問題' + question.mondai}</h3>
+                        <p style="margin: 0; font-size: 0.95em; opacity: 0.95;">${question.mondai_description || ''}</p>
+                    </div>
+                `;
+                mondaiHeader.style.display = 'block';
+            } else if (question.mondai && question.mondai_description !== currentMondaiDescription) {
+                // Same mondai but different description (e.g., listening mondai 5 with 1番 and 2番)
+                currentMondaiDescription = question.mondai_description;
                 mondaiHeader.innerHTML = `
                     <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 15px 20px; border-radius: 10px; margin-bottom: 15px;">
                         <h3 style="margin: 0 0 8px 0; font-size: 1.3em;">${question.mondai_title || '問題' + question.mondai}</h3>
@@ -2308,76 +2387,480 @@
             } else if (!question.mondai) {
                 mondaiHeader.style.display = 'none';
                 currentMondai = null;
+                currentMondaiDescription = null;
             }
 
-            // Display passage for reading comprehension questions (問題7)
+            // Display passage for reading comprehension questions (問題7 only)
+            // For 問題8-13, passage is displayed within each question container
             let passageDiv = document.getElementById('passageDiv');
             if (!passageDiv) {
                 passageDiv = document.createElement('div');
                 passageDiv.id = 'passageDiv';
-                passageDiv.style.cssText = 'background: #f8f9fa; border-left: 4px solid #667eea; padding: 15px 20px; margin-bottom: 20px; border-radius: 0 8px 8px 0; line-height: 1.8; font-size: 1em;';
+                passageDiv.style.cssText = 'background: #f8f9fa; border-left: 4px solid #667eea; padding: 15px 20px; margin-bottom: 20px; border-radius: 0 8px 8px 0; line-height: 1.8; font-size: 1.1em;';
                 const questionArea = document.querySelector('.question-area');
                 const mondaiHeaderEl = document.getElementById('mondaiHeader');
                 if (mondaiHeaderEl && mondaiHeaderEl.nextSibling) {
                     questionArea.insertBefore(passageDiv, mondaiHeaderEl.nextSibling);
                 }
             }
-            if (question.passage) {
+            // Only show global passage for 問題7, not for 問題8-13
+            if (question.passage && question.mondai === 7) {
                 passageDiv.innerHTML = question.passage;
                 passageDiv.style.display = 'block';
             } else {
                 passageDiv.style.display = 'none';
             }
 
-            // Update question number
-            const qNum = question.question_number || (index + 1);
-            document.getElementById('questionNumber').textContent = `問 ${qNum}`;
-
-            // Update progress
-            const progress = ((index + 1) / questions.length) * 100;
-            document.getElementById('progressFill').style.width = `${progress}%`;
-            document.getElementById('progressText').textContent = `問 ${qNum} / ${questions.length}問`;
-
-            // Update question text
-            let questionHTML = question.question;
-            document.getElementById('questionText').innerHTML = questionHTML;
-
-            // Update options
-            const optionsGrid = document.getElementById('optionsGrid');
-            optionsGrid.innerHTML = '';
-            question.options.forEach((option, optIndex) => {
-                const optionDiv = document.createElement('div');
-                optionDiv.className = 'option';
-
-                if (userAnswers[index] === optIndex) {
-                    optionDiv.classList.add('selected');
+            // Audio player for listening section
+            let audioPlayerDiv = document.getElementById('audioPlayerDiv');
+            if (!audioPlayerDiv) {
+                audioPlayerDiv = document.createElement('div');
+                audioPlayerDiv.id = 'audioPlayerDiv';
+                audioPlayerDiv.style.cssText = 'background: #e8f4f8; border: 2px solid #667eea; padding: 20px; margin-bottom: 20px; border-radius: 12px; text-align: center;';
+                const questionArea = document.querySelector('.question-area');
+                const mondaiHeaderEl = document.getElementById('mondaiHeader');
+                if (mondaiHeaderEl && mondaiHeaderEl.nextSibling) {
+                    questionArea.insertBefore(audioPlayerDiv, mondaiHeaderEl.nextSibling);
                 }
+            }
 
-                if (isReviewMode) {
-                    if (optIndex === question.answer) {
-                        optionDiv.classList.add('correct');
-                    } else if (userAnswers[index] === optIndex) {
-                        optionDiv.classList.add('wrong');
+            // Show audio player for listening questions
+            if (currentSection === 'listening' && question.audio) {
+                audioPlayerDiv.innerHTML = `
+                    <div style="margin-bottom: 10px; font-weight: bold; color: #667eea;">
+                        <span style="font-size: 1.5em;">🎧</span> 音声を聞いて答えてください
+                    </div>
+                    <audio id="questionAudio" controls style="width: 100%; max-width: 400px;">
+                        <source src="${question.audio}" type="audio/mpeg">
+                        お使いのブラウザは音声再生に対応していません。
+                    </audio>
+                    <div style="margin-top: 10px; font-size: 0.9em; color: #666;">
+                        音声は何度でも再生できます
+                    </div>
+                `;
+                audioPlayerDiv.style.display = 'block';
+            } else {
+                audioPlayerDiv.style.display = 'none';
+            }
+
+            // Check if this is a grouped mondai - display all related questions together
+            // For listening section, also group by mondai
+            const isListeningSection = currentSection === 'listening';
+            const isGroupedMondai = (question.mondai >= 1 && question.mondai <= 13 && question.mondai_description) ||
+                                    (isListeningSection && question.mondai >= 1 && question.mondai <= 5);
+
+            if (isGroupedMondai) {
+                // Find all questions with same mondai and mondai_description
+                groupedQuestionIndices = [];
+                const currentMondaiNum = question.mondai;
+                const currentDescription = question.mondai_description;
+                questions.forEach((q, i) => {
+                    if (q.mondai === currentMondaiNum && q.mondai_description === currentDescription) {
+                        groupedQuestionIndices.push(i);
+                    }
+                });
+
+                // Hide question number (mondaiHeader already shows the title)
+                const mondaiTitle = question.mondai_title || `問題${question.mondai}`;
+                const firstQ = questions[groupedQuestionIndices[0]];
+                const lastQ = questions[groupedQuestionIndices[groupedQuestionIndices.length - 1]];
+                const firstQNum = (firstQ.question_number !== undefined && firstQ.question_number !== null) ? firstQ.question_number : (groupedQuestionIndices[0] + 1);
+                const lastQNum = (lastQ.question_number !== undefined && lastQ.question_number !== null) ? lastQ.question_number : (groupedQuestionIndices[groupedQuestionIndices.length - 1] + 1);
+                const questionCount = groupedQuestionIndices.length;
+                document.getElementById('questionNumber').style.display = 'none';
+
+                // Update progress
+                const currentGroupIdx = mondaiGroups.findIndex(g => g.mondai === question.mondai);
+                const progress = ((currentGroupIdx + 1) / mondaiGroups.length) * 100;
+                document.getElementById('progressFill').style.width = `${progress}%`;
+                // If question_number is empty, just show the count
+                if (firstQNum === "" || lastQNum === "") {
+                    document.getElementById('progressText').textContent = `${mondaiTitle} / 全${questionCount}問`;
+                } else {
+                    const isStringFirst = typeof firstQNum === 'string' && isNaN(firstQNum);
+                    const isStringLast = typeof lastQNum === 'string' && isNaN(lastQNum);
+                    if (isStringFirst || isStringLast) {
+                        document.getElementById('progressText').textContent = `${mondaiTitle} (${firstQNum}〜${lastQNum}) / 全${questionCount}問`;
+                    } else {
+                        document.getElementById('progressText').textContent = `${mondaiTitle} (問${firstQNum}〜${lastQNum}) / 全${questionCount}問`;
                     }
                 }
 
-                optionDiv.innerHTML = `
-                    <div class="option-number">${optIndex + 1}</div>
-                    <div class="option-text">${option}</div>
-                `;
+                // Hide single question text
+                document.getElementById('questionText').innerHTML = '';
 
-                if (!isReviewMode) {
-                    optionDiv.onclick = () => selectOption(optIndex);
+                // Update options grid with all questions
+                const optionsGrid = document.getElementById('optionsGrid');
+                optionsGrid.innerHTML = '';
+                optionsGrid.style.display = 'block';
+
+                // For reading questions (問題8-13), group questions by passage to avoid duplication
+                const isReadingMondai = question.mondai >= 8 && question.mondai <= 13 && currentSection === 'reading';
+
+                // For listening questions
+                const isListeningMondai = currentSection === 'listening';
+
+                if (isListeningMondai) {
+                    // Listening section: show script and questions
+                    groupedQuestionIndices.forEach((qIndex) => {
+                        const q = questions[qIndex];
+                        const qNum = (q.question_number !== undefined && q.question_number !== null) ? q.question_number : (qIndex + 1);
+
+                        // Create question container
+                        const questionContainer = document.createElement('div');
+                        questionContainer.style.cssText = 'margin-bottom: 25px; padding: 15px; background: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
+                        questionContainer.setAttribute('data-question-index', qIndex);
+
+                        // Question number (skip if empty)
+                        if (qNum !== "" && qNum !== null && qNum !== undefined) {
+                            const questionHeader = document.createElement('div');
+                            questionHeader.style.cssText = 'font-weight: bold; margin-bottom: 10px; color: #667eea; font-size: 1.1em;';
+                            // If qNum is a string (like "1番" or "2番 質問1"), don't add "問" prefix
+                            const isStringQNum = typeof qNum === 'string' && isNaN(qNum);
+                            questionHeader.innerHTML = isStringQNum ? qNum : `問${qNum}`;
+                            questionContainer.appendChild(questionHeader);
+                        }
+
+                        // Question text
+                        if (q.script_question) {
+                            const questionTextDiv = document.createElement('div');
+                            questionTextDiv.style.cssText = 'margin-bottom: 12px; padding: 10px; background: #fff3cd; border-radius: 4px; font-weight: bold;';
+                            questionTextDiv.innerHTML = q.script_question;
+                            questionContainer.appendChild(questionTextDiv);
+                        }
+
+                        // Question text (for mondai 5)
+                        if (q.question && q.mondai === 5) {
+                            const questionTextDiv = document.createElement('div');
+                            questionTextDiv.style.cssText = 'margin-bottom: 12px; padding: 10px; background: #f8f9fa; border-radius: 4px; line-height: 1.6;';
+                            questionTextDiv.innerHTML = q.question;
+                            questionContainer.appendChild(questionTextDiv);
+                        }
+
+                        // Options (1 column for listening, options may be longer)
+                        const optionsContainer = document.createElement('div');
+                        const hasLongOptions = q.options.some(opt => opt.length > 20);
+                        optionsContainer.style.cssText = hasLongOptions
+                            ? 'display: grid; grid-template-columns: 1fr; gap: 10px;'
+                            : 'display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;';
+
+                        q.options.forEach((option, optIndex) => {
+                            const optionDiv = document.createElement('div');
+                            optionDiv.className = 'option';
+                            optionDiv.style.cssText = 'padding: 10px 15px; cursor: pointer;';
+
+                            if (userAnswers[qIndex] === optIndex) {
+                                optionDiv.classList.add('selected');
+                                if (optIndex === q.answer) {
+                                    optionDiv.classList.add('correct');
+                                } else {
+                                    optionDiv.classList.add('wrong');
+                                }
+                            }
+
+                            if (userAnswers[qIndex] !== -1 && userAnswers[qIndex] !== q.answer && optIndex === q.answer) {
+                                optionDiv.classList.add('correct');
+                            }
+
+                            if (isReviewMode) {
+                                if (optIndex === q.answer) {
+                                    optionDiv.classList.add('correct');
+                                } else if (userAnswers[qIndex] === optIndex) {
+                                    optionDiv.classList.add('wrong');
+                                }
+                            }
+
+                            optionDiv.innerHTML = `
+                                <div class="option-number">${optIndex + 1}</div>
+                                <div class="option-text">${option}</div>
+                            `;
+
+                            if (!isReviewMode) {
+                                optionDiv.onclick = () => selectGroupedOption(qIndex, optIndex);
+                            }
+
+                            optionsContainer.appendChild(optionDiv);
+                        });
+
+                        questionContainer.appendChild(optionsContainer);
+
+                        optionsGrid.appendChild(questionContainer);
+                    });
+                } else if (isReadingMondai) {
+                    // Group questions by passage
+                    const passageGroups = [];
+                    let currentPassage = null;
+                    let currentGroup = null;
+                    let subGroupIndex = 0;
+
+                    groupedQuestionIndices.forEach((qIndex) => {
+                        const q = questions[qIndex];
+                        // Skip empty passages - add question to current group
+                        if (q.passage === "" || q.passage === null || q.passage === undefined) {
+                            if (currentGroup) {
+                                currentGroup.questions.push(qIndex);
+                            }
+                            return;
+                        }
+                        if (q.passage !== currentPassage) {
+                            subGroupIndex++;
+                            currentPassage = q.passage;
+                            currentGroup = { passage: q.passage, subIndex: subGroupIndex, questions: [] };
+                            passageGroups.push(currentGroup);
+                        }
+                        currentGroup.questions.push(qIndex);
+                    });
+
+                    // Render each passage group
+                    passageGroups.forEach((group) => {
+                        // Create passage container
+                        const passageContainer = document.createElement('div');
+                        passageContainer.style.cssText = 'margin-bottom: 30px; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
+
+                        // Sub-question label like (1), (2), etc. - only show if more than one passage group
+                        // Skip if passage already starts with (number) pattern
+                        const passageStartsWithNumber = /^\s*\(\d+\)/.test(group.passage);
+                        if (passageGroups.length > 1 && !passageStartsWithNumber) {
+                            const subLabel = document.createElement('div');
+                            subLabel.style.cssText = 'font-weight: bold; margin-bottom: 10px; color: #333; font-size: 1.1em;';
+                            subLabel.innerHTML = `(${group.subIndex})`;
+                            passageContainer.appendChild(subLabel);
+                        }
+
+                        // Passage text (only once per group)
+                        const passageDiv = document.createElement('div');
+                        passageDiv.style.cssText = 'background: #f8f9fa; border-left: 4px solid #667eea; padding: 15px 20px; margin-bottom: 20px; border-radius: 0 8px 8px 0; line-height: 1.8; font-size: 1.1em;';
+                        passageDiv.innerHTML = group.passage;
+                        passageContainer.appendChild(passageDiv);
+
+                        // Render each question in this passage group
+                        group.questions.forEach((qIndex) => {
+                            const q = questions[qIndex];
+                            const qNum = q.question_number || (qIndex + 1);
+
+                            // Question container
+                            const questionContainer = document.createElement('div');
+                            questionContainer.style.cssText = 'margin-bottom: 20px; padding: 15px; background: #fafafa; border-radius: 8px;';
+                            questionContainer.setAttribute('data-question-index', qIndex);
+
+                            // Question number and question text
+                            const questionHeader = document.createElement('div');
+                            questionHeader.style.cssText = 'font-weight: bold; margin-bottom: 10px; color: #667eea;';
+                            // Check if question already has number prefix (e.g., "57）...")
+                            const questionText = q.question || q.passage_question || '';
+                            const hasNumberPrefix = /^\d+）/.test(questionText);
+                            questionHeader.innerHTML = hasNumberPrefix ? questionText : `${qNum}）${questionText}`;
+                            questionContainer.appendChild(questionHeader);
+
+                            // Question table (for questions like 問65 that have a table between question and options)
+                            if (q.question_table) {
+                                const tableDiv = document.createElement('div');
+                                tableDiv.style.cssText = 'margin-bottom: 15px; overflow-x: auto;';
+                                tableDiv.innerHTML = q.question_table;
+                                questionContainer.appendChild(tableDiv);
+                            }
+
+                            // Options for this question (1 column for reading)
+                            const optionsContainer = document.createElement('div');
+                            optionsContainer.style.cssText = 'display: grid; grid-template-columns: 1fr; gap: 10px;';
+
+                            q.options.forEach((option, optIndex) => {
+                                const optionDiv = document.createElement('div');
+                                optionDiv.className = 'option';
+                                optionDiv.style.cssText = 'padding: 10px 15px; cursor: pointer;';
+
+                                if (userAnswers[qIndex] === optIndex) {
+                                    optionDiv.classList.add('selected');
+                                    if (optIndex === q.answer) {
+                                        optionDiv.classList.add('correct');
+                                    } else {
+                                        optionDiv.classList.add('wrong');
+                                    }
+                                }
+
+                                if (userAnswers[qIndex] !== -1 && userAnswers[qIndex] !== q.answer && optIndex === q.answer) {
+                                    optionDiv.classList.add('correct');
+                                }
+
+                                if (isReviewMode) {
+                                    if (optIndex === q.answer) {
+                                        optionDiv.classList.add('correct');
+                                    } else if (userAnswers[qIndex] === optIndex) {
+                                        optionDiv.classList.add('wrong');
+                                    }
+                                }
+
+                                optionDiv.innerHTML = `
+                                    <div class="option-number">${optIndex + 1}</div>
+                                    <div class="option-text">${option}</div>
+                                `;
+
+                                if (!isReviewMode) {
+                                    optionDiv.onclick = () => selectGroupedOption(qIndex, optIndex);
+                                }
+
+                                optionsContainer.appendChild(optionDiv);
+                            });
+
+                            questionContainer.appendChild(optionsContainer);
+                            passageContainer.appendChild(questionContainer);
+                        });
+
+                        optionsGrid.appendChild(passageContainer);
+                    });
+                } else {
+                    // For vocab/grammar questions (問題1-7)
+                    groupedQuestionIndices.forEach((qIndex) => {
+                        const q = questions[qIndex];
+                        const qNum = q.question_number || (qIndex + 1);
+
+                        // Create question container
+                        const questionContainer = document.createElement('div');
+                        questionContainer.style.cssText = 'margin-bottom: 25px; padding: 15px; background: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
+                        questionContainer.setAttribute('data-question-index', qIndex);
+
+                        // Question header with question number
+                        const questionHeader = document.createElement('div');
+                        questionHeader.style.cssText = 'font-weight: bold; margin-bottom: 10px; color: #667eea;';
+                        // If qNum is a string (like "1番" or "2番 質問1"), don't add "問" prefix
+                        const isStringQNum2 = typeof qNum === 'string' && isNaN(qNum);
+                        questionHeader.innerHTML = isStringQNum2 ? qNum : `問${qNum}`;
+                        questionContainer.appendChild(questionHeader);
+
+                        // Question text (the sentence with blank)
+                        if (q.question) {
+                            const questionTextDiv = document.createElement('div');
+                            questionTextDiv.style.cssText = 'margin-bottom: 10px; padding: 10px; background: #f8f9fa; border-radius: 4px; line-height: 1.6;';
+                            questionTextDiv.innerHTML = q.question;
+                            questionContainer.appendChild(questionTextDiv);
+                        }
+
+                        // Instruction/context if available
+                        if (q.instruction) {
+                            const instructionDiv = document.createElement('div');
+                            instructionDiv.style.cssText = 'margin-bottom: 10px; padding: 8px; background: #f0f0f0; border-radius: 4px; font-size: 0.9em;';
+                            instructionDiv.innerHTML = q.instruction;
+                            questionContainer.appendChild(instructionDiv);
+                        }
+
+                        // Options for this question (2 columns for vocab/grammar)
+                        const optionsContainer = document.createElement('div');
+                        optionsContainer.style.cssText = 'display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;';
+
+                        q.options.forEach((option, optIndex) => {
+                            const optionDiv = document.createElement('div');
+                            optionDiv.className = 'option';
+                            optionDiv.style.cssText = 'padding: 10px 15px; cursor: pointer;';
+
+                            if (userAnswers[qIndex] === optIndex) {
+                                optionDiv.classList.add('selected');
+                                if (optIndex === q.answer) {
+                                    optionDiv.classList.add('correct');
+                                } else {
+                                    optionDiv.classList.add('wrong');
+                                }
+                            }
+
+                            if (userAnswers[qIndex] !== -1 && userAnswers[qIndex] !== q.answer && optIndex === q.answer) {
+                                optionDiv.classList.add('correct');
+                            }
+
+                            if (isReviewMode) {
+                                if (optIndex === q.answer) {
+                                    optionDiv.classList.add('correct');
+                                } else if (userAnswers[qIndex] === optIndex) {
+                                    optionDiv.classList.add('wrong');
+                                }
+                            }
+
+                            optionDiv.innerHTML = `
+                                <div class="option-number">${optIndex + 1}</div>
+                                <div class="option-text">${option}</div>
+                            `;
+
+                            if (!isReviewMode) {
+                                optionDiv.onclick = () => selectGroupedOption(qIndex, optIndex);
+                            }
+
+                            optionsContainer.appendChild(optionDiv);
+                        });
+
+                        questionContainer.appendChild(optionsContainer);
+                        optionsGrid.appendChild(questionContainer);
+                    });
                 }
 
-                optionsGrid.appendChild(optionDiv);
-            });
+            } else {
+                // Normal single question display
+                groupedQuestionIndices = [];
+
+                // Update question number and show it
+                const qNum = question.question_number || (index + 1);
+                document.getElementById('questionNumber').textContent = `問 ${qNum}`;
+                document.getElementById('questionNumber').style.display = 'block';
+
+                // Update progress
+                const progress = ((index + 1) / questions.length) * 100;
+                document.getElementById('progressFill').style.width = `${progress}%`;
+                document.getElementById('progressText').textContent = `問 ${qNum} / ${questions.length}問`;
+
+                // Update question text
+                let questionHTML = question.question;
+                document.getElementById('questionText').innerHTML = questionHTML;
+
+                // Update options
+                const optionsGrid = document.getElementById('optionsGrid');
+                optionsGrid.innerHTML = '';
+                question.options.forEach((option, optIndex) => {
+                    const optionDiv = document.createElement('div');
+                    optionDiv.className = 'option';
+
+                    if (userAnswers[index] === optIndex) {
+                        optionDiv.classList.add('selected');
+                        // Show correct/wrong immediately when answered
+                        if (optIndex === question.answer) {
+                            optionDiv.classList.add('correct');
+                        } else {
+                            optionDiv.classList.add('wrong');
+                        }
+                    }
+
+                    // Show correct answer if user answered wrong
+                    if (userAnswers[index] !== -1 && userAnswers[index] !== question.answer && optIndex === question.answer) {
+                        optionDiv.classList.add('correct');
+                    }
+
+                    if (isReviewMode) {
+                        if (optIndex === question.answer) {
+                            optionDiv.classList.add('correct');
+                        } else if (userAnswers[index] === optIndex) {
+                            optionDiv.classList.add('wrong');
+                        }
+                    }
+
+                    optionDiv.innerHTML = `
+                        <div class="option-number">${optIndex + 1}</div>
+                        <div class="option-text">${option}</div>
+                    `;
+
+                    if (!isReviewMode) {
+                        optionDiv.onclick = () => selectOption(optIndex);
+                    }
+
+                    optionsGrid.appendChild(optionDiv);
+                });
+            }
 
             // Update navigation buttons
             const submitBtn = document.querySelector('.nav-btn.submit');
             const nextBtn = document.querySelector('.nav-btn.next');
 
-            if (index === questions.length - 1) {
+            // Check if we're at the last mondai group
+            const currentMondaiNum = question.mondai;
+            const currentGroupIndex = mondaiGroups.findIndex(g => g.mondai === currentMondaiNum);
+            const isLastGroup = currentGroupIndex === mondaiGroups.length - 1;
+
+            if (isLastGroup) {
                 nextBtn.style.display = 'none';
                 if (!isReviewMode) {
                     submitBtn.style.display = 'inline-block';
@@ -2392,20 +2875,82 @@
             updateQuestionDots();
         }
 
+        function selectGroupedOption(questionIndex, optIndex) {
+            userAnswers[questionIndex] = optIndex;
+            const question = questions[questionIndex];
+            const isCorrect = optIndex === question.answer;
+
+            // Show correct/wrong feedback
+            const questionContainer = document.querySelector(`[data-question-index="${questionIndex}"]`);
+            if (questionContainer) {
+                const options = questionContainer.querySelectorAll('.option');
+                options.forEach((opt, idx) => {
+                    opt.classList.remove('selected', 'correct', 'wrong');
+                    if (idx === optIndex) {
+                        opt.classList.add('selected');
+                        if (isCorrect) {
+                            opt.classList.add('correct');
+                        } else {
+                            opt.classList.add('wrong');
+                            // Show correct answer
+                            options[question.answer].classList.add('correct');
+                        }
+                    }
+                });
+            }
+
+            updateScore();
+            updateQuestionDots();
+        }
+
         function selectOption(optIndex) {
             userAnswers[currentQuestionIndex] = optIndex;
-            showQuestion(currentQuestionIndex);
+            const question = questions[currentQuestionIndex];
+            const isCorrect = optIndex === question.answer;
+
+            // Show correct/wrong feedback
+            const options = document.querySelectorAll('#optionsGrid .option');
+            options.forEach((opt, idx) => {
+                opt.classList.remove('selected', 'correct', 'wrong');
+                if (idx === optIndex) {
+                    opt.classList.add('selected');
+                    if (isCorrect) {
+                        opt.classList.add('correct');
+                    } else {
+                        opt.classList.add('wrong');
+                        // Show correct answer
+                        options[question.answer].classList.add('correct');
+                    }
+                }
+            });
+
+            updateScore();
+            updateQuestionDots();
         }
 
         function prevQuestion() {
-            if (currentQuestionIndex > 0) {
-                showQuestion(currentQuestionIndex - 1);
+            // Find current mondai group index
+            const currentQuestion = questions[currentQuestionIndex];
+            const currentMondaiNum = currentQuestion?.mondai;
+            const currentGroupIndex = mondaiGroups.findIndex(g => g.mondai === currentMondaiNum);
+
+            if (currentGroupIndex > 0) {
+                // Go to previous mondai group
+                const prevGroup = mondaiGroups[currentGroupIndex - 1];
+                showQuestion(prevGroup.firstIndex);
             }
         }
 
         function nextQuestion() {
-            if (currentQuestionIndex < questions.length - 1) {
-                showQuestion(currentQuestionIndex + 1);
+            // Find current mondai group index
+            const currentQuestion = questions[currentQuestionIndex];
+            const currentMondaiNum = currentQuestion?.mondai;
+            const currentGroupIndex = mondaiGroups.findIndex(g => g.mondai === currentMondaiNum);
+
+            if (currentGroupIndex < mondaiGroups.length - 1) {
+                // Go to next mondai group
+                const nextGroup = mondaiGroups[currentGroupIndex + 1];
+                showQuestion(nextGroup.firstIndex);
             }
         }
 
@@ -2415,29 +2960,7 @@
             document.getElementById('infoScore').textContent = `${correct}/${answered}`;
         }
 
-        function startTimer() {
-            if (timerInterval) clearInterval(timerInterval);
-
-            timerInterval = setInterval(() => {
-                timeRemaining--;
-
-                const minutes = Math.floor(timeRemaining / 60);
-                const seconds = timeRemaining % 60;
-                const timeStr = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-
-                document.getElementById('timerDisplay').textContent = timeStr;
-                document.getElementById('infoTime').textContent = timeStr;
-
-                if (timeRemaining <= 0) {
-                    clearInterval(timerInterval);
-                    submitExam();
-                }
-            }, 1000);
-        }
-
         function submitExam() {
-            if (timerInterval) clearInterval(timerInterval);
-
             const correct = userAnswers.filter((a, i) => a === questions[i]?.answer).length;
             const total = questions.length;
             const percentage = Math.round((correct / total) * 100);

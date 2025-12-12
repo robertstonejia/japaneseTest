@@ -1169,12 +1169,12 @@
     {
       "question": "",
       "options": [
-        "ア",
+        "アイ",
         "アウ",
         "イウ",
         "アイウ"
       ],
-      "answer": 1,
+      "answer": 0,
       "year": "2022-07",
       "mondai": 1,
       "mondai_title": "問題1",
