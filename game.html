@@ -58,6 +58,7 @@
             position: relative;
             z-index: 1;
             animation: containerEntry 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            overflow: visible;
         }
 
         @keyframes containerEntry {
@@ -121,6 +122,8 @@
             margin-bottom: 30px;
             justify-content: center;
             align-items: center;
+            position: relative;
+            overflow: visible;
         }
 
         .language-btn {
@@ -146,15 +149,77 @@
             border-color: #667eea;
         }
 
-        .other-languages-dropdown { position: relative; display: inline-block; }
-        .other-languages-btn { padding: 12px 16px; border: 2px solid #667eea; border-radius: 10px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.3s; background: white; color: #667eea; }
-        .other-languages-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); }
-        .other-languages-btn.has-active { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-color: #667eea; }
-        .dropdown-content { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: white; min-width: 150px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); border-radius: 10px; z-index: 100; margin-top: 5px; overflow: hidden; }
-        .dropdown-content.show { display: block; animation: fadeIn 0.3s; }
-        .dropdown-item { padding: 12px 16px; cursor: pointer; transition: all 0.2s; border: none; background: white; color: #333; font-size: 0.9em; font-weight: bold; width: 100%; text-align: left; }
-        .dropdown-item:hover { background: #f0f0f0; }
-        .dropdown-item.active { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .other-languages-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .other-languages-btn {
+            padding: 12px 16px;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            font-size: 0.9em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+            color: #667eea;
+        }
+
+        .other-languages-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .other-languages-btn.has-active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            min-width: 180px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            z-index: 1000;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .dropdown-content.show {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        .dropdown-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            background: white;
+            color: #333;
+            font-size: 0.9em;
+            font-weight: bold;
+            width: 100%;
+            text-align: left;
+            display: block;
+        }
+
+        .dropdown-item:hover {
+            background: #f0f0f0;
+        }
+
+        .dropdown-item.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
 
         .level-selector {
             display: grid;
@@ -558,6 +623,7 @@
 
         .start-screen {
             text-align: center;
+            overflow: visible;
         }
 
         .start-screen h2 {
@@ -969,9 +1035,20 @@
         // Dropdown elements
         const otherLangBtn = document.getElementById('otherLangBtn');
         const dropdownContent = document.getElementById('dropdownContent');
-        
-        otherLangBtn.addEventListener('click', (e) => { e.stopPropagation(); dropdownContent.classList.toggle('show'); });
-        document.addEventListener('click', (e) => { if (!e.target.closest('.other-languages-dropdown')) dropdownContent.classList.remove('show'); });
+
+        // Toggle dropdown on button click
+        otherLangBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownContent.classList.toggle('show');
+            console.log('Dropdown toggled:', dropdownContent.classList.contains('show'));
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.other-languages-dropdown')) {
+                dropdownContent.classList.remove('show');
+            }
+        });
         
         // Language selection
         languageSelector.addEventListener('click', (e) => {
