@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Test</title>
+    <style>
+        body {
+            padding: 50px;
+            font-family: Arial, sans-serif;
+        }
+
+        .other-languages-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .other-languages-btn {
+            padding: 12px 16px;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            font-size: 0.9em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+            color: #667eea;
+        }
+
+        .other-languages-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            min-width: 180px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            z-index: 1000;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .dropdown-content.show {
+            display: block;
+        }
+
+        .dropdown-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            background: white;
+            color: #333;
+            font-size: 0.9em;
+            font-weight: bold;
+            width: 100%;
+            text-align: left;
+            display: block;
+        }
+
+        .dropdown-item:hover {
+            background: #f0f0f0;
+        }
+
+        .test-info {
+            margin-top: 50px;
+            padding: 20px;
+            background: #f0f0f0;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>下拉菜单测试页面</h1>
+
+    <div class="other-languages-dropdown">
+        <button class="other-languages-btn" id="otherLangBtn">その他 ▼</button>
+        <div class="dropdown-content" id="dropdownContent">
+            <button class="dropdown-item" data-lang="ar">🇸🇦 العربية</button>
+            <button class="dropdown-item" data-lang="es">🇪🇸 Español</button>
+            <button class="dropdown-item" data-lang="de">🇩🇪 Deutsch</button>
+            <button class="dropdown-item" data-lang="fr">🇫🇷 Français</button>
+        </div>
+    </div>
+
+    <div class="test-info">
+        <h3>测试说明：</h3>
+        <p>1. 点击 "その他 ▼" 按钮</p>
+        <p>2. 应该显示4个语言选项</p>
+        <p>3. 点击页面其他地方应该关闭下拉菜单</p>
+        <p id="status">状态：等待点击...</p>
+    </div>
+
+    <script>
+        const otherLangBtn = document.getElementById('otherLangBtn');
+        const dropdownContent = document.getElementById('dropdownContent');
+        const status = document.getElementById('status');
+
+        // Toggle dropdown on button click
+        otherLangBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownContent.classList.toggle('show');
+            const isShown = dropdownContent.classList.contains('show');
+            status.textContent = `状态：下拉菜单 ${isShown ? '已打开' : '已关闭'}`;
+            console.log('Dropdown toggled:', isShown);
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.other-languages-dropdown')) {
+                dropdownContent.classList.remove('show');
+                status.textContent = '状态：下拉菜单已关闭（点击外部）';
+            }
+        });
+
+        // Dropdown item clicks
+        document.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                const lang = e.target.dataset.lang;
+                status.textContent = `状态：选择了语言 - ${e.target.textContent}`;
+                dropdownContent.classList.remove('show');
+            });
+        });
+    </script>
+</body>
+</html>
